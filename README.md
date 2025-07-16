@@ -1,2 +1,2 @@
-# docs
-Pelagos documentation
+# Page
+
