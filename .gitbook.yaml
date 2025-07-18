@@ -1,0 +1,8 @@
+root: ./
+
+structure:
+  readme: index.md
+#  summary: toc.md // can control table of contents page
+
+redirects:
+#  dao/token/claiming: launchdao/guides/claiming-usdzkp.md // example from: to format
