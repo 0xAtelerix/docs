@@ -2,6 +2,6 @@
 description: test
 ---
 
-# test test
+This repo is synced with GitBook in the Pelogas domain with the title Whitepaper.
 
-stata
+There is no public URL.
