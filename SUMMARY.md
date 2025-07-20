@@ -1,3 +1,5 @@
 # Table of contents
 
-* [test test](README.md)
+* [Link to readme](README.md)
+* [Link to introduction](introduction.md)
+
