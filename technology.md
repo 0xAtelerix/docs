@@ -7,6 +7,9 @@ todo:
 
 Pelagos technology
 
+> Content NOT ready for review pass. 
+> Structure could use a feedback pass.
+
 Pelagos is transformative appchain framework that accelerates project launches and significantly reduces development timelines.
 
 To achieve this, Pelagos integrates Erigon's highly efficient database structure and modular client design bringing Appchains:

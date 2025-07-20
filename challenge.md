@@ -5,7 +5,9 @@ content: key problems this tech will solve
 notes: Normally each challenge, pain point is addressed in the solution stage IF not solution, then remove or redefine the challenge
 ---
 
-## Challenge (as heading)
+## Challenge (as H2 heading)
+
+> Ready for a review/feedback pass
 
 Multiplatform decentralized application (dApp) development is complex due to the tight coupling between smart contract logic and the underlying virtual machine or protocol. This fragmentation increases development complexity and costs, and limits application portability across chains.
 

@@ -5,8 +5,9 @@ content: key problems this tech will solve
 todo: Go back to each challenge, ensure pain point is addressed in the solution IF not then remove or redefine the challenge
 ---
 
-
 ## Solution: A Multiplatform execution and liquidity layer
+
+> Ready for a review/feedback pass
 
 Pelagos presents a multi-chain primitive that redefines execution, liquidity, and interoperability: making it a first-class design primitive, not an afterthought patched through bridges and wrappers.
 
