@@ -2,8 +2,10 @@
 title: Index page given metadata title
 ---
 
-
 # Idex page given H1 heading
+
+> NOT ready for review pass
+> Not part of toc file management in GitBook, might need to deprecate this
 
 Welcome to Pelagos: the first universal execution layer that turns every onchain pool into one seamless liquidity fabric.
 
