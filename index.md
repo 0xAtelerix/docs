@@ -1,11 +1,13 @@
 ---
-title: Introduction as title
+title: Index page given metadata title
 ---
 
 
-# Introduction as heading
+# Idex page given H1 heading
 
 Welcome to Pelagos: the first universal execution layer that turns every onchain pool into one seamless liquidity fabric.
+
+## Index page given H2 heading
 
 In this paper, Pelogas presents such a solution that reclaims the original vision of DeFi: permissionless innovation, efficient markets, and universal accessibility.
 
