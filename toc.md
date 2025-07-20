@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Challenge](challenge.md)
+* [Challenge in toc](challenge.md)
 * [Solution](solution.md)
 * [Technology](technology.md)
 
