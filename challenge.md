@@ -6,18 +6,7 @@ notes: >-
   Normally each challenge, pain point is addressed in the solution stage IF not
   solution, then remove or redefine the challenge
 layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
   tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
     visible: true
 ---
 
