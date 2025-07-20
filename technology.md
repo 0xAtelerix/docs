@@ -1,6 +1,6 @@
 ---
 proofedDate: none
-title: Technology
+title: doesn't get used by GitBook
 content: the tech
 todo: 
 ---
@@ -24,13 +24,13 @@ This section deep dives how Pelagos handles sequencing, scaling, security, and t
 
 ## Lifecycle of a transaction 
 
-{consider breaking down a tx as a high level explainer -- making this up, if retained, needs building out}
+{consider breaking down a tx as a high level explainer &mdash; making this up, if retained, needs building out}
 
 1. Submission: The user submits a transaction through the dApp, which is routed to the Pelagos sequencing layer.
 
 2. Sequencing: The sequencer identifies the destination chain, aggregates transactions, orders them, and batches them for validation and execution.
 
-{totally confused by 3 -- is Erigon a da compiler of all the supported L1 and L2 states, or is it a mirror and state change happens there before occuring onchain??}
+{totally confused by 3 &mdash; is Erigon a da compiler of all the supported L1 and L2 states, or is it a mirror and state change happens there before occuring onchain??}
 
 3. State update and execution: Transactions are executed against the current state on the destination chain in a compact, modular manner using Erigon’s optimized pipelines.
 
@@ -38,7 +38,7 @@ This section deep dives how Pelagos handles sequencing, scaling, security, and t
 
 4. Consensus and validation: Validators verify transaction correctness and inclusion, ensuring finality and network security.
 
-{Much like for 3, totally confused by 5-- is Erigon a da compiler of all the supported L1 and L2 states, so as finalization occurs on L1/2, the da update reflects and this == finalization from dApp perspective?}
+{Much like for 3, totally confused by 5&mdash; is Erigon a da compiler of all the supported L1 and L2 states, so as finalization occurs on L1/2, the da update reflects and this == finalization from dApp perspective?}
 
 {this framing suggest that there is da layer "multichain universal state"}
 
@@ -72,7 +72,7 @@ Restaking extends the security guarantees that arise from slashing. L1 stakers, 
 
 This allows Pelagos to leverage the L1 validator sets for security, mitigating bootstrapping risks.
 
-Pelagos security relies on robust tokens and substantial stakes rather than a single native token -- removing the requirement to trust in a single chain’s token stability. By combining restaking from Ethereum, Bitcoin, Solana, and TON, Pelagos leverages an aggregate security stake far exceeding individual L1s.
+Pelagos security relies on robust tokens and substantial stakes rather than a single native token &mdash; removing the requirement to trust in a single chain’s token stability. By combining restaking from Ethereum, Bitcoin, Solana, and TON, Pelagos leverages an aggregate security stake far exceeding individual L1s.
 
 ### Transaction handling
 

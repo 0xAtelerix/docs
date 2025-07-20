@@ -1,6 +1,6 @@
 ---
 proofedDate: none
-title: Solution
+title: doesn't get used by GitBook
 content: key problems this tech will solve
 todo: Go back to each challenge, ensure pain point is addressed in the solution IF not then remove or redefine the challenge
 ---
@@ -30,11 +30,11 @@ It achieves this through:
 
 - An abstract state model: Contracts are written against a unified state interface that compiles down to protocol-specific primitives at execution time.
 
-{This is made up -- total fabrication to stand in for facts later}
+{This is made up &mdash; total fabrication to stand in for facts later}
 
 - Deterministic finality translation: Pelagos maps finality semantics across chains, enabling consistent behavior whether deployed on probabilistic or instant-finality chains.
 
-{This is made up -- total fabrication to stand in for facts later -- ORs dont do finality (from an app perspective), no idea how this is solved for}
+{This is made up &mdash; total fabrication to stand in for facts later &mdash; ORs dont do finality (from an app perspective), no idea how this is solved for}
 
 - Developer simplicity: Instead of writing for a specific virtual machine, developers can target a single framework and deploy logic that composes natively across protocols.
 
@@ -46,13 +46,13 @@ Pelagos embeds a cross-chain liquidity coordination layer that routes capital an
 
 It achieves this through: 
 
-{This is made up -- total fabrication to stand in for facts later}
+{This is made up &mdash; total fabrication to stand in for facts later}
 
 - Shared liquidity pools: Capital is pooled in protocol-agnostic vaults that span multiple chains, enabling unified price discovery and deep liquidity access.
 
 - Atomic multi-chain execution: Transactions can atomically span chains and dApps, ensuring no partial failures or settlement inconsistencies.
 
-{This is made up -- total fabrication to stand in for facts later}
+{This is made up &mdash; total fabrication to stand in for facts later}
 
 - Cross-protocol intent settlement: Traders and dApps express high-level intents (e.g., "swap Token A for Token B at best execution"), which Pelagos routes through the most efficient path across ecosystems.
 

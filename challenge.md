@@ -1,11 +1,11 @@
 ---
 proofedDate: none
-title: Challenge in metadata
+title: doesn't get used by GitBook
 content: key problems this tech will solve
 notes: Normally each challenge, pain point is addressed in the solution stage IF not solution, then remove or redefine the challenge
 ---
 
-## Challenge (as H2 heading)
+## Introduction
 
 > Ready for a review/feedback pass
 
@@ -21,7 +21,7 @@ Different blockchain architectures represent state and determine finality differ
 
 Consider the differences between just three of the popular L1s:
 
-Bitcoin's' UTXO (Unspent Transaction Output) model, treats each transaction as consuming and creating discrete outputs. This model ensures deterministic finality through cryptographic chaining, forcing developers to manage transaction inputs and outputs explicitly -- making higher-order application logic cumbersome and less expressive.
+Bitcoin's' UTXO (Unspent Transaction Output) model, treats each transaction as consuming and creating discrete outputs. This model ensures deterministic finality through cryptographic chaining, forcing developers to manage transaction inputs and outputs explicitly &mdash; making higher-order application logic cumbersome and less expressive.
 
 Ethereum uses an account-based model with a Merkle Patricia Trie to represent global state. While this supports more expressive, Turing-complete smart contracts, it couples application logic tightly with the complexity of state root management, gas efficiency concerns, and the nuances of contract storage layout which, in turn, are determined by the EVM execution model.
 
@@ -67,7 +67,7 @@ At its core, this fragmented environment:
 
 - Undermines price discovery by dispersing liquidity across isolated ecosystems with no unified market clearing
 
-- Obstructs composability -- the foundational principle of DeFi, where applications should be able to interoperate seamlessly like Lego bricks
+- Obstructs composability &mdash; the foundational principle of DeFi, where applications should be able to interoperate seamlessly like Lego bricks
 
 - Reintroduces traditional finance inefficiencies, with privileged access to liquidity, off-chain coordination, and market segmentation
 

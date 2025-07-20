@@ -30,10 +30,10 @@ CTA/contacts
 
 Google developer style guide: [developers.google.com/style](https://developers.google.com/style)
 
-Highlights
+Highlights from guide
 
 - Sentence case (including headings)
-- Allowlist 
+- Be woke-ish: Allowlist 
 - Concatenate
 	- onchain not on-chain
 
