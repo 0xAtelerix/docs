@@ -14,44 +14,34 @@ layout:
 
 ### Introduction
 
-> Ready for a review/feedback pass
+There is a pressing need for platform-agnostic abstraction layers and developer tooling that enables smart contracts and dApps to scale across ecosystems without rewriting core logic for each new chain or runtime. 
 
-Multiplatform decentralized application (dApp) development is complex due to the tight coupling between smart contract logic and the underlying virtual machine or protocol. This fragmentation increases development complexity and costs, and limits application portability across chains.
+Multiplatform decentralized application (dApp) development is complex due to the tight coupling between smart contract logic and the underlying virtual machine or protocol. This fragmentation limits application portability. Crafting a multiplatform app that functions  across chains requires investing in complex and costly development.
 
-There is a pressing need for platform-agnostic abstraction layers and developer tooling that enables smart contracts and dApps to scale across ecosystems without rewriting core logic for each new chain or runtime. Currently, the most scalable solutions are general-purpose L1 blockchains such as Solana, Aptos, Sui (vertically scaling), and TON (horizontal scaling). However, none of these can be directly leveraged to scale a single dedicated Appchain.
+Currently, the most scalable solutions are general-purpose L1 blockchains such as Solana, Aptos, Sui (vertically scaling), and TON (horizontal scaling). However, none of these can be directly leveraged to scale a single dedicated Appchain.
 
-The two main challenges to such a multiplatform app layer are the architectural differences between different protocols and liquidity fragmentation across ecosystems. The following section presents these challenges in detail.
+The two main challenges to a multiplatform app layer are the architectural differences between different protocols and liquidity fragmentation across ecosystems. The following sections present these challenges in further detail.
 
 #### Architecture challenges
 
 Different blockchain architectures represent state and determine finality differently, which in turn shapes how developers must structure applications. Such protocol-specific behaviors make code portability difficult, making cross-ecosystem development costly.
 
-Consider the differences between just three of the popular L1s:
-
-{can I reduce these into 1 p}
-
-Bitcoin's' UTXO (Unspent Transaction Output) model, treats each transaction as consuming and creating discrete outputs. This model ensures deterministic finality through cryptographic chaining, forcing developers to manage transaction inputs and outputs explicitly — making higher-order application logic cumbersome and less expressive.
-
-Ethereum uses an account-based model with a Merkle Patricia Trie to represent global state. While this supports more expressive, Turing-complete smart contracts, it couples application logic tightly with the complexity of state root management, gas efficiency concerns, and the nuances of contract storage layout which, in turn, are determined by the EVM execution model.
-
-Solana's account-based model leverages Sealevel's stateless, high-performance parallelizable runtime which requires developers to predefine accounts and pass them explicitly with transactions.
+Consider the differences between just three of the popular L1s. Bitcoin’s UTXO model ensures deterministic finality but limits expressiveness by requiring explicit input/output management. Ethereum’s account-based model enables rich smart contracts but adds complexity to handle state management and gas efficiency. Solana's high-performance Sealevel runtime enables parallelism but prevents simultaneous access to the same account.
 
 Each blockchain model defines not only how finality is achieved, but also how application state must be conceptualized, managed, and stored. The result is a fragmented developer experience, where business logic cannot easily be written once and reused across chains.
 
 #### Liquidity fragmentation
 
-In the current landscape of decentralized finance (DeFi), one of the most persistent and systemic inefficiencies is liquidity fragmentation — the division of trading activity and capital across multiple, siloed blockchain environments and application-specific liquidity pools.
+The current landscape of decentralized finance (DeFi) is fragmented, inefficient, and  dysfunctional at scale. Liquidity fragmentation remains the most persistent and systemic inefficiency. It divides trading activity and capital across multiple, siloed blockchain environments and application-specific liquidity pools.
 
-{killer — non technical --> it really sucks out there using DeFI}
-
-These silos between L1 blockchains, and their L2 ecosystems, add inefficiencies to markets: increasing slippage, and necessitating the use of bridges or wrapped tokens to move assets. Bridging and wrapping introduces latency, trust dependencies, and operational risk.
+These silos between L1 blockchains, and their L2 ecosystems add inefficiencies to markets: increasing slippage, and necessitating the use of bridges or wrapped tokens to move assets. Bridging and wrapping introduces latency, trust dependencies, and operational risk.
 
 Furthermore, this fragmentation forces protocols to engage with external power structures such as market makers to maintain liquidity, further undermining true market efficiency. This reintroduces centralizing forces, including:
 
 * Preferential access and pricing for insiders
 * Liquidity extraction via arbitrage
 
-This has all resulted in an opaque, off-chain coordination structure tainting the promise offered by a decentralized system. This fragmentation issue extends as independent chains and Layer 2 networks proliferate.
+This has all resulted in an opaque, off-chain coordination structure tainting the promise offered by a decentralized system. This fragmentation issue intensifies as independent chains and Layer 2 networks proliferate.
 
 As a result:
 
@@ -65,60 +55,26 @@ To overcome this fragmentation, protocols turn to bridges or wrapped tokens (e.g
 * Increase attack surface and systemic risk (as demonstrated by numerous bridge exploits)
 * Obscure the origin and provenance of assets, complicating composability
 
-### {Alt — reduce and move into section below --> potentially keep but move to a conclusion/intro type area} A challenge demanding a response
-
-The cumulative result of liquidity fragmentation and architectural silos is a dApp landscape that is functionally disjointed, operationally constrained, and increasingly dependent on centralized intermediaries.
-
-At its core, this fragmented environment:
-
-* Undermines price discovery by dispersing liquidity across isolated ecosystems with no unified market clearing
-* Obstructs composability — the foundational principle of DeFi, where applications should be able to interoperate seamlessly like Lego bricks
-* Reintroduces traditional finance inefficiencies, with privileged access to liquidity, offchain coordination, and market segmentation
-
-This whitepaper presents Pelogas, a solution that addresses the root causes that create these concrete limitations:
-
-#### 1. Complex infrastructure for developers
-
-Building across multiple chains demands proficiency in heterogeneous technology stacks, security models, and consensus mechanisms. Developers must integrate and maintain bridges, oracles, relayers, and manage disjointed settlement environments. This infrastructure burden siphons resources away from innovation, product development, and user experience, locking teams into endless low-level plumbing work.
-
-#### 2. High friction cross-chain execution
-
-Today’s cross-chain tools are slow, brittle, and non-composable. Atomic, trust-minimized transactions across chains are virtually impossible. As a result:
-
-* Arbitrage is inefficient or infeasible
-* Real-time portfolio rebalancing is impractical
-
-Cross-protocol trades must rely on centralized intermediaries or take on significant delay and risk.
-
-3. Scalability and security trade-offs
-
-Monolithic chains suffer from congestion and high fees. While Layer 2s alleviate throughput and cost issues, they introduce new composability barriers and security assumptions. Protocol designers must compromise between:
-
-* Scalability (via rollups or app-specific chains)
-* Security (via settlement and consensus complexity)
-* Composability (sacrificed across execution layers)
-
-There is no simple path to scalable, secure, and interoperable DeFi in the current design paradigm.
-
-4. Onboarding Real-World Assets (RWA)
-
-Bringing real-world assets onchain requires hybrid settlement models that respect offchain legal structures while interacting with onchain liquidity. Current platforms cannot:
-
-* Atomically settle both tokenized assets and fiat cash legs
-* Enforce permissioned execution within a decentralized context
-* Support real-time liquidation for asset-backed loans at scale
-* {end}
-
-These constraints hinder meaningful adoption of institutional capital and limit the design space for compliant, high-value dApps.
-
-### A challenge demanding a solution
+## A challenge demanding a solution
 
 The stark reality is that today's DeFi architecture is neither fully composable, nor scalable, nor sovereign. Fragmentation in both execution environments and liquidity pools has stalled the promise of open finance and limited the scope of innovation to what is possible within isolated, siloed ecosystems.
 
-**To enable a scalable and interoperable future, we must deploy a common abstraction layer that decouples application logic from protocol-specific state mechanics,** much like cross-platform mobile frameworks did for iOS and Android. Without this, developer productivity, composability, and cross-chain innovation will remain bottlenecked by the constraints of individual consensus and state models.
+To enable a scalable and interoperable future, we must deploy a common abstraction layer that decouples application logic from protocol-specific state mechanics, much like cross-platform mobile frameworks did for iOS and Android. Without this, developer productivity, composability, and cross-chain innovation will remain bottlenecked by the constraints of individual consensus and state models.
 
-### Conclusion
+As decentralized ecosystems continue to expand across heterogeneous chains and execution environments, the cost of fragmentation becomes structural and systemic. A once-cohesive vision for finance as a globally composable, trustless system has fractured into a constellation of isolated platforms, each requiring bespoke logic, fragmented liquidity, and dependence on weakly trusted infrastructure.
 
-The future of decentralized systems depends on shared execution layers, unified liquidity environments, and native cross-domain composability. There is an urgent need for infrastructure that enables dApps to operate, at scale, across environments as seamlessly as they do within them today.
+The end state is clear: a dApp landscape that is functionally disjointed, operationally brittle, and increasingly reliant on centralized intermediaries to sustain basic functionality.
 
-To address the issues inherent to architectural fragmentation and liquidity silos, Pelagos presents a unified execution and liquidity environment that reimagines how decentralized applications are developed, composed, and deployed across ecosystems.
+At its core, this fragmentation imposes critical limitations:
+
+- Price discovery is undermined, as liquidity is dispersed across ecosystems with no unified market-clearing layer.
+
+- Composability is obstructed, erasing one of DeFi’s most powerful design primitives: modular, interoperable applications.
+
+- TradFi inefficiencies re-emerge — privileged access to liquidity, off-chain negotiations, and market segmentation reappear under a decentralized façade.
+
+These barriers are not just technical inconveniences — they are fundamental blockers to scale, security, and the full realization of open finance. These constraints hinder meaningful adoption of institutional capital and limit the design space for compliant, high-value dApps.
+
+Without decoupling dApp business logic from infrastructure and establishing seamless liquidity coordination, DeFi will mirror the centralized paradigms it set out to replace.
+
+To address these issues, Pelagos presents an abstraction layer that provides a unified execution and liquidity environment that reimagines how decentralized applications are developed, composed, and deployed across ecosystems.
