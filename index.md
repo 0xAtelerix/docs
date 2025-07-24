@@ -8,17 +8,15 @@ title: Index page given metadata title
 >
 > This page will render whether part of toc file management or not
 
-Welcome to Pelagos: the first universal execution layer that turns every onchain pool into one seamless liquidity fabric.
+There is an urgent need for infrastructure that enables dApps to operate, at scale, across environments as seamlessly as they do within them today. The future of decentralized systems depends on shared execution layers, unified liquidity environments, and native cross-domain composability. 
 
-## Index page given H2 heading
-
-In this paper, Pelogas presents such a solution that reclaims the original vision of DeFi: permissionless innovation, efficient markets, and universal accessibility.
+Welcome to Pelagos: the first universal execution layer that turns every onchain pool into one seamless liquidity fabric. In this paper, Pelogas presents a solution that reclaims the original vision of DeFi: permissionless innovation, efficient markets, and universal accessibility.
 
 ## Abstract
 
 > is last item todo but can build out to verify high level understanding
 
-Pelagos is the first universal execution layer that turns every onchain pool into one seamless liquidity fabric. Developers deploy once and instantly tap deep reserves on Ethereum, Solana, BNB, Arbitrum, and beyond without bridges, wrapped tokens, and delays.
+Pelagos enables developers to deploy once and instantly tap deep reserves on Ethereum, Solana, BNB, Arbitrum, and beyond without bridges, wrapped tokens, and delays.
 
 ### Pelagos: unifying global liquidity
 
