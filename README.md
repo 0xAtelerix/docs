@@ -4,7 +4,7 @@ description: Root readme for support
 
 The .gitbook.yaml is overriding the use of the root readme now.
 
-This repo is synced with GitBook in the Pelogas domain with the title Whitepaper BUT the space is what must be updated to add content.
+[This repo](https://github.com/0xAtelerix/docs) is synced with GitBook in the Pelogas domain with the title Whitepaper BUT the space is what must be updated to add content.
 
 There is no current public URL.
 
