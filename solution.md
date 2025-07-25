@@ -15,31 +15,25 @@ todo: >-
 
 Pelagos presents a multichain primitive that redefines execution, liquidity, and interoperability: making it a first-class design primitive, not an afterthought patched through bridges and wrappers.
 
-This solution was designed to deliver four critical features:
+This solution is designed to deliver four critical features:
 
-1. Ethereum-grade security without the need for additional security tokens.
-2. Complete flexibility for Appchains to customize their architecture (including VM choice, block time, and tokenomics).
+1. A fully trustless protocol without the need for additional security tokens.
+2. Complete flexibility for Appchains to customize their architecture (including VM choice, coding language, and tokenomics).
 3. Seamless, low-latency bidirectional communication with any blockchain.
 4. Supports fast and cheap dApp and Appchain development.
 
-It does this using available technologies. At the core of Pelagos is a cross-protocol execution layer that abstracts away differences in blockchain architectures, while allowing dApps to acccess a shared liquidity layer. This solution enables dApps to operate seamlessly across chains without relying on wrapped tokens, bridges, or protocol-specific rewrites.
+It does this using available technologies. At the core of Pelagos is a cross-protocol execution layer that abstracts away differences in blockchain architectures, while allowing dApps to access a shared liquidity layer. This solution enables dApps to operate seamlessly across chains without relying on wrapped tokens, bridges, or protocol-specific rewrites.
 
 Pelagos transforms smart contract development and DeFi architecture by introducing three key innovations, detailed below.
 
 #### 1. Portable execution layer
 
-Pelagos decouples the application logic from any specific blockchain runtime through a platform-agnostic execution environment, designed to interoperate across UTXO, EVM, Solana-style, and other execution models.
+Pelagos decouples the application logic from any specific blockchain runtime through a platform-agnostic execution environment, designed to interoperate across UTXO-, EVM-, Solana-style, and other execution models.
 
 It achieves this through:
 
 * An abstract state model: Contracts are written against a unified state interface that compiles down to protocol-specific primitives at execution time.
-
-{This is made up — total fabrication to stand in for facts later}
-
 * Deterministic finality translation: Pelagos maps finality semantics across chains, enabling consistent behavior whether deployed on probabilistic or instant-finality chains.
-
-{This is made up — total fabrication to stand in for facts later — ORs dont do finality (from an app perspective), no idea how this is solved for}
-
 * Developer simplicity: Instead of writing for a specific virtual machine, developers can target a single framework and deploy logic that composes natively across protocols.
 
 Outcome: Write once, deploy anywhere — enabling true cross-chain logic portability and drastically reducing time to market.
@@ -50,14 +44,9 @@ Pelagos embeds a cross-chain liquidity coordination layer that routes capital an
 
 It achieves this through:
 
-{This is made up — total fabrication to stand in for facts later}
-
 * Shared liquidity pools: Capital is pooled in protocol-agnostic vaults that span multiple chains, enabling unified price discovery and deep liquidity access.
-* Atomic multi-chain execution: Transactions can atomically span chains and dApps, ensuring no partial failures or settlement inconsistencies.
-
-{This is made up — total fabrication to stand in for facts later}
-
-* Cross-protocol intent settlement: Traders and dApps express high-level intents (e.g., "swap Token A for Token B at best execution"), which Pelagos routes through the most efficient path across ecosystems.
+* Atomic multichain execution: Transactions can atomically span chains and dApps, ensuring no partial failures or settlement inconsistencies.
+* Cross-protocol order settlement: Traders and dApps declare their required orders (e.g., "swap Token A for Token B at best execution"), which Pelagos routes through the most efficient path across ecosystems.
 
 Outcome: A DeFi environment where liquidity is not fragmented by chain, but intelligently coordinated across them — reducing slippage, arbitrage leakage, and trust dependencies.
 
@@ -71,13 +60,13 @@ It achieves this through:
 * Shared interfaces and schemas: Standardized interaction models allow applications to plug into one another regardless of underlying architecture.
 * Secure settlement coordination: Transactions are resolved through a shared sequencing and verification layer that ensures deterministic outcomes across chains.
 
-Outcome: Pelagos delivers on the original promise of composability — not just within ecosystems like Ethereum, but between them.
+Outcome: Pelagos delivers on the original promise of composability — not just within ecosystems but between them.
 
 ### Solution design principles
 
 Pelagos is built with three foundational principles:
 
-1. Protocol neutrality: No single chain dominates execution. Pelagos is designed to coordinate across the major L1s and their L2s peers.
+1. Protocol neutrality: No single chain dominates execution. Pelagos is designed to coordinate across the major L1s and their L2 peers.
 2. Sovereignty-preserving: Chains retain full control over consensus and state; Pelagos does not require enshrined integration or governance over host chains.
 3. Trust-minimized interoperability: Cross-chain execution and liquidity are settled via cryptographic guarantees, not off-chain relayers or custodial bridges.
 
