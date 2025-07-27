@@ -37,6 +37,27 @@ Highlights from guide
 - Concatenate
 	- onchain not on-chain
 
+### Acronyms
+
+AMM: Automated Market Maker
+AVS: 
+
+## Concepts
+
+AMM: 
+  - Anyone can provide liquidity and earn a share of the trading fees, becoming a "liquidity provider."
+  - Trades happen directly between users and the smart contract pool, not between buyers and sellers paired off by orderbooks.
+
+  - Benefits:
+    - Continuous, 24/7 liquidity for a wide range of tokens—even those rarely traded.
+    - Fully decentralized and accessible without centralized intermediaries.
+    - Lower barriers to participation and usually lower fees.
+
+  - Weaknesses:
+    - Price slippage increases with large trades relative to pool size.
+    - "Impermanent loss": liquidity providers can lose value when prices change significantly.
+    - AMMs may be less efficient for very large trades compared to centralized exchanges or on-chain orderbooks
+
 ## Styling in GitBook
 
 ### Callouts:
@@ -57,11 +78,53 @@ endash: &ndash;
 
 ## Failed attempts at styling
 
-Does not work
+Does NOT work
 
 layout:
   tableOfContents:
     visible: true
+
+
+## Competitor orderbook unification designs
+
+Unified cross-chain orderbooks ([zkLink](#zklink), Vertex, [Blitz](#blitz)): Have demonstrated significant improvement in liquidity depth and trading efficiency, especially for professional trading and large volume transactions. However, complexity, latency, and sequencer trust/centralization remain challenges. Most have seen growing usage but still face adoption barriers due to technical overhead and interoperability risks.
+
+Decentralized aggregators (Chainge, [Clip](#clip): Generally enjoy strong user adoption for retail traders given their simple interfaces and ability to always get "best execution" across chains and DEXs. Their success has popularized cross-chain swaps, though they often rely on trusted third-party validators/bridges or advanced routing tech.
+
+Intent-centric models: Still early days, working on abstracting complexity and maximizing user outcomes. Security and trustless settlement of user assets across intent-based protocols are wip, e.g. [Owlto Finance](https://www.chaincatcher.com/en/article/2150834).
+
+### zkLink
+
+- [zkLink](://blog.zk.link/comparing-order-book-designs-zkex-zklink-vs-dydx-cosmos-208791b1f1b8_)
+> On ZKEX.com, traders will use an aggregated ‘USD’ token which is merged from fully reserve-backed stables, such as USDC, BUSD, TUSD, and USDP.
+
+### dYdX
+
+- dYdX is leaving Ethereum and StarkEx for Cosmos
+
+dYdX chain will have to give up the security benefits from StarkEx’s ZK-Rollup design and Ethereum’s default security.
+
+As a PoS chain, its security level will be a function of the number/decentralization of validators and the market cap of $DYDX, and it could be a long process for the dYdX chain to build its own decentralized validator network. Moreover, using third-party bridges also adds to its security concern.
+
+> BUT they could overcome these centralization risks with AVS
+
+### Blitz
+
+Hybrid orderbook-AMM model (Blitz, Vertex).
+
+[Blitz design](https://docs.blitz.exchange/basics/dex-architecture-and-design)
+
+### Clip Finance
+
+[Coin telegraph intro](https://cointelegraph.com/news/decentralized-solver-pools-offer-a-solution-to-liquidity-fragmentation-in-defi).
+
+- Decentralized solver pools: nodes that monitor, propose and validate transactions across chains.
+- These pools enable cross-chain transactions: users stake their assets into pools which helps bridge liquidity across different blockchains.
+
+
+Blurb: reducing the technical overhead and streamlining asset movement, Clip Finance integrates directly with DeFi protocols and offers a software development kit (SDK) that enables other platforms to incorporate this one-click solution.
+
+- Tokenomics: dynamic mint, Clip Finance ties token unlocks to the platform’s total value locked (TVL) growth.
 
 
 ## Cutting room floor
