@@ -33,6 +33,14 @@ The Pelagos consensus layer allows dApp builders to rely on the strong finality 
 
 ## Atomic cross-chain asset portability without bridging or wrapping
 
+{?is Pelagos acting like a multichain AMM with liquidity providers on the abstraction layer}
+> ? Like an AMM, Pelagos aggregates liquidity into common pools that traders can access directly.
+> ? Instead of matching individual buy/sell orders, trades are executed against pooled assets across chains.
+> ? This shared liquidity layer mitigates fragmentation by unifying capital from different blockchains.
+> ? Liquidity providers enable access to this pooled liquidity by depositing assets into the abstraction layer’s vaults.
+> ? Pricing and routing happen by interpreting user intents and optimizing execution paths through these unified pools.
+> ? So while Pelagos operates as a cross-chain unified liquidity fabric rather than a classic AMM on a single chain, it still fundamentally depends on liquidity providers on its abstraction layer to provide and coordinate access to what would otherwise be fragmented liquidity at the base blockchain layers.
+
 Pelagos eliminates bridges and wrapped tokens with native cross-chain asset representation. When dApp users trigger a transfer or swap tokens, the Pelagos protocol locks the asset/s in the treasury contract on the origin blockchain and issues corresponding native token representation/s on the Pelagos Appchain. This issuance is essentially an accounting record representing a claim on the locked token on the origin chain.
 
 Unlike bridges that lock assets on one chain and mint wrapped tokens on another &mdash; often relying on multi-signature wallets or centralized validators, Pelagos replaces these models with its DAG-based consensus network. This network consists of a distributed, decentralized set of operators, “DAG operators” who collectively observe and validate events such as asset locks or state changes on origin chains, then attest to those events within Pelagos’ own consensus process.
@@ -128,6 +136,7 @@ sequenceDiagram
 
 {repeat swap for cross chain?}
 
+{AI got me this far: Pelagos enables swaps without an order book by using shared, cross-chain liquidity pools where users trade directly against pooled assets instead of matching buy and sell orders (assuming this is AMM-like and that liquidity providers must exist and will earn fees?). Traders submit high-level intents (e.g., “swap Token A on chain X for Token B on chain Y”), and Pelagos routes execution atomically across chains without wrapped tokens or bridges. This approach reduces complexity, latency, and trust dependencies while maintaining deep liquidity and seamless cross-chain composability through a unified liquidity fabric and platform-agnostic execution layer.}
 
 -------------------------------
 
