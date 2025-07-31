@@ -30,17 +30,3 @@ Pelagos solves for liquidity fragmentation and offers the following innovations 
 * Real-time liquidations: sell collateral on the deepest pool, repay debt, and update ledger in sub-seconds {a universal ledger? is this a state agreement meta?}
 * Permissioned and hybrid Real-World Asset (RWA) support: Tokenize real-world assets on private shards and settle cash legs against DeFi pools in one atomic bundle
 
-
-
-When is a mermaid not a mermaid?
-
-{% code fullWidth="true" %}
-```mermaid
-flowchart TD
-        A(["Start"])
-        A --> B{"Decision"}
-        B --> C["Option A"]
-        B --> D["Option B"]
-```
-{% endcode %}
-

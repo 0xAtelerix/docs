@@ -101,9 +101,8 @@ sequenceDiagram participant Alice participant L1 as Ethereum L1 participant Ops 
 {my original mermaid}
 
 ```mermaid
-
 sequenceDiagram
-    participant Alice
+        participant Alice
     participant EthereumL1 as Ethereum L1
     participant DAGOperators as Pelagos DAG Operators
     participant PelagosProtocol as Pelagos Protocol (xETH Ledger)
@@ -167,7 +166,7 @@ xETH is fully backed 1:1 by the locked ETH on Ethereum L1.
 
 4.2 Pelagos securely updates the ledger to reflect Bob’s ownership of the corresponding xETH tokens.
 
-Step 5: Cross-Chain transfer
+#### Step 5: Cross-Chain transfer
 
 bobETH representation of ETH minted on BobChain
 
@@ -180,7 +179,6 @@ bobETH representation of ETH minted on BobChain
 bobETH on BobChain is fully backed 1:1 by the locked ETH on Ethereum L1 (as per a normal transfer) and the xETH claim controlled by Bob on Pelagos is burned.
 
 ```mermaid
-
 sequenceDiagram
     participant Alice
     participant EthereumL1 as Ethereum L1
@@ -215,7 +213,6 @@ sequenceDiagram
     Note over DAGOperators,BobChain: Step 7: Mint 1 bobETH on BobChain
     DAGOperators->>BobChain: Approve minting of 1 bobETH for Bob
     BobChain->>Bob: Credit 1 bobETH to Bob’s account
-
 ```
 
 ### Swap within a network
