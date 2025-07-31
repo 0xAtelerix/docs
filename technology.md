@@ -39,9 +39,9 @@ The Pelagos consensus layer allows dApp builders to rely on the strong finality 
 > ? This shared liquidity layer mitigates fragmentation by unifying capital from different blockchains.
 > ? Liquidity providers enable access to this pooled liquidity by depositing assets into the abstraction layer’s vaults.
 > ? Pricing and routing happen by interpreting user intents and optimizing execution paths through these unified pools.
-> ? So while Pelagos operates as a cross-chain unified liquidity fabric rather than a classic AMM on a single chain, it still fundamentally depends on liquidity providers on its abstraction layer to provide and coordinate access to what would otherwise be fragmented liquidity at the base blockchain layers.
+> ? So while Pelagos operates as a cross-chain unified liquidity fabric rather than a classic AMM on a single chain, does it still fundamentally depend on liquidity providers on its abstraction layer to provide and coordinate access to what would otherwise be fragmented liquidity at the base blockchain layers. OR does the process apply equally regardless of whether the deposit comes from an individual user or from pooled funds (lps).
 
-Pelagos eliminates bridges and wrapped tokens with native cross-chain asset representation. When dApp users trigger a transfer or swap tokens, the Pelagos protocol locks the asset/s in the treasury contract on the origin blockchain and issues corresponding native token representation/s on the Pelagos Appchain. This issuance is essentially an accounting record representing a claim on the locked token on the origin chain.
+Pelagos eliminates bridges and wrapped tokens with its native cross-chain asset representation. When dApp users trigger a transfer or swaps token, the Pelagos protocol locks the asset/s in the treasury contract on the origin blockchain and issues corresponding native token representation/s on the Pelagos Appchain. This issuance is essentially an accounting record representing a claim on the locked token on the origin chain.
 
 Unlike bridges that lock assets on one chain and mint wrapped tokens on another &mdash; often relying on multi-signature wallets or centralized validators, Pelagos replaces these models with its DAG-based consensus network. This network consists of a distributed, decentralized set of operators, “DAG operators” who collectively observe and validate events such as asset locks or state changes on origin chains, then attest to those events within Pelagos’ own consensus process.
 
@@ -90,9 +90,9 @@ Once consensus is reached, the Pelagos network transfers ownership of the xETH t
 Step 5: Transfer of ETH on Ethereum L1 to Bob
 
 {does Bob have to take any action?? normally the Eth would land whether Bob likes it or not}
-
-{Bob has to redeem the locked ETH by triggering an unlock process.}
 {OR}
+{Bob has to redeem the locked ETH by triggering an unlock process.}
+
 
 Pelagos DAG operators coordinate unlocking in the treasury contract, and release the corresponding ETH on Ethereum L1 to Bob’s address. The xETH to ETH redemption is recorded onchain in the treasury contract on Ethereum.
 
@@ -129,14 +129,97 @@ sequenceDiagram
 
 ## Transfer across networks
 
-{repeat the above for cross chain?}
+Let's consider the lifecycle of a transaction as Alice transfers ETH from Ethereum Layer 1 to Bob on BobChain.
 
+### Step 1: ETH Locked in the Pelagos Treasury Contract on Ethereum L1
+
+1.1 Alice initiates a transaction via a Pelagos-enabled dApp or interface to transfer ETH cross-chain.
+
+1.2 Alice’s ETH is locked securely in the Pelagos treasury smart contract deployed on the Ethereum mainnet (Ethereum L1).
+
+{is Pelagos using 3rd party or doing its own treasury contract and mint/burn?}
+
+The treasury contract acts as an onchain custodian, ensuring locked ETH cannot be spent or transferred elsewhere during the lifecycle.
+
+This lock event is transparently recorded on Ethereum L1 and serves as verifiable proof of custody supporting downstream actions.
+
+## Step 2: Observation and consensus by Pelagos DAG operators
+
+2.1 Pelagos’ decentralized DAG operators observe the lock event.
+
+2.2 Upon detecting Alice’s ETH lock, DAG operators collectively validate and reach consensus that the lock event is valid, finalized, and irreversible on Ethereum.
+
+2.3 This consensus guarantees the validity of the locked asset and prevents any double-spending or fraudulent minting downstream.
+
+### Step 3: Issuance of xETH as Pelagos Native Token Representation (Internal Accounting)
+
+3.1 Once consensus on the lock event is established, the Pelagos protocol issues a corresponding amount of xETH (the Pelagos native representation of Ethereum ETH) to Alice’s account within the Pelagos system (on its Appchain or protocol ledger).
+
+xETH is fully backed 1:1 by the locked ETH on Ethereum L1.
+
+### Step 4: Transfer of xETH Between Alice and Bob on Pelagos Protocol
+
+4.1 Alice transfers her xETH holdings to Bob’s account/address within the Pelagos protocol ledger.
+
+4.2 Pelagos securely updates the ledger to reflect Bob’s ownership of the corresponding xETH tokens.
+
+Step 5: Cross-Chain transfer
+
+bobETH representation of ETH minted on BobChain
+
+5.1 Bob’s ownership of xETH on Pelagos triggers the cross-chain transfer process, where Pelagos DAG operators submit proof of Bob’s xETH token ownership to BobChain relayers or validators.
+
+{3rd parties used for this mint process?? or Pelagos does mint??}
+
+5.2 Upon verifying the proof, Pelagos DAG operators coordinate the minting of bobETH tokens (the BobChain-specific representation of ETH) on BobChain directly credited to Bob’s address.
+
+bobETH on BobChain is fully backed 1:1 by the locked ETH on Ethereum L1 (as per a normal transfer) and the xETH claim controlled by Bob on Pelagos is burned.
+
+
+```mermaid
+
+sequenceDiagram
+    participant Alice
+    participant EthereumL1 as Ethereum L1
+    participant DAGOperators as Pelagos DAG Operators
+    participant PelagosProtocol as Pelagos Protocol (xETH Ledger)
+    participant BobChainRelayer as BobChain Relayer
+    participant BobChain as BobChain (bobETH System)
+    participant Bob
+
+    Note over Alice,EthereumL1: Step 1: Alice locks 1 ETH in Pelagos Treasury
+    Alice->>EthereumL1: Lock 1 ETH in Treasury Contract
+
+    Note over EthereumL1,DAGOperators: Step 2: DAG Operators observe and reach consensus
+    EthereumL1->>DAGOperators: Emit lock event
+    DAGOperators->>DAGOperators: Validate lock and reach consensus
+
+    Note over DAGOperators,PelagosProtocol: Step 3: Mint 1 xETH on Pelagos
+    DAGOperators->>PelagosProtocol: Mint 1 xETH to Alice's account
+
+    Note over Alice,PelagosProtocol: Step 4: Alice transfers xETH to Bob
+    Alice->>PelagosProtocol: Transfer 1 xETH to Bob's Pelagos account
+    PelagosProtocol->>Bob: Record ownership of 1 xETH (intermediary state)
+
+    Note over PelagosProtocol,DAGOperators: Step 5: Burn 1 xETH before cross-chain transfer
+    DAGOperators->>PelagosProtocol: Burn 1 xETH from Bob's account
+
+    Note over PelagosProtocol,BobChainRelayer: Step 6: Cross-chain transfer to BobChain
+    PelagosProtocol->>BobChainRelayer: Submit proof of Bob's xETH burn and transfer intent
+    BobChainRelayer->>DAGOperators: Relay proof
+    DAGOperators->>DAGOperators: Validate burn event and transfer proof
+
+    Note over DAGOperators,BobChain: Step 7: Mint 1 bobETH on BobChain
+    DAGOperators->>BobChain: Approve minting of 1 bobETH for Bob
+    BobChain->>Bob: Credit 1 bobETH to Bob’s account
+
+```
 
 ## Swap within a network
 
 {repeat swap for cross chain?}
 
-{AI got me this far: Pelagos enables swaps without an order book by using shared, cross-chain liquidity pools where users trade directly against pooled assets instead of matching buy and sell orders (assuming this is AMM-like and that liquidity providers must exist and will earn fees?). Traders submit high-level intents (e.g., “swap Token A on chain X for Token B on chain Y”), and Pelagos routes execution atomically across chains without wrapped tokens or bridges. This approach reduces complexity, latency, and trust dependencies while maintaining deep liquidity and seamless cross-chain composability through a unified liquidity fabric and platform-agnostic execution layer.}
+{AI got me this far: Pelagos enables swaps without an order book by using shared, cross-chain liquidity pools where users trade directly against pooled assets instead of matching buy and sell orders. Traders submit high-level intents (e.g., “swap Token A on chain X for Token B on chain Y”), and Pelagos routes execution atomically across chains without wrapped tokens or bridges. This approach reduces complexity, latency, and trust dependencies while maintaining deep liquidity and seamless cross-chain composability through a unified liquidity fabric and platform-agnostic execution layer.}
 
 -------------------------------
 
