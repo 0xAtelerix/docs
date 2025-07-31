@@ -4,11 +4,11 @@ title: Index page given metadata title
 
 # Introduction
 
-> NOT ready for review pass&#x20;
+> NOT ready for review pass
 >
 > This page will render whether part of toc file management or not
 
-There is an urgent need for infrastructure that enables dApps to operate, at scale, across environments as seamlessly as they do within them today. The future of decentralized systems depends on shared execution layers, unified liquidity environments, and native cross-domain composability. 
+There is an urgent need for infrastructure that enables dApps to operate, at scale, across environments as seamlessly as they do within them today. The future of decentralized systems depends on shared execution layers, unified liquidity environments, and native cross-domain composability.
 
 Welcome to Pelagos: the first universal execution layer that turns every onchain pool into one seamless liquidity fabric. In this paper, Pelogas presents a solution that reclaims the original vision of DeFi: permissionless innovation, efficient markets, and universal accessibility.
 
@@ -29,3 +29,18 @@ Pelagos solves for liquidity fragmentation and offers the following innovations 
 * Developer-first experience: Pluggable Dockerized VMs (EVM, Move, SVM, Rust)
 * Real-time liquidations: sell collateral on the deepest pool, repay debt, and update ledger in sub-seconds {a universal ledger? is this a state agreement meta?}
 * Permissioned and hybrid Real-World Asset (RWA) support: Tokenize real-world assets on private shards and settle cash legs against DeFi pools in one atomic bundle
+
+
+
+When is a mermaid not a mermaid?
+
+{% code fullWidth="true" %}
+```mermaid
+flowchart TD
+        A(["Start"])
+        A --> B{"Decision"}
+        B --> C["Option A"]
+        B --> D["Option B"]
+```
+{% endcode %}
+
