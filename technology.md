@@ -91,7 +91,7 @@ Pelagos DAG operators coordinate unlocking in the treasury contract, and release
 
 This completes the asset lifecycle from locked ETH → portable xETH → redeemed ETH within the Ethereum network.
 
-{trying simple mermaid}
+{trying simple mermaid — mermaid integration done globally}
 
 ```mermaid
 sequenceDiagram participant Alice participant L1 as Ethereum L1 participant Ops as DAG Operators participant Pelagos participant Bob Alice->>L1: Lock ETH in Treasury L1->>Ops: Emit lock event Ops->>Pelagos: Mint xETH to Alice Alice->>Pelagos: Transfer xETH to Bob Pelagos->>Bob: Update xETH balance Ops->>Bob: Mint bobETH on BobChain
