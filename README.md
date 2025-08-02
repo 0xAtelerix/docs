@@ -42,6 +42,10 @@ Highlights from guide
 AMM: Automated Market Maker
 AVS: 
 
+## Terminology
+
+Refer to it as the Pelagos DAG consensus network, or simply Pelagos consensus layer. Reserve “Appchain” for the individual chains or runtimes that run user applications and smart contracts, which operate on top of or alongside the DAG consensus network.
+
 ## Concepts
 
 AMM: 
@@ -57,6 +61,43 @@ AMM:
     - Price slippage increases with large trades relative to pool size.
     - "Impermanent loss": liquidity providers can lose value when prices change significantly.
     - AMMs may be less efficient for very large trades compared to centralized exchanges or on-chain orderbooks
+
+should this image explain https://drive.google.com/file/d/1DFVub4BoIt1q_bFAPRfZcq9YnTqjwF5s/view
+Evgenii Danilenko
+
+https://drive.google.com/file/d/1siEto9mlIDgLtGrQPCxlnFkvVjZbJqhK/view?usp=drive_link
+
+
+Reactive transaction flow
+
+Application can specify own tx
+or
+reactive tx
+
+Receive tx from RPC
+
+
+for reactive tx they can specify conditions for automated execution once conditions met (eg liquidation events, aggregated data ... event could be as simple as tx Alice to Bob locking tokens in a contract)
+
+
+Consider new block on Ethereum then DAG operators are taking the data off the L1 (acting as an instant DA layer to assist with execution confirmation etc)
+
+DAG operators confirm the block and then Appchains can undertake executions based on those declared states.
+
+All the blocks from different L1s and L2s are treated as tx inputs (whose data reflects finality states on the various chains)
+
+The tx event can be executed to change state of this upchain set, or to bundle txs, 
+Threshold sig must be met to achieve state change
+
+
+Txs and swaps are on Appchain itself and then the external tx is done on the chain
+
+Appchain -- lets do this tx
+DAG Ops -- validate that the funds exist on // 
+Application logic must be the entitiy if you want to lock of those funds until such time as finalization BUT Pelagos is not doing this logic layer
+
+
+
 
 ## Styling in GitBook
 
