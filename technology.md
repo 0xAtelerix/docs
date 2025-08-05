@@ -11,11 +11,12 @@ todo: null
 
 Pelagos provides a business rules execution engine built atop a robust, real-time, multichain data backbone: combining universal data availability with programmable, automatic execution. This empowers developers to build advanced cross-chain logic and automation, without the operational complexity of infrastructure management or the security risks of custom bridging.
 
-Three key components support this, the: 
+Four key components support this, the: 
 
 - Validator network operating the DAG consensus layer 
 - Application logic layer
 - Reactive smart contracts
+- Dedicated tokenomics API
 
 From the developer perspective, it feels like working with a standard
 database rather than dealing with blocks or consensus directly.
@@ -54,25 +55,29 @@ Reactive contracts are secure and can operate with near-instant finality at the 
 
 The security of reactive events is enforced with threshold multi-sig logic. This ensures that outbound actions are only executed when a quorum of validators collectively sign the transaction using a Threshold Signature Scheme (TSS) based on DKG protocols, ensuring robust, distributed security without single points of failure.
 
-### Key architectural elements
+### Tokenomics as a first-class primitive
+
+The Pelagos API model facilitates maximum tokenomics flexibility. Furthermore, Appchains built on Pelagos can design tokenomics that operate on a multichain level, rather than being confined to a single blockchain.
+
+## Key architectural elements
 
 The validator network, application logic layer, and reactive smart contracts rely on the following architectural elements:
 
-#### Leaderless DAG consensus
+### Leaderless DAG consensus
 
 Transactions and external block confirmations are sequenced with minimal latency and high throughput via Lachesis-inspired DAG consensus. This enables fast finality and reliable ordering across all connected chains.
 
-#### Erigon immutable databases
+### Erigon immutable databases
 
 Erigon’s immutable database model provides a multichain, universal state. Both state and historical data are stored in Erigon’s highly optimized, incrementally updated, immutable databases. These are synchronized across validators via gossip protocols that support rapid read/write capabilities and seamless, verifiable state sync.
 
 The core universal state cannot be altered retroactively, protecting against rollback and censorship attacks.
 
-#### Horizontal and vertical scaling:
+### Horizontal and vertical scaling:
 
 Both the core platform and individual Appchains can be sharded for scalability. Sequencing and execution can be split across multiple microservices, allowing the platform to scale to thousands of Appchains and up to 100,000+ TPS as needed.
 
-#### Security via restaking:
+### Security via restaking:
 
 To overcome the security bootstrapping challenges faced by each nascent Appchain, the validator set is secured not by a single native token, but via restaked collateral from multiple high-value ecosystems (e.g. ETH, BTC, SOL, TON, etc.), providing security guarantees that exceed most traditional blockchains.
 
@@ -100,7 +105,7 @@ To achieve this, Pelagos integrates [Erigon's](https://erigon.tech/benefits-of-c
 
 - Compact state management
 - High throughput
-- An ptimized resource consumption model
+- An optimized resource consumption model
 
 Erigon's immutable database model provides a multichain, universal state, ensuring efficient state synchronization. This enables Appchains to handle rapidly growing states across a multichain landscape without performance degradation.
 
@@ -122,8 +127,23 @@ The consensus process is similar, in principle, to that achieved by a blockchain
 
 > With Pelagos, validators can validate ownership (i.e. observe the finalized state on both chains) and agree to coordinate the swap. However, validators won’t sign off on the transaction unless all conditions are met, such as both assets being correctly escrowed. If one side fails to reach escrow finality, neither transfer is executed. This ensures the swap either happens completely or not at all: atomically, without bridging or wrapping.
 
-> Furthermore, if a user Alice doesn’t already have a wallet address to accept the collectable on the host chain (e.g., Solana), the application layer's logic can include wallet generation during the process to receive the asset.
+> Furthermore, if Alice doesn’t already have a wallet address to accept the collectable on the host chain (e.g., Solana), the application layer's logic can include wallet generation during the process to receive the asset.
 
+## Extensible tokenomics support
+
+Given that protocols are implementing tokenomics innovations, Pelagos provides a reactive-style API to support tokenomics designs. This allows Protocols to support complex tokenomics logic that drives ecosystem growth by combining incentivization and enhanced security.
+
+The API supports six hooks: pre-epoch, post-epoch, pre-block, post-block, pre-transaction, and post-transaction. These hooks are leveraged via smart contracts. They execute at the relevant events, with their output manifesting as transactions inserted before or after the event (epoch, block, or transaction).
+
+The tokenomics layer receives ordered transactions from the Sequencing layer, making it an optional layer that complements the Appchain's execution environment.
+
+Pelagos provides extensive flexibility to implement these and other tokenomics ideas, empowering developers to create dynamic, ecosystem-wide economic models. While there is no way to predict future applications, designers can implement the widest possible logic, not limited to, but including:
+
+- Token price adjustments based on user transaction data or external blockchain data.
+- Transaction payments via NFTs or NFT subscriptions.
+- Reward distribution for specific actions, such as governance participation.
+- Recalculation of APY or inflation rates.
+- MEV (Miner Extractable Value) optimizations.
 
 ## Security bootstrapping with restaking
 
@@ -213,14 +233,11 @@ It is the thesis of the Pelagos designers that this model will foster organic ec
 
 #### Vertical scaling
 
-Furthermore, Pelagos incorporates best-in-class optimizations to
-ensure that vertical scaling translates directly into greater efficiency once horizontal scaling is introduced.
+Furthermore, Pelagos incorporates best-in-class optimizations to ensure that vertical scaling translates directly into greater efficiency once horizontal scaling is introduced.
 
-This is supported at the database layer, thanks to Erigon's efficent DAG database. The immutable, incremental database design ensures optimal data locality and minimizes read amplification by
-including fast-access and presence/absence indexes from the outset. As a result, this database is inherently optimized for syncing and scaling.
+This is supported at the database layer, thanks to Erigon's efficent DAG database. The immutable, incremental database design ensures optimal data locality and minimizes read amplification by including fast-access and presence/absence indexes from the outset. As a result, this database is inherently optimized for syncing and scaling.
 
-To further enhance efficiency, these databases are distributed via BitTorrent-like protocols, enabling computation-free synchronization. This effective combination of database design and synchronization
-strategies mirrors the success of Erigon,the primary archive node solution applied by Ethereum and Polygon due to its exceptional optimization and sync capabilities.
+To further enhance efficiency, these databases are distributed via BitTorrent-like protocols, enabling computation-free synchronization. This effective combination of database design and synchronization strategies mirrors the success of Erigon,the primary archive node solution applied by Ethereum and Polygon due to its exceptional optimization and sync capabilities.
 
 ### Define block times with Pelagos
 
@@ -230,8 +247,14 @@ Developers can determine the size of the blocks produced by their Appchains acco
 
 Using the reactive smart contract, developers can leverage the unified data environment offered by Pelagos as a multichain data availability layer for in-app logic by setting up trigger events. 
 
+Consider the following code sample that listens for events on data collected on an external, supported chain and triggers cross-chain transactions: 
 
 ```solidity
+// SPDX-License-Identifier: Unlicense
+pragma solidity ^0.8.0;
+
+/// @title Example Pelagos Reactive Contract
+
 bytes memory payload = abi.encodeWithSignature(
     "credit(address,uint256)",
     _event.to,
@@ -240,6 +263,9 @@ bytes memory payload = abi.encodeWithSignature(
 emit TelerixCommon.EthereumTransaction(1, targetAddress, payload);
 ```
 
+The following sample is commented to detail the mechanism:
+
+```
 // SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
@@ -300,29 +326,7 @@ library TelerixCommon {
         bytes data
     );
 }
-
--------------------------------------
-
-> Random word salad, needs to be authenticated or cut....
-
-Sequencing is handled upfront by the Pelagos validators to determine the transaction order.
-
-***
-
-This section deep dives how Pelagos handles sequencing, scaling, security, and transaction submission to multichain APIs, and their validators.
-
-
-1. Submission: The user submits a transaction through the dApp, which is routed to the Pelagos sequencing layer.
-
-2. Sequencing: The sequencer identifies the destination chain, aggregates transactions, orders them, and batches them for validation and execution.
-
-3. State update and execution: Transactions are executed against the current state on the destination chain in a compact, modular manner using Erigon’s optimized pipelines.
-
-4. Consensus and validation: Validators verify transaction correctness and inclusion, ensuring finality and network security.
-
-5. Finalization and synchronization: State changes are committed to the multichain universal state, and results can be queried via standardized multichain APIs.
-
-Each step of the transaction lifecycle has been optimized.
+```
 
 #### Sequencing
 
