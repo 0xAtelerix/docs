@@ -169,13 +169,12 @@ This ensures a seamless, scalable, and secure multichain interaction model.
 
 Pelagos puts the choice of which virtual machines (VMs) to use for transaction processing in the hands of the developer. Developers can deploy any Docker container as the execution environment, enabling flexible and custom transaction handling.
 
-It's even possible to build heterogeneous Appchains by combining EVM, SVM, and Move
-execution environments across different shards within the same Appchain.
+It's even possible for developers to build heterogeneous Appchains by combining EVM, SVM, and Move execution environments across different shards within the same Appchain.
 
 The VMs are supported with predicable data flows, for example:
 
 - Deterministically ordered transactions and L1 blocks from the sequencing layer
-- Batched transactions and blocks are processed in batches, allowing the developer to define custom block formation rules.
+- Tansactions and blocks are processed in batches, allowing the developer to define custom block formation rules.
 
 Furthermore, Pelagos embraces migrations and hard forks as a natural part of Appchain evolution and supports this with mechanisms designed to handle safe data migration and execution updates.
 
@@ -183,7 +182,7 @@ Furthermore, Pelagos embraces migrations and hard forks as a natural part of App
 
 Appchains deployed over Pelagos enjoy direct, native-level access to other blockchains for data retrieval and transaction submission. The multichain layer in Pelagos works like a universal L1SLOAD for any chain.
 
-Combined with integrated TSS signing protocols for supported chains (secured by restaking and DKG {not discussed nor defined yet}), Appchains can send external transactions to other protocols or appchains as a natural extension of their execution environment.
+Combined with integrated TSS signing protocols for supported chains (secured by restaking and DKG {not discussed nor defined yet}), Appchains can send external transactions to other protocols or Appchains as a natural extension of their execution environment.
 
 By enabling easy interoperability, Pelagos lets Appchains reuse and enhance existing protocols rather than competing for liquidity and users.
 
@@ -191,19 +190,14 @@ By enabling easy interoperability, Pelagos lets Appchains reuse and enhance exis
 
 Pelagos brings Web2 scalability practices directly to Appchains. Pelagos employs the Erigon DB-inspired model For Appchain data storage. This model is optimized for blockchains with large or rapidly growing states, offering:
 
-- Hot databases: Designed to handle real-time data writes with periodic convertion into immutable
-snapshots.
-Immutable Databases: Read-only incremental state snapshots that represent historical blockchain
-states.
-Immutable databases offer several advantages:
-Each snapshot serves as a historical record of the blockchain.
-These snapshots can be shared with other nodes via BitTorrent-like protocols, enabling efficient
-data synchronization.
-Operators can verify and validate the integrity of immutable databases before downloading,
-ensuring tamper-proof data distribution.
-By adopting this model, Pelagos transitions from traditional sync protocols, which distribute blocks,
-transactions, and state pieces with proofs, to efficient large-database file downloads. This significantly
-improves scalability and operational efficiency.
+- Hot databases: Designed to handle real-time data writes with periodic conversion into immutable snapshots.
+- Immutable databases: Read-only incremental state snapshots that represent historical blockchain states.
+
+These immutable databases serve as a historical record of the blockchain {"off the blockchain" is the Appchain data (not really a blockchain more a DAG, or is a da layer of the supported blockchains??} offer several advantages:
+
+- Snapshots can be shared with other nodes via BitTorrent-like protocols, enabling efficient data synchronization.
+- Operators can verify and validate the integrity of immutable databases before downloading, ensuring tamper-proof data distribution.
+- By adopting this model, Pelagos transitions from traditional sync protocols, which distribute blocks, transactions, and state pieces with proofs, to efficient, one-time event, large-database file downloads. This significantly improves scalability and operational efficiency by reducing the messaging load.
 
 #### Horizontal scaling 
 
