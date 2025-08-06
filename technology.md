@@ -145,19 +145,49 @@ Pelagos provides extensive flexibility to implement these and other tokenomics i
 - Recalculation of APY or inflation rates.
 - MEV (Miner Extractable Value) optimizations.
 
+These functions are clearly demarcated based on where in the lifecycle they occur, for example these events could trigger the following business logic:
+
+- Before Epoch
+    - Collect user fees
+    - Pay fees for restaking L1 tokens to subscribe for the next Epoch
+
+- Before Block
+    - Validate oracle-provided rates
+    - Regulate stablecoin value
+
+- Before Transaction
+    - Pay for transaction using an NFT 
+    - Delegate payment to a paymaster
+
+- After Transaction
+    - Mint locked tokens as rewards for governance voting
+    - Adjust APY or inflation rates based on liquidity, activity, and oracle data
+    - Perform MEV backrunning as part of the Appchain
+    - Calculate rate changes and introduce value-gathering transactions without third-party block builders
+
+- After Block
+    - Update future airdrop index based on user activity
+
+- After Epoch
+    - Distribute rewards on the Appchain or L1 according to pre-defined metrics
+    - Initiate auction to sell collected tokens (injective)
+    - Mint tokens based on the calculated APY
+
 ## Security bootstrapping with restaking
 
 Launching a new Appchain presents a well-known bootstrapping challenge: without an established validator set or strong stake base, the chain is vulnerable to centralization, security attacks, and validator coordination issues. This in turn makes it harder to attract new validators.
 
-Pelagos solves this by using restaking—a mechanism that leverages capital already staked in large, established, and secure PoS ecosystems (such as Ethereum, Bitcoin (via Babylon), Solana, TON, etc.). Validators can “restake” their locked assets to secure Pelagos Appchains, eliminating the need for each Appchain to bootstrap its own validator set or native token.
+Pelagos inherits its security model from the underlying L1s. Restaking leverages capital already staked in large, established, and secure PoS (Proof of Stake) ecosystems (such as Ethereum, Bitcoin (via Babylon), Solana, TON, etc.). Validators can “restake” their locked assets to secure Pelagos Appchains, eliminating the need for each Appchain to bootstrap its own validator set or native token.
 
-By putting their existing stake at risk of slashing for poor performance or malicious behavior, validators are economically aligned with the success and security of the Appchains they serve. This allows new Appchains to gain immediate access to a large, robust, and decentralized validator network: avoiding the overhead of launching their own staking tokens, designing complex validator incentive models, or managing permissioned validator sets.
+Restaking is cornerstone to the Pelagos architecture ensuring that critical validation and execution duties are undertaken by entities whose alignment is ensured. By putting their existing stake at risk of slashing for poor performance or malicious behavior, validators are economically aligned with the success and security of the Appchains they serve. This allows new Appchains to gain immediate access to a large, robust, and decentralized validator network: avoiding the overhead of launching their own staking tokens, designing complex validator incentive models, or managing permissioned validator sets.
 
 Pelagos’ approach increases system resilience by pooling validators across multiple chains and staking models. While restaking introduces shared risks—like slashing exposure cascading across chains—it also significantly raises the cost of attacking any single Appchain, since attackers must overcome the economic weight of the entire restaked network.
 
+Pelagos security relies on robust tokens and substantial stakes rather than a single native token — removing the requirement to trust in a single chain’s token stability. By combining restaking from Ethereum, Bitcoin, Solana, and TON, Pelagos leverages an aggregate security stake far exceeding individual L1s.
+
 ### Restaking-secured operations
 
-Restaking is cornerstone to the Pelagos architecture ensuring that critical validation and execution duties are undertaken by entities whose alignment is ensured. Pelagos' Autonomous Verifiable Services (AVS) delegates tasks to restakers, such as:
+Pelagos' Autonomous Verifiable Services (AVS) delegates tasks to restakers, such as:
 
 - Sequencing consensus execution
 - Performing TSS (Threshold Signature Scheme) for secure external transactions
@@ -175,6 +205,8 @@ Launching an Appchain with Pelagos is as simple as deploying a smart contract. T
 - Info-hash (for immutable database distribution)
 
 and run each Appchain exactly as one runs one, or multiple, microservices.
+
+Normally, using gRPC in a distributed system requires developers to define services in Protocol Buffers (Protobuf), handle client and server pairing and stub generation, HTTP/2 multiplexing, and deal with stream or unary message handling, serialization, and error management. With Pelagos, these gRPC setup steps are hidden behind simple callback hooks and event subscriptions, allowing developers to focus on business logic.
 
 Pelagos abstracts away the complexities of gRPC communication between execution, state, and sequencing layers. From the perspective of a developer, it feels like working with a standard database rather than dealing with blocks or consensus directly, while providing access to:
 
@@ -194,9 +226,16 @@ It's even possible for developers to build heterogeneous Appchains by combining 
 The VMs are supported with predicable data flows, for example:
 
 - Deterministically ordered transactions and L1 blocks from the sequencing layer
-- Tansactions and blocks are processed in batches, allowing the developer to define custom block formation rules.
+- Transactions and blocks are processed in batches, allowing the developer to define custom block formation rules.
 
 Furthermore, Pelagos embraces migrations and hard forks as a natural part of Appchain evolution and supports this with mechanisms designed to handle safe data migration and execution updates.
+
+### Choose or extend the RPC
+
+The RPC (Remote Procedure Call) layer provides an external interface for Appchain nodes. Pelagos supports flexibility in RPC options for Appchains. This allows developers to choose one of the standard RPCs (e.g., Ethereum, Cosmos, Solana, etc.), or to create a custom RPC, potentially extending existing implementations to suit specific requirements.
+
+This ensures that Appchains can integrate seamlessly with existing ecosystems or implement
+unique solutions tailored to their needs.
 
 ### Leverage Appchain interoperability
 
@@ -328,34 +367,19 @@ library TelerixCommon {
 }
 ```
 
+
+{up to pg 27 of the wp}
 #### Sequencing
 
 #### Scaling
 
 #### Security
 
-It's vital that Pelagos offers better security guarantees than the existing compromised solutions offered such as those of 3rd-party bridges. To this end, the architectural design leverages immutability and the security-as-a-service model, .
-
-
+It's vital that Pelagos offers better security guarantees than the existing compromised solutions offered such as those of 3rd-party bridges. To this end, the architectural design leverages immutability and the security-as-a-service model.
 
 Modular execution client: Each component—from transaction pool to execution layer—is strictly sandboxed, minimizing the attack surface.
 
-{from source materials, not made up}
-
-#### Security as a service
-
-Pelagos inherits its security model from underlying L1s via restaking services. Restakers reuse staked L1 native tokens such as ETH, BTC, SOL, TON (or liquid staking tokens like stETH) to provide security for additional networks, middleware, and applications beyond L1 itself.
-
-Restaking extends the security guarantees that arise from slashing. L1 stakers, those responsible for compiling the "at risk pot" required to offer validator services, can choose to "restake" their tokens to secure third-party services like rollups, oracles, or data availability layers.
-
-This allows Pelagos to leverage the L1 validator sets for security, mitigating bootstrapping risks.
-
-Pelagos security relies on robust tokens and substantial stakes rather than a single native token — removing the requirement to trust in a single chain’s token stability. By combining restaking from Ethereum, Bitcoin, Solana, and TON, Pelagos leverages an aggregate security stake far exceeding individual L1s.
-
-#### Transaction handling
-
-{multichain APIs, and respective validators)
 
 ### Conclusion
 
-Pelagos’ architecture merges Erigon’s proven efficiency with cutting-edge appchain modularity. The results are fast, secure, scalable, and developer-friendly deployments that remove traditional pain points from both single-chain and multichain projects. By offering deterministic sequencing, rapid horizontal scaling, robust validator security, and seamless multichain APIs, Pelagos truly advances the next generation of decentralized application infrastructure.
+Pelagos’ architecture merges Erigon’s proven efficiency with cutting-edge Appchain modularity. The results are fast, secure, scalable, developer-friendly deployments that remove traditional pain points from both single-chain and multichain projects. By offering deterministic sequencing, rapid horizontal scaling, robust validator security, and seamless multichain APIs, Pelagos truly advances the next generation of decentralized application infrastructure.
