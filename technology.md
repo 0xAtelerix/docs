@@ -67,15 +67,97 @@ The validator network, application logic layer, and reactive smart contracts rel
 
 Transactions and external block confirmations are sequenced with minimal latency and high throughput via Lachesis-inspired DAG consensus. This enables fast finality and reliable ordering across all connected chains.
 
-### Erigon immutable databases
+Pelagos leverages Erigon’s immutable database model which provides a multichain, universal state. Both state and historical data are stored in Erigon’s highly optimized, incrementally updated, immutable databases. These are synchronized across validators via gossip protocols that support rapid read/write capabilities and seamless, verifiable state sync.
 
-Erigon’s immutable database model provides a multichain, universal state. Both state and historical data are stored in Erigon’s highly optimized, incrementally updated, immutable databases. These are synchronized across validators via gossip protocols that support rapid read/write capabilities and seamless, verifiable state sync.
+The core universal state cannot be altered retroactively, protecting against rollback and censorship attacks. The DAG structure organizes and sequences events—such as transactions and state transitions—efficiently across all participating validators and Appchains, without forcing everything to pass through a single chain of blocks.
 
-The core universal state cannot be altered retroactively, protecting against rollback and censorship attacks.
+### Built for scale
 
-### Horizontal and vertical scaling:
+Pelagos is designed to support a growing number of users, transactions, peak loads, and an expanding state enabling the platform to scale. The DAG database structure is central Pelagos' ability to support the seamless, parallel operation of many Appchains as the platform grows.
 
 Both the core platform and individual Appchains can be sharded for scalability. Sequencing and execution can be split across multiple microservices, allowing the platform to scale to thousands of Appchains and up to 100,000+ TPS as needed.
+
+Individual Appchains can also scale independently; both [horizontally and vertically](#scale-an-appchain-with-pelagos). This scaling is fully controlled by the user and can be adjusted as the Appchain evolves.
+
+#### Appchain sequencing and parallel scaling
+
+Pelagos ensures the seamless operation of Appchains, even as the number of Appchains and connected blockchains grows. 
+
+Pelagos uses a highly flexible approach to sequencing transactions and events across Appchains, allowing both parallelism and resilience at scale. Rather than forcing all traffic through a single sequencer, Pelagos supports a many-to-many (N:M) model: multiple independent sequencing processes. Each is represented by its own DAG consensus allowing the platform to serve a growing number of Appchains, all coordinated by a unified validator set.
+
+This modular sequencing design ensures that high transaction volumes or temporary congestion on one Appchain do not adversely affect others. Each Appchain proceeds through its own consensus cycles independently, with all chains synchronized to complete an epoch at the same universal median time. 
+
+For example, if Appchain epochs are set to end every day at 00:00, all Appchains finalize their state at precisely that moment, coordinated via consensus across validators. At each epoch's close, a checkpoint is created,a cryptographic snapshot of state, the validators collectively sign this checkpoint using threshold signature schemes (TSS), ensuring shared trust and immutability of state transitions.
+
+As network demand shifts and certain Appchains start to require more sequencing resources, Pelagos offers seamless vertical scaling. If an Appchain begins to consume disproportionate amounts of bandwidth or computation, it can be migrated, without data loss or break in continuity, to its own dedicated sequencing DAG. This migration is elegantly handled at the epoch boundary: after the Appchain’s checkpoint is committed. The Appchain is then shifted out of the shared sequencer onto a standalone path, with its state and event history preserved.
+
+{needs some work, but starts the visual}
+
+```mermaid
+graph TD
+  %% Validators root
+  subgraph Validators["Validators"]
+    V[Validator Set]
+  end
+
+  %% Horizontal Scaling DAGs
+  subgraph HorizontalScaling["Horizontal Scaling: Multiple Sequencing DAGs"]
+    direction TB
+    DAG1[Sequencing DAG 1]
+    DAG2[Sequencing DAG 2]
+    DAG3[Sequencing DAG 3]
+    V --> DAG1
+    V --> DAG2
+    V --> DAG3
+  end
+
+  %% Ordered Transaction Layer above Appchains
+  subgraph OrderedTx1["Ordered Transaction Layer"]
+    direction TB
+    OT1[Ordered Transactions 1]
+    OT2[Ordered Transactions 2]
+    OT3[Ordered Transactions 3]
+    DAG1 --> OT1
+    DAG2 --> OT2
+    DAG3 --> OT3
+  end
+
+  %% Appchain 2
+  subgraph Appchain1["Containerized Appchain 2 sharded"]
+    direction TB
+    shardA1[Shard A]
+    shardB1[Shard B]
+    OT1 --> shardA1
+    OT1 --> shardB1
+  end
+
+  %% Appchain 3 single shard example
+  subgraph Appchain2["Appchain 3"]
+    OT2 --> AC2[Single Shard Execution]
+  end
+
+  %% Appchain 1 with vertical scaling
+  subgraph VerticalScaling["Appchain 1 Dedicated Sequencing DAG"]
+    direction TB
+    DAG_Dedicated[Dedicated Sequencing DAG]
+    OT_Dedicated[Ordered Transactions Dedicated]
+    DAG_Dedicated --> OT_Dedicated
+    OT_Dedicated --> AC_Special[Appchain Isolated, High Demand]
+    V --> DAG_Dedicated
+  end
+
+  %% Epoch checkpoint coordination
+  subgraph EpochCheckpoints["Epoch Checkpoints & Finality"]
+    direction TB
+    Checkpoint[Checkpoint & TSS Voting]
+    Appchain1 --> Checkpoint
+    Appchain2 --> Checkpoint
+    AC_Special --> Checkpoint
+    Checkpoint --> V
+  end
+  ```
+
+These features together ensure Pelagos scales horizontally by parallelizing sequencing across many DAGs—and vertically, by promoting individual Appchains into powerful standalone flows whenever necessary. This many-to-many sequencing model underpins both day-one performance and long-term flexibility for every user and developer on the Pelagos platform.
 
 ### Security via restaking:
 
@@ -95,7 +177,7 @@ This leaves developers free to build logic, not infrastructure: All sequencing, 
 
 Pelagos lets projects focus on what matters: their application logic, products, and user experience. While the platform becomes an invisible, rock-solid foundation for composable, cross-chain web3 innovation.
 
-## The Pelagos DAG consensus network
+## The Pelagos Directed Acyclic Graph consensus network
 
 Pelagos presents a purpose-designed Directed Acyclic Graph (DAG) consensus network. By substituting trusted third-party custodian or bridge operators with a decentralized collective validator set and a robust consensus protocol, Pelagos narrows trust assumptions to the distributed operator set, greatly reducing single points of failure and enhancing security.
 
@@ -268,15 +350,15 @@ Developers can request additional shards by prompting Pelagos to create new exec
 
 This mechanism transparently scales the transaction load (TPS) by distributing it across multiple shards. Furthermore, this approach extends service offerings for restaking operators who can offer additional rewards from shards. 
 
-It is the thesis of the Pelagos designers that this model will foster organic ecosystem growth by aligning incentives among Appchains, validators, and service providers.
+It is the thesis of the Pelagos designers that this model will foster organic ecosystem growth by aligning incentives among Appchains, validators, and service providers. 
 
 #### Vertical scaling
 
-Furthermore, Pelagos incorporates best-in-class optimizations to ensure that vertical scaling translates directly into greater efficiency once horizontal scaling is introduced.
-
-This is supported at the database layer, thanks to Erigon's efficent DAG database. The immutable, incremental database design ensures optimal data locality and minimizes read amplification by including fast-access and presence/absence indexes from the outset. As a result, this database is inherently optimized for syncing and scaling.
+Vertical scaling is supported supported at the database layer, thanks to Erigon's efficent DAG database. The immutable, incremental database design ensures optimal data locality and minimizes read amplification by including fast-access and presence/absence indexes from the outset. As a result, this database is inherently optimized for syncing and scaling.
 
 To further enhance efficiency, these databases are distributed via BitTorrent-like protocols, enabling computation-free synchronization. This effective combination of database design and synchronization strategies mirrors the success of Erigon,the primary archive node solution applied by Ethereum and Polygon due to its exceptional optimization and sync capabilities.
+
+Furthermore, any Appchain can "subscribe" to dedicated sequencing should it outgrow the shared infrastructure and require dedicated, larger-scale infrastructure for improved performance. Each dedicated sequencing service runs its own DAG consensus. This provides maximum throughput &mdash; with independent epochs and checkpoint proofs to ensure auditability and data integrity.
 
 ### Define block times with Pelagos
 
