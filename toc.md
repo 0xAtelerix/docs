@@ -13,12 +13,13 @@
 
 ## 🛠 Pelagos Protocol
 
-* [Technological overview](technology.md#highlevel-overview)
-* [Security at scale](technology.md#pelagos-security-at-scale)
-* [Asset portability](technology.md#atomic-cross-chain-asset-portability)
-* [Extensible tokenomics](technology.md#extensible-tokenomics-support)
-* [Developing an Appchain](technology.md#developing-an-appchain-with-pelagos)
-* [Validating Appchains](technology.md#validating-appchains-with-pelagos)
+* [Technological overview](technology/overview.md)
+* [Design considerations](technology/security-at-scale.md)
+* [Asset portability](technology/asset-portability.md)
+* [Extensible tokenomics](technology/extensible-tokenomics.md)
+* [Developing an Appchain](technology/developing-appchain.md)
+* [Validating Appchains](technology/validating-appchains.md)
+* [Conclusion](technology/conclusion.md)
 
 ## 🏁 Closing
 * [Conclusion](conclusion.md)
