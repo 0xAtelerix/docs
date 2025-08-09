@@ -91,73 +91,9 @@ For example, if Appchain epochs are set to end every day at 00:00, all Appchains
 
 As network demand shifts and certain Appchains start to require more sequencing resources, Pelagos offers seamless vertical scaling. If an Appchain begins to consume disproportionate amounts of bandwidth or computation, it can be migrated, without data loss or break in continuity, to its own dedicated sequencing DAG. This migration is elegantly handled at the epoch boundary: after the Appchain’s checkpoint is committed. The Appchain is then shifted out of the shared sequencer onto a standalone path, with its state and event history preserved.
 
-{needs some work, but starts the visual}
-
-```mermaid
-graph TD
-  %% Validators root
-  subgraph Validators["Validators"]
-    V[Validator Set]
-  end
-
-  %% Horizontal Scaling DAGs
-  subgraph HorizontalScaling["Horizontal Scaling: Multiple Sequencing DAGs"]
-    direction TB
-    DAG1[Sequencing DAG 1]
-    DAG2[Sequencing DAG 2]
-    DAG3[Sequencing DAG 3]
-    V --> DAG1
-    V --> DAG2
-    V --> DAG3
-  end
-
-  %% Ordered Transaction Layer above Appchains
-  subgraph OrderedTx1["Ordered Transaction Layer"]
-    direction TB
-    OT1[Ordered Transactions 1]
-    OT2[Ordered Transactions 2]
-    OT3[Ordered Transactions 3]
-    DAG1 --> OT1
-    DAG2 --> OT2
-    DAG3 --> OT3
-  end
-
-  %% Appchain 2
-  subgraph Appchain1["Containerized Appchain 2 sharded"]
-    direction TB
-    shardA1[Shard A]
-    shardB1[Shard B]
-    OT1 --> shardA1
-    OT1 --> shardB1
-  end
-
-  %% Appchain 3 single shard example
-  subgraph Appchain2["Appchain 3"]
-    OT2 --> AC2[Single Shard Execution]
-  end
-
-  %% Appchain 1 with vertical scaling
-  subgraph VerticalScaling["Appchain 1 Dedicated Sequencing DAG"]
-    direction TB
-    DAG_Dedicated[Dedicated Sequencing DAG]
-    OT_Dedicated[Ordered Transactions Dedicated]
-    DAG_Dedicated --> OT_Dedicated
-    OT_Dedicated --> AC_Special[Appchain Isolated, High Demand]
-    V --> DAG_Dedicated
-  end
-
-  %% Epoch checkpoint coordination
-  subgraph EpochCheckpoints["Epoch Checkpoints & Finality"]
-    direction TB
-    Checkpoint[Checkpoint & TSS Voting]
-    Appchain1 --> Checkpoint
-    Appchain2 --> Checkpoint
-    AC_Special --> Checkpoint
-    Checkpoint --> V
-  end
-  ```
-
 These features ensure Pelagos scales horizontally by parallelizing sequencing across many DAGs, and vertically, by promoting individual Appchains into powerful standalone flows whenever necessary. This many-to-many sequencing model underpins both day-one performance and long-term flexibility for every user and developer on the Pelagos platform.
+
+(See more on [horizontal and vertical scaling with Pelagos](#scale-an-appchain-with-pelagos)).
 
 ### Security via restaking:
 
