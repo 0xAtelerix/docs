@@ -13,7 +13,7 @@ Pelagos provides a business rules execution engine built atop a robust, real-tim
 
 Four key components support this, the: 
 
-- Validator network operating the DAG consensus layer 
+- Validator network operating the Directed Acyclic Graph (DAG) consensus layer 
 - Application logic layer
 - Reactive smart contracts
 - Dedicated tokenomics API
@@ -27,17 +27,19 @@ Sequencing, validation, and multi-chain messaging are all handled within Pelagos
 
 Pelagos validators provide a universal data availability layer that ensures the integrity of the data that apps and appchains rely on. Pelagos validators operate nodes for all supported blockchains as well as the Pelagos DAG chain. This guarantees constant access to up-to-date, finalized data from multiple L1s and L2s.
 
-As the head of an external, supported chain updates, validators submit and confirm it within Pelagos’ DAG consensus process. Once a sufficient quorum is reached, this external block and all its data (state, events, balances, transactions) become available to all Pelagos Appchains as a native, trust-minimized data source.
+As the head of a supported external chain updates, validators submit and confirm it within Pelagos’ DAG consensus process. Once a sufficient quorum is reached, this external block and all its data (state, events, balances, transactions) become available to all Pelagos Appchains as a native, trust-minimized data source.
+
+The Pelagos consensus layer allows dApp builders to rely on the strong finality and fundamental security of the asset-managing blockchain that users' funds are native to, while enjoying the scalability and speed offered by the DAG consensus mechanisms. By limiting execution to consensus-approved events ensures that token issuance or state changes are valid, preserving atomicity and preventing double-spends or fraudulent minting.
 
 ### Application logic layer
 
-Leveraging this high-availablity external blockchain data is the programmable application layer that supports a full spectrum of business logic and can trigger automatic execution of predefined actions based on specified parameters.
+The programmable application layer then leverages this high-availablity external blockchain data &mdash; supporting a full spectrum of business logic that can trigger automatic execution of predefined actions based on specified parameters.
 
 This ensures authentic, timely, and verifiable data delivery, powering rich business logic and seamless cross-chain composability. Furthermore, the application logic layer offers significant deployment flexibility.
 
-Appchain developers can define business rules, automations, or application-specific logic using any environment—including custom Docker containers, EVM, WebAssembly, MoveVM, and then deploy these as independent Appchains.
+Appchain developers can define business rules, automations, or application-specific logic using any environment &mdash; including custom Docker containers, EVM, WebAssembly, MoveVM, and then deploy these as independent Appchains.
 
-> Each app runs on on a dedicated, separate blockchain leveraging the Pelagos validator sets that offer security via restaking.
+> Each app runs as an independent DAG-based chain instance, leveraging the Pelagos validator sets that offer security via restaking.
 
 ### Reactive smart contracts
 
@@ -53,71 +55,50 @@ For example, an app's business logic might:
 
 Reactive contracts are secure and can operate with near-instant finality at the Appchain level.
 
-The security of reactive events is enforced with threshold multi-sig logic. This ensures that outbound actions are only executed when a quorum of validators collectively sign the transaction using a Threshold Signature Scheme (TSS) based on DKG protocols, ensuring robust, distributed security without single points of failure.
+The security of reactive events is enforced with threshold multi-sig logic. This ensures that outbound actions are only executed when a quorum of validators collectively sign the transaction using a Threshold Signature Scheme (TSS) based on Distributed Key Generation (DKG) protocols, ensuring robust, distributed security without single points of failure.
 
 ### Tokenomics as a first-class primitive
 
 The Pelagos API model facilitates maximum tokenomics flexibility. Furthermore, Appchains built on Pelagos can design tokenomics that operate on a multichain level, rather than being confined to a single blockchain.
 
-## Key architectural elements
+> See more on [tokenomics support](#extensible-tokenomics-support).
 
-The validator network, application logic layer, and reactive smart contracts rely on the following architectural elements:
+## Pelagos: Security at scale
 
-### Leaderless DAG consensus
+The Pelagos protocol and its validator network are able to offer a scalable application logic layer that supports reactive smart contracts thanks to two principle architectural elements, a DAG consensus layer whose security is enforced through restaking.
 
-Transactions and external block confirmations are sequenced with minimal latency and high throughput via Lachesis-inspired DAG consensus. This enables fast finality and reliable ordering across all connected chains.
+### Security bootstrapping with restaking
 
-Pelagos leverages Erigon’s immutable database model which provides a multichain, universal state. Both state and historical data are stored in Erigon’s highly optimized, incrementally updated, immutable databases. These are synchronized across validators via gossip protocols that support rapid read/write capabilities and seamless, verifiable state sync.
+Launching a new Appchain presents a well-known bootstrapping challenge: without an established validator set or strong stake base, the chain is vulnerable to centralization, security attacks, and validator coordination issues. This in turn makes it harder to attract new validators.
 
-The core universal state cannot be altered retroactively, protecting against rollback and censorship attacks. The DAG structure organizes and sequences events—such as transactions and state transitions—efficiently across all participating validators and Appchains, without forcing everything to pass through a single chain of blocks.
+Pelagos inherits its security model from the underlying L1s. Restaking leverages capital already staked in large, established, and secure PoS (Proof of Stake) ecosystems (such as Ethereum, Bitcoin (via Babylon), Solana, TON, etc.). Validators can “restake” their locked assets to secure Pelagos Appchains, eliminating the need for each Appchain to bootstrap its own validator set or native token. 
 
-### Built for scale
+Restaking is cornerstone to the Pelagos architecture ensuring that critical validation and execution duties are undertaken by entities whose alignment is ensured. By putting their existing stake at risk of slashing for poor performance or malicious behavior, validators are economically aligned with the success and security of the Appchains they serve. This allows new Appchains to gain immediate access to a large, robust, and decentralized validator network: avoiding the overhead of launching their own staking tokens, designing complex validator incentive models, or managing permissioned validator sets.
 
-Pelagos is designed to support a growing number of users, transactions, peak loads, and an expanding state enabling the platform to scale. The DAG database structure is central Pelagos' ability to support the seamless, parallel operation of many Appchains as the platform grows.
+Pelagos’ approach increases system resilience by pooling validators across multiple chains and staking models. While restaking introduces shared risks—like slashing exposure cascading across chains—it also significantly raises the cost of attacking any single Appchain, since attackers must overcome the economic weight of the entire restaked network.
 
-Both the core platform and individual Appchains can be sharded for scalability. Sequencing and execution can be split across multiple microservices, allowing the platform to scale to thousands of Appchains and up to 100,000+ TPS as needed.
+Pelagos security relies on robust tokens and substantial stakes rather than a single native token — removing the requirement to trust in a single chain’s token stability. By combining restaking from Ethereum, Bitcoin, Solana, and TON, Pelagos leverages an aggregate security stake far exceeding individual L1s.
 
-Individual Appchains can also scale independently; both [horizontally and vertically](#scale-an-appchain-with-pelagos). This scaling is fully controlled by the user and can be adjusted as the Appchain evolves.
+Pelagos' Autonomous Verifiable Services (AVS) delegates tasks to restakers, such as:
 
-#### Appchain sequencing and parallel scaling
+- Sequencing consensus execution
+- Performing TSS (Threshold Signature Scheme) for secure external transactions
+- Multi-sig
+- TEE (Trusted Execution Environment) validation
+- Operating Appchain containers to ensure scalable and efficient execution
+- Creating proofs and verification
 
-Pelagos ensures the seamless operation of Appchains, even as the number of Appchains and connected blockchains grows. 
+> See more on the [validator role]()
 
-Pelagos uses a highly flexible approach to sequencing transactions and events across Appchains, allowing both parallelism and resilience at scale. Rather than forcing all traffic through a single sequencer, Pelagos supports a many-to-many (N:M) model: multiple independent sequencing processes. Each is represented by its own DAG consensus allowing the platform to serve a growing number of Appchains, all coordinated by a unified validator set.
+### Leaderless Directed Acyclic Graphs consensus
 
-This modular sequencing design ensures that high transaction volumes or temporary congestion on one Appchain do not adversely affect others. Each Appchain proceeds through its own consensus cycles independently, with all chains synchronized to complete an epoch at the same universal median time. 
+Pelagos presents a purpose-designed DAG consensus network, leveraging Erigon’s immutable database model to provide a multichain, universal state. 
 
-For example, if Appchain epochs are set to end every day at 00:00, all Appchains finalize their state at precisely that moment, coordinated via consensus across validators. At each epoch's close, a checkpoint is created,a cryptographic snapshot of state, the validators collectively sign this checkpoint using threshold signature schemes (TSS), ensuring shared trust and immutability of state transitions.
+Blockchains typically organize data as a linear chain of blocks, where each block contains multiple transactions and links cryptographically to the previous block, forming a single, sequential, immutable history. DAGs, by contrast, use a graph structure, allowing transactions to be processed independently and in parallel rather than sequentially. DAGs do not batch transactions into blocks but treat individual transactions as first-class entities that reference multiple prior transactions.
 
-As network demand shifts and certain Appchains start to require more sequencing resources, Pelagos offers seamless vertical scaling. If an Appchain begins to consume disproportionate amounts of bandwidth or computation, it can be migrated, without data loss or break in continuity, to its own dedicated sequencing DAG. This migration is elegantly handled at the epoch boundary: after the Appchain’s checkpoint is committed. The Appchain is then shifted out of the shared sequencer onto a standalone path, with its state and event history preserved.
+By substituting trusted third-party custodian or bridge operators with a decentralized collective validator set and a robust consensus protocol, Pelagos narrows trust assumptions to the distributed operator set, greatly reducing single points of failure and enhancing security.
 
-These features ensure Pelagos scales horizontally by parallelizing sequencing across many DAGs, and vertically, by promoting individual Appchains into powerful standalone flows whenever necessary. This many-to-many sequencing model underpins both day-one performance and long-term flexibility for every user and developer on the Pelagos platform.
-
-(See more on [horizontal and vertical scaling with Pelagos](#scale-an-appchain-with-pelagos)).
-
-### Security via restaking:
-
-To overcome the security bootstrapping challenges faced by each nascent Appchain, the validator set is secured not by a single native token, but via restaked collateral from multiple high-value ecosystems (e.g. ETH, BTC, SOL, TON, etc.), providing security guarantees that exceed most traditional blockchains.
-
-## Pelagos as a developer empowerment environment
-
-As a result of this innovation, data is always available, trustworthy, and native-level for any supported blockchain— removing the need for lending trust to oracles or relying on fragile bridges.
-
-This leaves developers free to build logic, not infrastructure: All sequencing, validator management, state sync, security, and bridging are abstracted away by Pelagos. This creates an app execution environment that is:
-
-- Automatic, deterministic, and trust-minimized: making cross-chain automation a first-class primitive.
-
-- Scalable to any need: From single-app projects to massive, interconnected ecosystems.
-
-- Truly multichain: Supporting any VM, custom logic, and real interoperability at both the data and execution levels.
-
-Pelagos lets projects focus on what matters: their application logic, products, and user experience. While the platform becomes an invisible, rock-solid foundation for composable, cross-chain web3 innovation.
-
-## The Pelagos Directed Acyclic Graph consensus network
-
-Pelagos presents a purpose-designed Directed Acyclic Graph (DAG) consensus network. By substituting trusted third-party custodian or bridge operators with a decentralized collective validator set and a robust consensus protocol, Pelagos narrows trust assumptions to the distributed operator set, greatly reducing single points of failure and enhancing security.
-
-DAG operators compose a distributed set of validators who observe events and transactions on external blockchains, reach consensus among themselves regarding these observations, and sequence them in the Pelagos DAG. These events then drive state changes in the relevant Appchains, which apply logic and execution according to their business logic.
+DAG operators compose a distributed set of validators who observe events and transactions on external blockchains, reach consensus among themselves regarding these observations, and sequence them in the Pelagos DAG. These events then drive state changes in the relevant Appchains, which execute according to their business logic.
 
 To achieve this, Pelagos integrates [Erigon's](https://erigon.tech/benefits-of-caplin-erigons-internal-cl-and-erigon-el-for-staking/) highly efficient database structure and modular client design delivering:
 
@@ -127,11 +108,35 @@ To achieve this, Pelagos integrates [Erigon's](https://erigon.tech/benefits-of-c
 
 Erigon's immutable database model provides a multichain, universal state, ensuring efficient state synchronization. This enables Appchains to handle rapidly growing states across a multichain landscape without performance degradation.
 
-### Directed Acyclic Graph for scale and speed
+The core universal state cannot be altered retroactively, protecting against rollback and censorship attacks. The DAG structure organizes and sequences events &mdash; such as transactions and state transitions &mdash; efficiently across all participating validators and Appchains, without forcing everything to pass through a single chain of blocks.
 
-Blockchains typically organize data as a linear chain of blocks, where each block contains multiple transactions and links cryptographically to the previous block, forming a single, sequential, immutable history. DAGs (Directed Acyclic Graphs), by contrast, use a graph structure, allowing transactions to be processed independently and in parallel rather than sequentially. DAGs do not batch transactions into blocks but treat individual transactions as first-class entities that reference multiple prior transactions.
+#### Built for scale
 
-The Pelagos consensus layer allows dApp builders to rely on the strong finality and fundamental security of the asset-managing blockchain that users' funds are native to, while enjoying the scalability and speed offered by the DAG consensus mechanisms. By limiting execution to consensus-approved events ensures that token issuance or state changes are valid, preserving atomicity and preventing double-spends or fraudulent minting.
+The Pelagos DAG is designed to support a growing number of users, transactions, peak loads, and an expanding state enabling the platform to scale. The DAG database structure is central Pelagos' ability to support the seamless, parallel operation of many Appchains as the platform grows.
+
+Both state and historical data are stored in Erigon’s highly optimized, incrementally updated, immutable databases. These are synchronized across validators via gossip protocols that support rapid read/write capabilities and seamless, verifiable state sync.
+
+Both the core platform and individual Appchains can be sharded for scalability. Sequencing and execution can be split across multiple microservices, allowing the platform to scale to thousands of Appchains and up to 100,000+ TPS as needed.
+
+Individual Appchains can also scale independently; both horizontally and vertically. This scaling is fully controlled by the user and can be adjusted as the Appchain evolves.
+
+#### Appchain sequencing and parallel scaling
+
+Transactions and external block confirmations are sequenced with minimal latency and high throughput via the Lachesis-inspired DAG consensus. This enables fast finality and reliable ordering across all connected chains. 
+
+By implementing a highly flexible approach to sequencing transactions and events across Appchains, Pelagos supports both parallelism and resilience at scale. 
+
+Rather than forcing all traffic through a single sequencer, Pelagos applies a many-to-many (N:M) model: facilitating multiple independent sequencing processes. Each is represented by its own DAG consensus allowing the platform to serve a growing number of Appchains, all coordinated by a unified validator set.
+
+This modular sequencing design ensures that high transaction volumes or temporary congestion on one Appchain do not adversely affect others. Each Appchain proceeds through its own consensus cycles independently, with all chains synchronized to complete an epoch at the same universal median time. 
+
+> For example, if Appchain epochs are set to end every day at 00:00, all Appchains finalize their state at precisely that moment, coordinated via consensus across validators. At each epoch's close, a checkpoint is created,a cryptographic snapshot of state, the validators collectively sign this checkpoint using threshold signature schemes (TSS), ensuring shared trust and immutability of state transitions.
+
+As network demand shifts and certain Appchains start to require more sequencing resources, Pelagos offers seamless vertical scaling. If an Appchain begins to consume disproportionate amounts of bandwidth or computation, it can be migrated, without data loss or break in continuity, to its own dedicated sequencing DAG. This migration is elegantly handled at the epoch boundary: after the Appchain’s checkpoint is committed. The Appchain is then shifted out of the shared sequencer onto a standalone path, with its state and event history preserved.
+
+These features ensure Pelagos scales horizontally by parallelizing sequencing across many DAGs, and vertically, by promoting individual Appchains into powerful standalone flows whenever necessary. This many-to-many sequencing model underpins both day-one performance and long-term flexibility for every user and developer on the Pelagos platform.
+
+> (See more on [horizontal and vertical scaling with Pelagos](#scale-an-appchain-with-pelagos)).
 
 ## Atomic cross-chain asset portability
 
@@ -191,29 +196,6 @@ These functions are clearly demarcated based on where in the lifecycle they occu
     - Initiate auction to sell collected tokens (injective)
     - Mint tokens based on the calculated APY
 
-## Security bootstrapping with restaking
-
-Launching a new Appchain presents a well-known bootstrapping challenge: without an established validator set or strong stake base, the chain is vulnerable to centralization, security attacks, and validator coordination issues. This in turn makes it harder to attract new validators.
-
-Pelagos inherits its security model from the underlying L1s. Restaking leverages capital already staked in large, established, and secure PoS (Proof of Stake) ecosystems (such as Ethereum, Bitcoin (via Babylon), Solana, TON, etc.). Validators can “restake” their locked assets to secure Pelagos Appchains, eliminating the need for each Appchain to bootstrap its own validator set or native token.
-
-Restaking is cornerstone to the Pelagos architecture ensuring that critical validation and execution duties are undertaken by entities whose alignment is ensured. By putting their existing stake at risk of slashing for poor performance or malicious behavior, validators are economically aligned with the success and security of the Appchains they serve. This allows new Appchains to gain immediate access to a large, robust, and decentralized validator network: avoiding the overhead of launching their own staking tokens, designing complex validator incentive models, or managing permissioned validator sets.
-
-Pelagos’ approach increases system resilience by pooling validators across multiple chains and staking models. While restaking introduces shared risks—like slashing exposure cascading across chains—it also significantly raises the cost of attacking any single Appchain, since attackers must overcome the economic weight of the entire restaked network.
-
-Pelagos security relies on robust tokens and substantial stakes rather than a single native token — removing the requirement to trust in a single chain’s token stability. By combining restaking from Ethereum, Bitcoin, Solana, and TON, Pelagos leverages an aggregate security stake far exceeding individual L1s.
-
-### Restaking-secured operations
-
-Pelagos' Autonomous Verifiable Services (AVS) delegates tasks to restakers, such as:
-
-- Sequencing consensus execution
-- Performing TSS (Threshold Signature Scheme) for secure external transactions
-- Multi-sig
-- TEE (Trusted Execution Environment) validation
-- Operating Appchain containers to ensure scalable and efficient execution
-- Creating proofs and verification
-
 ## Developing an Appchain with Pelagos
 
 Launching an Appchain with Pelagos is as simple as deploying a smart contract. The developer can execute a single transaction providing the:
@@ -259,7 +241,7 @@ unique solutions tailored to their needs.
 
 Appchains deployed over Pelagos enjoy direct, native-level access to other blockchains for data retrieval and transaction submission. The multichain layer in Pelagos works like a universal L1SLOAD for any chain.
 
-Combined with integrated TSS signing protocols for supported chains (secured by restaking and Distributed Key Generation (DKG)), Appchains can send external transactions to other protocols or Appchains as a natural extension of their execution environment.
+Combined with integrated TSS signing protocols for supported chains (secured by restaking and DKG), Appchains can send external transactions to other protocols or Appchains as a natural extension of their execution environment.
 
 By enabling easy interoperability, Pelagos lets Appchains reuse and enhance existing protocols rather than competing for liquidity and users.
 
@@ -375,7 +357,7 @@ Developers can determine the size of the blocks produced by their Appchains acco
 
 Using the reactive smart contract, developers can leverage the unified data environment offered by Pelagos as a multichain data availability layer for in-app logic by setting up trigger events. 
 
-Consider the following code sample that listens for events on data collected on an external, supported chain and triggers cross-chain transactions: 
+Consider the following code sample that listens for events on data collected on a supported external chain and triggers cross-chain transactions: 
 
 ```solidity
 // SPDX-License-Identifier: Unlicense
@@ -544,4 +526,16 @@ Modular execution client: Each component—from transaction pool to execution la
 
 ### Conclusion
 
-Pelagos’ architecture merges Erigon’s proven efficiency with cutting-edge Appchain modularity. The results are fast, secure, scalable, developer-friendly deployments that remove traditional pain points from both single-chain and multichain projects. By offering deterministic sequencing, rapid horizontal scaling, robust validator security, and seamless multichain APIs, Pelagos truly advances the next generation of decentralized application infrastructure.
+Within the Pelagos protocol, data is always available, trustworthy, and native-level for any supported blockchain &mdash; removing the need for lending trust to oracles or relying on fragile bridges.
+
+This leaves developers free to build logic, not infrastructure: all sequencing, validator management, state sync, security, and bridging are abstracted away by Pelagos. This creates an app execution environment that is:
+
+- Automatic, deterministic, and trust-minimized: making cross-chain automation a first-class primitive
+
+- Scalable to any need, from single-app projects to massive, interconnected ecosystems
+
+- Truly multichain: supporting any VM, custom logic, and real interoperability at both the data and execution levels
+
+Pelagos’ architecture merges Erigon’s proven efficiency with cutting-edge Appchain modularity. The results are fast, secure, scalable, developer-friendly deployments that remove traditional pain points from both single-chain and multichain projects. By offering deterministic sequencing, rapid scaling, robust validator security, and seamless multichain APIs, Pelagos truly advances the next generation of decentralized application infrastructure.
+
+Pelagos lets projects focus on what matters: their application logic, products, and user experience. While the platform becomes an invisible, rock-solid foundation for composable, cross-chain web3 innovation.
