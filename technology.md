@@ -157,7 +157,7 @@ graph TD
   end
   ```
 
-These features together ensure Pelagos scales horizontally by parallelizing sequencing across many DAGs—and vertically, by promoting individual Appchains into powerful standalone flows whenever necessary. This many-to-many sequencing model underpins both day-one performance and long-term flexibility for every user and developer on the Pelagos platform.
+These features ensure Pelagos scales horizontally by parallelizing sequencing across many DAGs, and vertically, by promoting individual Appchains into powerful standalone flows whenever necessary. This many-to-many sequencing model underpins both day-one performance and long-term flexibility for every user and developer on the Pelagos platform.
 
 ### Security via restaking:
 
@@ -334,7 +334,7 @@ Pelagos brings Web2 scalability practices directly to Appchains; employing the E
 - Hot databases: Designed to handle real-time data writes with periodic conversion into immutable snapshots.
 - Immutable databases: Read-only incremental state snapshots that represent historical blockchain states.
 
-These immutable databases serve as a historical record of the blockchain {"off the blockchain" is the Appchain data (not really a blockchain more a DAG, or is a da layer of the supported blockchains??} offer several advantages:
+These immutable databases serve as a historical record of the blockchain {"of the blockchain" is the Appchain data (not really a blockchain more a DAG, or is a da layer of the supported blockchains??} offer several advantages:
 
 - Snapshots can be shared with other nodes via BitTorrent-like protocols, enabling efficient data synchronization.
 - Operators can verify and validate the integrity of immutable databases before downloading, ensuring tamper-proof data distribution.
@@ -359,6 +359,77 @@ Vertical scaling is supported supported at the database layer, thanks to Erigon'
 To further enhance efficiency, these databases are distributed via BitTorrent-like protocols, enabling computation-free synchronization. This effective combination of database design and synchronization strategies mirrors the success of Erigon,the primary archive node solution applied by Ethereum and Polygon due to its exceptional optimization and sync capabilities.
 
 Furthermore, any Appchain can "subscribe" to dedicated sequencing should it outgrow the shared infrastructure and require dedicated, larger-scale infrastructure for improved performance. Each dedicated sequencing service runs its own DAG consensus. This provides maximum throughput &mdash; with independent epochs and checkpoint proofs to ensure auditability and data integrity.
+
+Figure X. Horizontal and vertical scaling within Pelagos
+
+```mermaid
+flowchart TD
+  %% Styling classes for nodes
+  classDef horiz fill:#d0e7f9,stroke:#000,stroke-width:1px,color:#000;
+  classDef vert  fill:#fce5cd,stroke:#000,stroke-width:1px,color:#000;
+  classDef process fill:#e2e2e2,stroke:#000,stroke-width:1px,color:#000;
+  classDef source fill:#fff2cc,stroke:#000,stroke-width:1px,color:#000;
+
+  %% External sources and validators
+  L1L2["L1/L2 Blockchain data and Appchain requests"]:::source
+  VAL["Pelagos Validators: Data availability, sequencing, multi-chain messaging"]:::process
+
+  %% Outer Horizontal Scaling subgraph (leave header unclassed)
+  subgraph H["Horizontal Scaling"]
+    direction TB
+
+  VAL --> |Container 1| DAG1
+  VAL --> |Container 3| DAG3
+  VAL --> |Container 4| DAG4
+  VAL --> |Container N| DAGN
+
+    DAG1[DAG 1]:::process
+    OT1[Ordered Transactions]:::process
+    AC1[Appchain 1]:::horiz
+    AC2[Appchain 2]:::horiz
+
+    DAG1 --> OT1
+    OT1 --> AC1
+    OT1 --> AC2
+
+    %% Nested Vertical Scaling subgraph (leave header unclassed)
+    subgraph VS3["Vertical Scaling Appchain 3"]
+      direction TB
+      DAG3[DAG 3]:::process
+      OT3[Ordered Transactions]:::process
+      AC3a[Appchain 3 - Shard A]:::vert
+
+      DAG4[DAG 4]:::process
+      OT4[Ordered Transactions]:::process
+      AC3b[Appchain 3 - Shard B]:::vert
+
+      DAG3 --> OT3 --> AC3a
+      DAG4 --> OT4 --> AC3b
+    end
+
+    DAGN[DAG N]:::process
+    OTN[Ordered Transactions]:::process
+    ACN[Appchain N]:::horiz
+
+    DAGN --> OTN --> ACN
+  end
+
+  %% Epoch and connections
+  EC[Epoch Checkpoint and Validator Finality]:::process
+
+  L1L2 --> VAL
+  
+
+  AC1 --> EC
+  AC2 --> EC
+  AC3a --> EC
+  AC3b --> EC
+  ACN --> EC
+
+  %% Apply tints to subgraphs using style (this is the correct way to tint subgraphs)
+  style H   fill:#d0e7f9,stroke:#333,stroke-width:2px
+  style VS3 fill:#fce5cd,stroke:#333,stroke-width:2px
+```
 
 ### Define block times with Pelagos
 
