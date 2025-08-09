@@ -66,35 +66,55 @@ In Pelagos, each Appchain can decide when to scale horizontally by sharding. A s
 
 Developers can request additional shards by prompting Pelagos to create new execution microservices and redirect transactions from sequencing into a custom sharding function. For example, `get_shard(tx)` -> `shard_id`.
 
-This mechanism transparently scales the transaction load (TPS) by distributing it across multiple shards, see Figure 2. Furthermore, this approach extends service offerings for restaking operators who can offer additional rewards from shards. 
+This mechanism transparently scales the transaction load (TPS) by distributing it across multiple shards, see Figure 2.
 
-##### Figure 2. Horizontal scaling through sharding
+##### Figure 2. Horizontal and vertical Appchain scaling
 
 ```mermaid
 graph TD
-    %% Nodes
-    user[Validators run Appchain 1 container]
-    seq[Sequencing DAG N]
-    ot[Ordered transactions]
-    shardFn["Appchain owner sharding function: choose_shard(tx)" -> shardID]
-    shard1[Appchain shard 1]
-    shard2[Appchain shard 2]
-    checkpoint[Epoch checkpoint]
+    %% Define styles
+    classDef horiz fill:#e6f7ff,stroke:#3399ff,stroke-width:2px;
+    classDef vert fill:#fff0e6,stroke:#ff6600,stroke-width:2px;
 
-    %% Connections
-    user --> seq
-    seq --> ot
-    ot --> shardFn
-    shardFn -->|Transactions| shard1
-    shardFn -->|Transactions| shard2
-    shard1 --> checkpoint
-    shard2 --> checkpoint
+    %% Multiple DAGs feeding horizontal scaling
+    subgraph Horizontal_Scaling["Horizontally-scaled DAGs"]
+        class Horizontal_Scaling horiz
+        DAG1[DAG 1] --> OT1[Ordered Transactions]
+        DAG2[DAG 2] --> OT2[Ordered Transactions]
+        DAG3[DAG 3] --> OT3[Ordered Transactions]
+    end
 
-    %% Title and Styling
-    classDef titleStyle fill:none,stroke:none,font-weight:bold,font-size:16px
-    title[Horizontal scaling: Appchain execution Sharding]:::titleStyle
+    %% Vertically scaling box: sharding function & shards
+    subgraph Vertical_Scaling["Vertically-scaled shards"]
+        class Vertical_Scaling vert
+        shardFn["choose_shard(tx) → shardID"]
+        Shard1[Appchain 1 - Shard 1]
+        Shard2[Appchain 1 - Shard 2]
+        shardFn -->|Txs| Shard1
+        shardFn -->|Txs| Shard2
+    end
+
+    %% Connect ordered txs to vertical scaling (sharding)
+    OT1 --> shardFn
+    OT2 --> shardFn
+    OT3 --> shardFn
+
+    %% Epoch checkpoint is out of vertical scaling subgraph
+    Shard1 --> CP[Epoch checkpoint]
+    Shard2 --> CP
+
+    %% Validators connect directly to each DAG
+    Validators[Validators] --> DAG1
+    Validators --> DAG2
+    Validators --> DAG3
+
+    %% Apply styles
+    class Horizontal_Scaling horiz
+    class Vertical_Scaling vert
+
 ```
-It is the thesis of the Pelagos designers that this model will foster organic ecosystem growth by aligning incentives among Appchains, validators, and service providers. 
+
+Furthermore, this approach extends service offerings for restaking operators who can offer additional rewards from shards. It is the thesis of the Pelagos designers that this model will foster organic ecosystem growth by aligning incentives among Appchains, validators, and service providers. 
 
 #### Vertical scaling
 
@@ -103,8 +123,6 @@ Vertical scaling is supported supported at the database layer, thanks to Erigon'
 To further enhance efficiency, these databases are distributed via BitTorrent-like protocols, enabling computation-free synchronization. This effective combination of database design and synchronization strategies mirrors the success of Erigon,the primary archive node solution applied by Ethereum and Polygon due to its exceptional optimization and sync capabilities.
 
 Furthermore, any Appchain can "subscribe" to dedicated sequencing should it outgrow the shared infrastructure and require dedicated, larger-scale infrastructure for improved performance. Each dedicated sequencing service runs its own DAG consensus. This provides maximum throughput &mdash; with independent epochs and checkpoint proofs to ensure auditability and data integrity.
-
-> Review [the figure depicting horizontal and vertical scaling within Pelagos](./security-at-scale.md#-figure-1-horizontal-and-vertical-scaling-within-pelagos)
 
 ### Define block times with Pelagos
 
