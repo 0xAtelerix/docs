@@ -19,7 +19,6 @@
 * [Extensible tokenomics](technology/extensible-tokenomics.md)
 * [Developing an Appchain](technology/developing-appchain.md)
 * [Validating Appchains](technology/validating-appchain.md)
-* [Conclusion](technology/conclusion.md)
 
 ## 🏁 Closing
 * [Conclusion](conclusion.md)
