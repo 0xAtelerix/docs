@@ -62,6 +62,8 @@ These immutable databases serve as a historical record of the blockchain {"of th
 
 #### Horizontal scaling 
 
+{this section doesn't match its diagram --> need to verify that the horizontal scale is from the multiple DAG processing and that vertical is the copies/shards of the chain itself, if so fix the words here, if not -- fix the diagram!!}
+
 In Pelagos, each Appchain can decide when to scale horizontally by sharding. A single sequencing process will serve these shards, allowing the Appchain to grow and scale seamlessly.
 
 Developers can request additional shards by prompting Pelagos to create new execution microservices and redirect transactions from sequencing into a custom sharding function. For example, `get_shard(tx)` -> `shard_id`.
