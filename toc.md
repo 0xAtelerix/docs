@@ -14,7 +14,7 @@
 ## 🛠 Pelagos Technology
 
 * [Technological overview](technology/overview.md)
-* [Design considerations](technology/security-at-scale.md)
+* [Security at scale](technology/security-at-scale.md)
 * [Asset portability](technology/asset-portability.md)
 * [Extensible tokenomics](technology/extensible-tokenomics.md)
 * [Developing an Appchain](technology/developing-appchain.md)
