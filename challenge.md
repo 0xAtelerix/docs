@@ -37,7 +37,7 @@ The two main challenges to a multiplatform app layer are the architectural diffe
 
 Different blockchain architectures represent state and determine finality differently, which in turn shapes how developers must structure applications. Such protocol-specific behaviors make code portability difficult, making cross-ecosystem development costly.
 
-Consider the differences between just three of the popular L1s. Bitcoin’s UTXO model ensures deterministic finality but limits expressiveness by requiring explicit input/output management. Ethereum’s account-based model enables rich smart contracts but adds complexity to handle state management and gas efficiency. Solana's high-performance Sealevel runtime enables parallelism but prevents simultaneous access to the same account.
+Consider the differences between just three of the popular L1s. Bitcoin’s UTXO model ensures probabilistic finality but limits expressiveness by requiring explicit input/output management. Ethereum’s account-based model enables rich smart contracts but adds complexity to handle state management and gas efficiency. Solana's high-performance Sealevel runtime enables parallelism but prevents simultaneous access to the same account.
 
 Each blockchain model defines not only how finality is achieved, but also how application state must be conceptualized, managed, and stored. The result is a fragmented developer experience, where business logic cannot easily be written once and reused across chains.
 

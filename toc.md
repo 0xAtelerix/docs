@@ -1,7 +1,5 @@
 # Table of contents
 
-<!-- this page determines the LHS menu structure in UI -->
-
 ## 📘 Start here
 
 * [Introduction](index.md)
@@ -11,7 +9,7 @@
 * [Challenge](challenge.md)
 * [Solution](solution.md)
 
-## 🛠 Pelagos Technology
+## 🛠️ Pelagos Technology
 
 * [Technological overview](technology/overview.md)
 * [Security at scale](technology/security-at-scale.md)
@@ -21,12 +19,13 @@
 * [Validating Appchains](technology/validating-appchain.md)
 
 ## 🧩 Use Cases
+
 * [Use case 1](use-cases/use-case-1.md)
 
 ## 🏁 Closing
+
 * [Conclusion](conclusion.md)
 
 ## 🧠 Knowledge Base
+
 * [Glossary](glossary.md)
-
-
