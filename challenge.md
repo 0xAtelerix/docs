@@ -23,17 +23,31 @@ layout:
 
 # Challenge
 
-### Introduction
+## Introduction
 
 There is a pressing need for platform-agnostic abstraction layers and developer tooling that enables smart contracts and dApps to scale across ecosystems without rewriting core logic for each new chain or runtime.
 
-Multiplatform decentralized application (dApp) development is complex due to the tight coupling between smart contract logic and the underlying virtual machine or protocol. This fragmentation limits application portability. Crafting a multiplatform app that functions across chains requires investing in complex and costly development.
+Multiplatform decentralized application (dApp) development is complex due to the tight coupling between smart contract logic and the underlying virtual machine or protocol. This fragmentation limits application portability. Currently, crafting a multiplatform app that functions across chains requires investing in complex and costly development.
 
-Currently, the most scalable solutions are general-purpose L1 blockchains such as Solana, Aptos, Sui (vertically scaling), and TON (horizontal scaling). However, none of these can be directly leveraged to scale a single dedicated Appchain.
+While general-purpose L1s such as Solana, Aptos, Sui (vertically scaling), and TON (horizontal scaling) have demonstrated how to scale blockchain throughput across diverse workloads, none of these can be directly leveraged to scale a single dedicated Appchain. 
+
+Scaling a single dedicated appchain for predictable, ultra-low-latency performance introduces a distinct set of architectural demands that current L1 solutions cannot directly satisfy. Meeting these demands requires tackling three core technical challenges head-on:
+
+### 1. Cross-chain reactivity
+
+Supporting instant, real‑time transactions across multiple blockchains at scale demands eliminating the latency between an external chain's state update and the application layer’s response. Even milliseconds of delay can degrade user experience, create arbitrage risk, and limit scalability — making ultra‑low‑latency interoperability a key requirement.
+
+### 2. Consensus at scale
+
+Scaling consensus to serve thousands of simultaneous applications and appchains without creating a performance bottleneck is non-negotiable. A single slow or overloaded consensus engine can throttle the entire ecosystem. The challenge is to deliver massively parallel, high‑throughput consensus that retains security and consistency while scaling elastically with demand.
+
+### 3. Generalized data layer
+
+Data availability must provide high‑performance querying with minimal storage overhead, so applications can access and update complex state instantly, even under massive load. Without such a generalized, high‑efficiency data backbone, developers face costly trade‑offs between flexibility, performance, and scalability.
 
 The two main challenges to a multiplatform app layer are the architectural differences between different protocols and liquidity fragmentation across ecosystems. The following sections present these challenges in further detail.
 
-#### Architecture challenges
+<!-- #### Architecture challenges
 
 Different blockchain architectures represent state and determine finality differently, which in turn shapes how developers must structure applications. Such protocol-specific behaviors make code portability difficult, making cross-ecosystem development costly.
 
@@ -65,6 +79,8 @@ To overcome this fragmentation, protocols turn to bridges or wrapped tokens (e.g
 * Introduce cross-chain trust assumptions, often relying on multisigs, validators, or relayers
 * Increase attack surface and systemic risk (as demonstrated by numerous bridge exploits)
 * Obscure the origin and provenance of assets, complicating composability
+
+-->
 
 ## A challenge demanding a solution
 

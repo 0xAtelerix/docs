@@ -1,6 +1,6 @@
 ## Validating Appchains with Pelagos
 
-As presented in the section [Security bootstrapping with restaking](./security-at-scale.md#security-bootstrapping-with-restaking), Pelagos relies on restakers, aka validators, to secure Appchains by performing consensus, signing external transactions, running execution nodes, and more. Their responsibilities set is paired with strict mechanisms to enforce good behavior and penalize misconduct.
+As presented in the section [Security bootstrapping with restaking](./consensus-at-scale.md#security-bootstrapping-with-restaking), Pelagos relies on restakers, aka validators, to secure Appchains by performing consensus, signing external transactions, running execution nodes, and more. Their responsibilities set is paired with strict mechanisms to enforce good behavior and penalize misconduct.
 
 ### Validator incentivization
 

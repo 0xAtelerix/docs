@@ -31,3 +31,6 @@ Pelagos transforms mainnet launches into the simple act of defining business log
 - Developer-controlled Appchains: launch an Appchain in the same way as  a smart contract
 - Deploy once and instantly tap deep reserves on Ethereum, Solana, BNB, Arbitrum, and beyond without bridges, wrapped tokens, and delays
 
+### Pelagos: scalable security
+
+Pelagos is secured by its own PoS token; additional external restaking are possible to raise the economic security at launch or for high-value flows.

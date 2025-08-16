@@ -4,12 +4,12 @@ Pelagos provides a business rules execution engine built atop a robust, real-tim
 
 From the developer perspective, it feels like working with a standard database rather than dealing with blocks or consensus directly.
 
-At the core of the Pelagos protocol is the DAG consensus layer that writes to immutable incremental Erigon databases, which enable unmatched efficiency and developer flexibility, and leverages several key innovations:
+At the core of the Pelagos protocol is the DAG consensus layer that writes to immutable incremental Erigon-like databases, which enable unmatched efficiency and developer flexibility, and leverages several key innovations:
 
 - Removes traditional transport layers between sequencing and execution, allowing direct database-to-execution communication
 > This results in real-time processing of Appchain-specific logic, significantly boosting performance and reducing latency. 
 - Distributed synchronization using BitTorrent-like protocols to share immutable snapshots globally
-> This approach ensures efficient, verifiable data synchronization and maintains consistency across validators and Appchains. 
+> This approach enables a persistent "data lake" proving access to the state of all blockchains.
 - Enables reactive smart contracts that respond in near real-time to external events and data, fostering a dynamic and responsive execution environment for Appchains
 
 These innovations support efficient developer workflows by providing real-time data access and rapid synchronization.
@@ -25,11 +25,13 @@ The following sections present four key technical layers that allow developers t
 
 Sequencing, validation, and multi-chain messaging are all handled within Pelagos by a decentralized set of validators, greatly reducing security risks and operational overhead.
 
-Pelagos validators provide a universal data availability layer that ensures the integrity of the data that apps and appchains rely on. Pelagos validators operate nodes for all supported blockchains as well as the Pelagos DAG chain. This guarantees constant access to up-to-date, finalized data from multiple L1s and L2s.
+Pelagos validators provide a cross-chain data access layer that ensures the integrity of the data that appchains rely on. Pelagos validators operate nodes for all supported blockchains as well as the Pelagos DAG chain. This guarantees constant access to up-to-date, data from multiple L1s and L2s.
 
-As the head of a supported external chain updates, validators submit and confirm it within Pelagos’ DAG consensus process. Once a sufficient quorum is reached, this external block and all its data (state, events, balances, transactions) become available to all Pelagos Appchains as a native, trust-minimized data source.
+As the head of a supported external chain updates, validators submit and confirm it within Pelagos’ DAG consensus process. Once a sufficient quorum is reached, this external block and all its data (state, events, balances, transactions) become available to all Pelagos Appchains as a native, trust-minimized data source available for querying or data aggregation.
 
-The Pelagos consensus layer allows dApp builders to rely on the strong finality and fundamental security of the asset-managing blockchain that users' funds are native to, while enjoying the scalability and speed offered by the DAG consensus mechanisms. By limiting execution to consensus-approved events ensures that token issuance or state changes are valid, preserving atomicity and preventing double-spends or fraudulent minting.
+The Pelagos consensus layer enables dApp builders to leverage the strong finality and fundamental security assurances of the asset-managing blockchain that users' funds are native to, while enjoying the scalability and speed offered by the DAG consensus mechanisms. 
+
+By restricting execution to only those events that have been validated and agreed upon through the trust‑minimized consensus layer, Pelagos ensures that all token issuance and state changes are cryptographically verified and consensus‑approved. This strict validation prevents invalid or conflicting operations such as double‑spends or fraudulent minting. The consensus layer’s role in establishing a canonical, finalized order of events is essential for maintaining consistency and correctness. This finalized ordering can then be leveraged by higher‑level protocols to coordinate all‑or‑nothing execution across chains and state changes, enabling true atomic multichain transactions.
 
 > See more on the [validator role and responsibilities](./validating-appchain.md#validating-appchains-with-pelagos)
 
@@ -37,8 +39,12 @@ The Pelagos consensus layer allows dApp builders to rely on the strong finality 
 
 The programmable application layer then leverages this high-availablity external blockchain data &mdash; supporting a full spectrum of business logic that can trigger automatic execution of predefined actions based on specified parameters.
 
-This ensures authentic, timely, and verifiable data delivery, powering rich business logic and seamless cross-chain composability. Furthermore, the application logic layer offers significant deployment flexibility.
+<!-- Ist't it a bit to broad? It doesn't give understanding what can be build and what kind of composability it gives.
+ -->
+ This ensures authentic, timely, and verifiable data delivery, powering rich business logic and seamless cross-chain composability. Furthermore, the application logic layer offers significant deployment flexibility.
 
+<!-- Looks like multi-VM, which is not fully correct
+ -->
 Appchain developers can define business rules, automations, or application-specific logic using any environment &mdash; including custom Docker containers, EVM, WebAssembly, MoveVM, and then deploy these as independent Appchains.
 
 Each Appchain runs as an independent DAG-based chain instance, leveraging the Pelagos validator sets that offer security via restaking.
@@ -59,7 +65,7 @@ For example, an app's business logic might:
 
 Reactive contracts are secure and can operate with near-instant finality at the Appchain level.
 
-The security of reactive events is enforced with threshold multi-sig logic. This ensures that outbound actions are only executed when a quorum of validators collectively sign the transaction using a Threshold Signature Scheme (TSS) based on Distributed Key Generation (DKG) protocols, ensuring robust, distributed security without single points of failure.
+<!-- The security of reactive events is enforced with threshold multi-sig logic. This ensures that outbound actions are only executed when a quorum of validators collectively sign the transaction using a Threshold Signature Scheme (TSS) based on Distributed Key Generation (DKG) protocols, ensuring robust, distributed security without single points of failure. -->
 
 > See more on [event-based triggers](./extensible-tokenomics.md#event-based-logic).
 
