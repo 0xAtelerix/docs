@@ -37,14 +37,18 @@ By restricting execution to only those events that have been validated and agree
 
 ### Application logic layer
 
-The programmable application layer then leverages this high-availablity external blockchain data &mdash; supporting a full spectrum of business logic that can trigger automatic execution of predefined actions based on specified parameters.
+At the core of Pelagos’ value proposition is the programmable application logic layer, which harnesses reliable, high-availability blockchain data from across multiple chains. This layer enables developers to implement a full spectrum of sophisticated business logic that can automatically trigger actions based on real-time on-chain events and predefined conditions.
 
-<!-- Ist't it a bit to broad? It doesn't give understanding what can be build and what kind of composability it gives.
- -->
- This ensures authentic, timely, and verifiable data delivery, powering rich business logic and seamless cross-chain composability. Furthermore, the application logic layer offers significant deployment flexibility.
+By delivering authentic, timely, and verifiable data, the application logic layer powers rich, complex workflows that seamlessly interact across diverse blockchain ecosystems. This capability is essential for enabling advanced use cases like scalable Appchain execution, multichain liquidity management, and rapid Appchain launches—each reliant on accurate cross-chain information and responsive contract behavior.
 
-<!-- Looks like multi-VM, which is not fully correct
+Moreover, this layer provides significant deployment flexibility, allowing teams to customize their logic and integrate new chains efficiently without compromising security or performance. It transforms raw blockchain data into actionable intelligence, driving innovation and interoperability across the decentralized landscape.
+
+<!-- See above in response to: Ist't it a bit to broad? It doesn't give understanding what can be build and what kind of composability it gives.
  -->
+
+<!-- WARNING -- concept of choice of VM goes across this paper, need to fine tune this messagig to be truthful: Looks like multi-VM, which is not fully correct
+ -->
+
 Appchain developers can define business rules, automations, or application-specific logic using any environment &mdash; including custom Docker containers, EVM, WebAssembly, MoveVM, and then deploy these as independent Appchains.
 
 Each Appchain runs as an independent DAG-based chain instance, leveraging the Pelagos validator sets that offer security via restaking.
