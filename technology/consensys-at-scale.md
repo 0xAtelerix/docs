@@ -21,7 +21,7 @@ The Erigon DAG database ensures that the core universal state cannot be altered 
 <!-- Erigon and Erigon DB are two different things
  -->
 
- Erigon's immutable database model provides a multichain, universal state, ensuring efficient state synchronization. This enables Appchains to handle rapidly growing states across a multichain landscape without performance degradation.
+Erigon's immutable database model provides a multichain, universal state, ensuring efficient state synchronization. This enables Appchains to handle rapidly growing states across a multichain landscape without performance degradation.
 
 Erigon's DAG database achieves this through its key attributes: 
 -  Immutable state snapshots providing tamper-evident, incremental snapshots of blockchain states. 
@@ -33,6 +33,12 @@ only relevant components, making it highly adaptable for diverse Appchain archit
 - Graduality: Transaction-based graduality allos for efficient,
 optimistic execution of EVM-like chains.
 > Rolling back changes from a single transaction costs nearly nothing via Erigon.
+
+### Predictable data flows and custom block formation
+
+On top of this resilient consensus foundation, Pelagos provides VMs with predictable data flows that optimize execution flexibility for Appchains. Transactions and external L1 blocks are ingested as a deterministic, ordered stream directly from the sequencing layer. Applications have the power to define custom rules for slicing this stream into blocks — enabling custom batching logic and block construction strategies best suited to their needs.
+
+Processing transactions and blocks in batches drives high throughput at the DAG level, allowing Appchains to both maximize performance and fine-tune state transitions in accordance with their unique application requirements.
 
 ### Extendable security bootstrapping with restaking
 

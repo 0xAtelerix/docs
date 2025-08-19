@@ -1,20 +1,30 @@
 ## Extensible tokenomics support
 
-Given that protocols are implementing tokenomics innovations, Pelagos provides a reactive-style API to support tokenomics designs. This allows Protocols to support complex tokenomics logic that drives ecosystem growth by combining incentivization and enhanced security.
+Pelagos offers unparalleled flexibility for designing advanced tokenomics by providing a reactive-style API, that goes far beyond simple event-based triggers. 
 
-The API supports six hooks: pre-epoch, post-epoch, pre-block, post-block, pre-transaction, and post-transaction. These hooks are leveraged via smart contracts. They execute at the relevant events, with their output manifesting as transactions inserted before or after the event (epoch, block, or transaction).
+Pelagos introduces a powerful data-centric approach for the next generation of economic logic: providing a reactive-style API to support the full range of possible tokenomics designs. Developers can not only respond to onchain events, but can  also leverage access to the holistic state and aggregated data from across multiple blockchains. This allows Protocols to support complex tokenomics logic that, for instance, automatically adjust to the most profitable liquidity pools, predict price fluctuations, or dynamically allocate rewards based on comprehensive ecosystem health indicators, rather than just isolated events.
 
-The tokenomics layer receives ordered transactions from the Sequencing layer, making it an optional layer that complements the Appchain's execution environment.
+While event triggers are fully supported via standardized smart contract hooks, executing at meaningful points throughout the chain’s lifecycle, Pelagos stands apart in enabling:
+
+- Aggregated state analysis from multiple networks, not limited to just events or transactions on a single chain
+
+- Data-driven logic, such as predicting token prices from a basket of cross-chain assets or optimizing exchange routing for profitability in real time
+
+- Composable economic mechanisms fueled by continuous monitoring, comparison, and adjustment based on the combined state of many networks
+
+This tokenomics layer receives ordered transactions from the sequencing layer, making it an optional layer that complements the Appchain's execution environment. In this way, Pelagos provides extensive flexibility to implement these and other tokenomics logical constructs, empowering developers to create dynamic, ecosystem-wide economic models. While there is no way to predict future applications, designers are supported to implement the widest possible logic. Using data signal such as liquidity, user activity, or even cross-chain arbitrage signals, protocols can respond to complex, evolving market conditions to provide:
+
+- Real-time token price adjustments based on user transaction data or external blockchain data
+- NFT-powered transaction payments and dynamic subscription models
+- Intelligent, programmatically managed distribution of rewards for specific actions, such as governance participation
+- Recalculation of APY or inflation rates
+- MEV (Miner Extractable Value) optimizations
+
+and more.
 
 ### Event-based logic
 
-Pelagos provides extensive flexibility to implement these and other tokenomics ideas, empowering developers to create dynamic, ecosystem-wide economic models. While there is no way to predict future applications, designers can implement the widest possible logic, not limited to, but including:
-
-- Token price adjustments based on user transaction data or external blockchain data.
-- Transaction payments via NFTs or NFT subscriptions.
-- Reward distribution for specific actions, such as governance participation.
-- Recalculation of APY or inflation rates.
-- MEV (Miner Extractable Value) optimizations.
+The API supports six event hooks: pre-epoch, post-epoch, pre-block, post-block, pre-transaction, and post-transaction, all leveraged via smart contracts. They execute at the relevant events, with their output manifesting as transactions inserted before or after the event (epoch, block, or transaction).
 
 The above functions are clearly demarcated based on where in the lifecycle they occur, for example these events could trigger the following business logic:
 

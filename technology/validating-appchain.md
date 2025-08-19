@@ -1,12 +1,12 @@
 ## Validating Appchains with Pelagos
 
-As presented in the section [Security bootstrapping with restaking](./consensus-at-scale.md#security-bootstrapping-with-restaking), Pelagos relies on restakers, aka validators, to secure Appchains by performing consensus, signing external transactions, running execution nodes, and more. Their responsibilities set is paired with strict mechanisms to enforce good behavior and penalize misconduct.
+Pelagos relies validators, to secure Appchains by performing consensus, signing external transactions, running execution nodes, and more. Their responsibilities set is paired with strict mechanisms to enforce good behavior and penalize misconduct.
 
 ### Validator incentivization
 
-Validators earn proportional rewards based on the number of confirmed DAG events they produce. These rewards are distributed onchain, tracked, and managed by the Pelagos reactive contract.
+Validators must stake in the PoS system and earn proportional rewards based on the number of confirmed DAG events they produce. These rewards are distributed onchain, tracked, and managed by the Pelagos reactive contract.
 
-Validators earn by correctly signing checkpoints, participating in TSS signing, seeding immutable Appchain databases, and participating in scaling operations (shards). While, [penalties](#validator-enforcement-mechanisms) reduce rewards and, in the event of serious misconduct, the reactive contract can slash staked tokens.
+Validators earn by correctly signing checkpoints, participating in TSS signing, seeding immutable Appchain databases, and participating in scaling operations (shards). While, [penalties](#validator-enforcement-mechanisms) reduce rewards and, in the event of serious misconduct, the reactive contract can slash their staked tokens.
 
 ### Key responsibilities of a Pelagos validator
 
@@ -49,9 +49,8 @@ Each validator is responsible for operating Appchain containers with resource is
 
 Pelagos protocol enforces strict penalties on validators to maintain network safety, liveness, and data integrity. For example, fraud-proofs are created and submitted to the AVS contract if the protocol identifies:
 
-- Conflicting/double-signing DAG events
-- Double-signing: Validators must never sign two conflicting DAG events with the same epoch and sequence number
-- Signing unauthorized transactions: Validators must only sign transactions that originate from the sequenced DAG external transaction list; signing unauthorized transactions leads to fraud proofs.
+- Conflicting/double-signing DAG events: validators must never sign two conflicting DAG events with the same epoch and sequence number
+- Signing unauthorized transactions: validators must only sign transactions that originate from the sequenced DAG external transaction list; signing unauthorized transactions leads to fraud proofs
 - Failure to execute Appchain logic
 - Failure to synchronize new validator sets
 - Voting on non-final blocks
