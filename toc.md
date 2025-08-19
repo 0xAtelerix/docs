@@ -1,7 +1,5 @@
 # Table of contents
 
-<!-- this page determines the LHS menu structure in UI -->
-
 ## 📘 Start here
 
 * [Introduction](index.md)
@@ -11,7 +9,7 @@
 * [Challenge](challenge.md)
 * [Solution](solution.md)
 
-## 🛠 Pelagos Technology
+## 🛠️ Pelagos Technology
 
 * [Technological overview](technology/overview.md)
 * [Design considerations](technology/design-considerations.md)
@@ -22,14 +20,15 @@
 * [Validating Appchains](technology/validating-appchain.md)
 
 ## 🧩 Use Cases
+
 * [Multichain Appchain launch](use-cases/multichain-launch.md)
 * [Appchain scaling](use-cases/scaling.md)
 * [Unlocking cross-chain liquidity](use-cases/liquidity.md)
 
 ## 🏁 Closing
+
 * [Conclusion](conclusion.md)
 
 ## 🧠 Knowledge Base
+
 * [Glossary](glossary.md)
-
-
