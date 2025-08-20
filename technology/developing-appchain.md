@@ -1,3 +1,7 @@
+---
+todo: fix the gRPC bit
+---
+
 ## Developing an Appchain with Pelagos
 
 Launching an Appchain with Pelagos is as simple as deploying a smart contract. The developer can execute a single transaction providing the:
@@ -8,18 +12,22 @@ Launching an Appchain with Pelagos is as simple as deploying a smart contract. T
 
 and run each Appchain exactly as one runs one, or multiple, microservices.
 
-<!-- Whats the ask here: not really related things: "With Pelagos, these gRPC setup steps are hidden behind simple callback hooks and event subscriptions, allowing developers to focus on business logic." 
+<!-- Fix: "With Pelagos, these gRPC setup steps are hidden behind simple callback hooks and event subscriptions, allowing developers to focus on business logic." 
+
+gRPC is unrelated to the hooks function 
+As dev must specify how to handle user transactions,
+Abstracted away: Security layer, sequencing of transactions, accessing external chain data, discovering rates, accessing external liquidity pools
+All they have to do is interact with contracts, optionally reactive contracts and determine how to handle user transactions could leverage your own API (or might use an existing gRPC or use alt logic) 
+Drip the whole challenge bit
+Normally, using gRPC in a distributed system requires developers to define services in Protocol Buffers (Protobuf), handle client and server pairing and stub generation, HTTP/2 multiplexing, and deal with stream or unary message handling, serialization, and error management.
  -->
 
 Normally, using gRPC in a distributed system requires developers to define services in Protocol Buffers (Protobuf), handle client and server pairing and stub generation, HTTP/2 multiplexing, and deal with stream or unary message handling, serialization, and error management. With Pelagos, these gRPC setup steps are hidden behind simple callback hooks and event subscriptions, allowing developers to focus on business logic.
 
 Pelagos abstracts away the complexities of gRPC communication between execution, state, and sequencing layers. From the perspective of a developer, it feels like working with a standard database rather than dealing with blocks or consensus directly, while providing access to:
 
-<!-- is this fixed: I am not sure, what does it mean "Blockchain data availability in Appchain smart contracts." and "Blockchain data finality guarantees."
- -->
-
 - Blockchain data for use within Appchain smart contracts
-- Assurance that the blockchain data is finalized and immutable
+- Assurance that the blockchain data is valid and immutable
 - Creation, signing, and submission of transactions to target blockchains
 - Support for TSS (Threshold Signature Schemes) using the GG20 and FROST (ROAST) protocols
 
