@@ -1,4 +1,4 @@
-# Use Case: Unlocking Cross-Chain Liquidity
+# Use Case: Unlocking cross-chain liquidity
 
 Pelagos delivers a seamless multichain layer designed for high performance and low-latency interaction across a wide range of blockchains. This capability is critical for Appchain developers and DeFi protocols that need a truly interoperable environment to thrive.
 

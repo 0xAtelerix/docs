@@ -16,7 +16,7 @@ Welcome to Pelagos: the first universal execution layer that turns every onchain
 
 Pelagos' modular architecture supports separate parallel DAGs for sequencing as well as internal Appchain sharding. This allows the protocol to effectively support scaling Appchains without sacrificing performance or security across all chains in one 0.4 s DAG block.
 
-Sharding provides vertical scaling: efficiently enhancing performance within individual Appchains, improving transaction throughput and processing speed. Horizontal scaling enables multiple Appchains to operate mutiple DAGs concurrently - allowing capacity to seamelesly match user demand. This architecture ensures that growth doesn’t compromise network performance or decentralization, empowering projects to scale fluidly as their ecosystems evolve.
+Sharding provides performance scaling: efficiently enhancing throughput within individual Appchains, improving processing speed. Horizontal scaling enables multiple Appchains to operate mutiple DAGs concurrently - allowing consensus processing capacity to seamelesly match user demand. This architecture ensures that growth doesn’t compromise network performance or decentralization, empowering projects to scale fluidly as their ecosystems evolve.
 
 ### Customizable security with validator restaking sets
 

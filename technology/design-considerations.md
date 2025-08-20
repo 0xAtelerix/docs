@@ -96,9 +96,7 @@ The Pelagos DAG is designed to support a growing number of users, transactions, 
 
 Both state and historical data are stored in Erigon’s highly optimized, incrementally updated, immutable databases. These are synchronized across validators via gossip protocols that support rapid read/write capabilities and seamless, verifiable state sync.
 
-Both the core platform and individual Appchains can be sharded for scalability. Sequencing and execution can be split across multiple microservices, allowing the platform to scale to thousands of Appchains and up to 100,000+ TPS as needed.
-
-Individual Appchains can also scale independently; both horizontally and vertically. This scaling is fully controlled by the user and can be adjusted as the Appchain evolves.
+Both the core platform and individual Appchains can be sharded for scalability. Sequencing and execution can be split across multiple microservices, allowing the platform to scale to thousands of Appchains and up to 100,000+ TPS as needed. Individual Appchains can also scale independently.
 
 ### Appchain sequencing and parallel scaling
 
@@ -114,7 +112,7 @@ This modular sequencing design ensures that high transaction volumes or temporar
 
 As network demand shifts and certain Appchains start to require more sequencing resources, Pelagos offers seamless vertical scaling. If an Appchain begins to consume disproportionate amounts of bandwidth or computation, it can be migrated, without data loss or break in continuity, to its own dedicated sequencing DAG. This migration is elegantly handled at the epoch boundary: after the Appchain’s checkpoint is committed. The Appchain is then shifted out of the shared sequencer onto a standalone path, with its state and event history preserved.
 
-##### Figure 1. Horizontal and vertical scaling within Pelagos
+##### Figure 1. Scaling within Pelagos
 
 ```mermaid
 flowchart TD
@@ -129,7 +127,7 @@ flowchart TD
   VAL["Pelagos Validators: Data availability, sequencing, multi-chain messaging"]:::process
 
   %% Horizontal Scaling
-  subgraph H["Horizontal Scaling"]
+  subgraph H["Consensus Scaling"]
     direction TB
 
     %% Appchain 1 & 2 (separate DAGs)
@@ -143,7 +141,7 @@ flowchart TD
     OT1 --> AC2
 
     %% Appchain 3 (Vertical Scaling from single DAG)
-    subgraph VS3["Vertical Scaling: Appchain 3"]
+    subgraph VS3["Performanace Scaling: Appchain 3"]
       direction TB
       DAG3[DAG 2 Sequencer]:::process
       OT3a[Ordered Transactions: Shard A]:::process
@@ -180,6 +178,6 @@ flowchart TD
   style VS3 fill:#fce5cd,stroke:#333,stroke-width:2px
 ```
 
-These features ensure Pelagos scales horizontally by parallelizing sequencing across many DAGs, and vertically, by promoting individual Appchains into powerful standalone flows whenever necessary. This many-to-many sequencing model underpins both day-one performance and long-term flexibility for every user and developer on the Pelagos platform.
+These features ensure Pelagos supports consensus scaling by parallelizing sequencing across many DAGs, and by promoting individual Appchains into powerful standalone flows whenever necessary. This many-to-many sequencing model underpins both day-one performance and long-term flexibility for every user and developer on the Pelagos platform.
 
-> See more on [horizontal and vertical scaling with Pelagos](./developing-appchain.md#scale-an-appchain-with-pelagos).
+> See more on [scaling with Pelagos](./developing-appchain.md#scale-an-appchain-with-pelagos).
