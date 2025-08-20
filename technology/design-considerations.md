@@ -12,6 +12,16 @@ Any invariant checks, state verification, or heavy computation occur in the exec
 - Keeps sequencing lightweight enough for near‑real‑time operation
 - Allows Appchain developers to apply custom validation logic without impacting network‑wide throughput
 
+## Data availability and consistency guarantees
+
+The universal data layer is key to abstracting and unifing state management across heterogeneous blockchains. By exposing a rich, composable data interface and enabling dynamic, on-chain analytics and tokenomics, the data layer dramatically reduces development friction. However, this adds complexity in state management and validation, requiring sophisticated tooling and abstractions.
+
+### Trade-off: Data from blockchain nodes vs oracles
+
+Using full blockchain nodes to source data provides the freshest, lowest latency, and richest data frames suitable for reactive contracts but comes with costs and operational overhead.
+
+Oracles can simplify data acquisition but often introduce latency, potential inaccuracies, and limitations on data richness. Pelagos's design prioritizes decentralization and resilience while minimizing validator costs while also delivering rich, real-time data.
+
 ## Historical indexing as a native capability
 
 A core capability of the Pelagos architecture is the efficient user historical index — a multi-source, developer-defined data layer available to every Appchain.
@@ -39,6 +49,12 @@ In leader‑based consensus models (e.g., Tendermint, Solana, Aptos), the leader
 - Avoid single points of failure
 - Increase stability under validator churn or targeted disruption
 - Let any validator initiate and process transactions, enhancing censorship resistance
+
+### Trade-off: Leaderless consensus vs leader-based consensus
+
+Leaderless consensus reduces network overhead, improves decentralization, and avoids delays caused by leader failures. However, it may incur slightly higher latency (~80-100 ms) than leader-based alternatives.
+
+Leader-based consensus can offer marginally lower latency but centralizes data updates and risks delay during leader failure or rotation. Again, Pelagos's design prioritizes decentralization and resilience without significantly sacrificing latency by choosing leaderless DAG sequencing.
 
 ## Instant finality and low latency
 
