@@ -52,7 +52,7 @@ Contributing factors include:
 
 ### Network throughput vs. CPU trade‑off
 
-After optimising CPU and memory usage through Erigon’s database model, the main scaling limit shifts to **network bandwidth**. Pelagos’ consensus is engineered to:
+After optimising CPU and memory usage through an Erigon-like database model, the main scaling limit shifts to **network bandwidth**. Pelagos’ consensus is engineered to:
 
 - Reduce duplicate transaction broadcasts
 - Optimise packet flow and message size
@@ -94,7 +94,7 @@ Pelagos’ decision to implement leaderless DAG sequencing enables a range of ad
 
 The Pelagos DAG is designed to support a growing number of users, transactions, peak loads, and an expanding state enabling the platform to scale. The DAG database structure is central Pelagos' ability to support the seamless, parallel operation of many Appchains as the platform grows.
 
-Both state and historical data are stored in Erigon’s highly optimized, incrementally updated, immutable databases. These are synchronized across validators via gossip protocols that support rapid read/write capabilities and seamless, verifiable state sync.
+Both state and historical data are stored in the Erigon-inspired, highly optimized, incrementally updated, immutable databases. These are synchronized across validators via gossip protocols that support rapid read/write capabilities and seamless, verifiable state sync.
 
 Both the core platform and individual Appchains can be sharded for scalability. Sequencing and execution can be split across multiple microservices, allowing the platform to scale to thousands of Appchains and up to 100,000+ TPS as needed. Individual Appchains can also scale independently.
 

@@ -32,15 +32,6 @@ Rather than relying on traditional bridges the protocol facilitates real-time, t
 
 Together, these features give teams unparalleled control over their Appchain’s scalability, security, and liquidity &mdash; allowing them to innovate boldly while relying on Pelagos’ robust, interoperable infrastructure as the foundation of their growth.
 
-<!-- Pelagos is secured by its own PoS token; additional external restaking are possible to raise the economic security at launch or for high-value flows.
-* Routing trades through DEXs etc., across all chains in one 0.4 s DAG block
-* No TVL fragmentation or incentives required
-* Continuous cross-chain rebalancing and no slippage spikes
-* True atomic cross-chain execution: ideal for high-frequency arbitrage, and CEX-speed DEXs
-* Real-time liquidations: sell collateral on the deepest pool, repay debt, and update ledger in sub-seconds {a universal ledger? is this a state agreement meta?}
-* Permissioned and hybrid Real-World Asset (RWA) support: tokenize real-world assets on private shards and settle cash legs against DeFi pools in one atomic bundle
- -->
-
 ## Pelagos: redefining mutichain development 
 
 Pelagos transforms mainnet launches into the simple act of defining business logic, tokenomics, and project value. Validating, sequencing, scaling, security, and multichain APIs are all handled by Pelagos.
