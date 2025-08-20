@@ -68,6 +68,13 @@ Evgenii Danilenko
 https://drive.google.com/file/d/1siEto9mlIDgLtGrQPCxlnFkvVjZbJqhK/view?usp=drive_link
 
 
+Like cosmos -- can use golang or rust to handle user transactions
+
+can use EVM or WASM for VM
+
+Doesnt matter what tx language the code is written in, just gotta handle txs for a particular VM and go
+
+
 Reactive transaction flow
 
 Application can specify own tx
@@ -75,7 +82,6 @@ or
 reactive tx
 
 Receive tx from RPC
-
 
 for reactive tx they can specify conditions for automated execution once conditions met (eg liquidation events, aggregated data ... event could be as simple as tx Alice to Bob locking tokens in a contract)
 

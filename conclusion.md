@@ -1,4 +1,4 @@
-Pelagos’ architecture merges Erigon’s proven efficiency with cutting-edge Appchain modularity. The results are fast, secure, scalable, developer-friendly deployments that remove traditional pain points from both single-chain and multichain projects. By offering deterministic sequencing, rapid scaling, robust validator security, and seamless multichain APIs, Pelagos truly advances the next generation of decentralized application infrastructure.
+Pelagos’ architecture merges the proven efficiency of Erigon-like DAG with cutting-edge Appchain modularity. The results are fast, secure, scalable, developer-friendly deployments that remove traditional pain points from both single-chain and multichain projects. By offering deterministic sequencing, rapid scaling, robust validator security, and seamless multichain APIs, Pelagos truly advances the next generation of decentralized application infrastructure.
 
 While several technologically sound solutions have been developed that are designed to enable the deployment of Appchains, they introduce uneasy compromises.
 
@@ -18,8 +18,7 @@ In short, none of the existing solutions truely offer a scalable, low cost, Appc
 
 Pelagos offers a novel solution that ensures developers can launch with:
 
-- L1-grade security with restaking without reliance on Appchain native tokens or sidechain
-security models
+- L1-grade security with restaking without reliance on Appchain native tokens or sidechain security models
 - Custom VMs and tokenomics without requiring a full blockchain development team
 - Native multichain support providing seamless, low-latency access to any L1 for both data retrieval (e.g.,
 building indexes) and outbound transactions

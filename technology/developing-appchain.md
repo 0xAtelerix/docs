@@ -1,34 +1,43 @@
+---
+todo: fix the gRPC bit
+---
+
 ## Developing an Appchain with Pelagos
 
 Launching an Appchain with Pelagos is as simple as deploying a smart contract. The developer can execute a single transaction providing the:
 
 - Hash of a Docker container
 - (Optional) genesis data
-- Info-hash (for immutable database distribution)
+- (Optional) Info-hash (for immutable database distribution)
 
 and run each Appchain exactly as one runs one, or multiple, microservices.
+
+<!-- Fix: "With Pelagos, these gRPC setup steps are hidden behind simple callback hooks and event subscriptions, allowing developers to focus on business logic." 
+
+gRPC is unrelated to the hooks function 
+As dev must specify how to handle user transactions,
+Abstracted away: Security layer, sequencing of transactions, accessing external chain data, discovering rates, accessing external liquidity pools
+All they have to do is interact with contracts, optionally reactive contracts and determine how to handle user transactions could leverage your own API (or might use an existing gRPC or use alt logic) 
+Drip the whole challenge bit
+Normally, using gRPC in a distributed system requires developers to define services in Protocol Buffers (Protobuf), handle client and server pairing and stub generation, HTTP/2 multiplexing, and deal with stream or unary message handling, serialization, and error management.
+ -->
 
 Normally, using gRPC in a distributed system requires developers to define services in Protocol Buffers (Protobuf), handle client and server pairing and stub generation, HTTP/2 multiplexing, and deal with stream or unary message handling, serialization, and error management. With Pelagos, these gRPC setup steps are hidden behind simple callback hooks and event subscriptions, allowing developers to focus on business logic.
 
 Pelagos abstracts away the complexities of gRPC communication between execution, state, and sequencing layers. From the perspective of a developer, it feels like working with a standard database rather than dealing with blocks or consensus directly, while providing access to:
 
-- Blockchain data availability in Appchain smart contracts.
-- Blockchain data finality guarantees.
-- Creation, signing, and submission of transactions to target blockchains.
-- Support for both GG20 and FROST(ROAST) protocols for TSS
+- Blockchain data for use within Appchain smart contracts
+- Assurance that the blockchain data is valid and immutable
+- Creation, signing, and submission of transactions to target blockchains
+- Support for TSS (Threshold Signature Schemes) using the GG20 and FROST (ROAST) protocols
 
 This ensures a seamless, scalable, and secure multichain interaction model.
 
 ### Select the desired execution environment
 
-Pelagos puts the choice of which virtual machines (VMs) to use for transaction processing in the hands of the developer. Developers can deploy any Docker container as the execution environment, enabling flexible and custom transaction handling.
+Pelagos puts the choice of which virtual machines (VMs) and which programming language to use for transaction processing in the hands of the developer. They can select how to handle user transactions, for example with Golang or Rust, etc. Furthermore, developers can deploy any Docker container as the execution environment, enabling flexible and custom transaction handling. 
 
 It's even possible for developers to build heterogeneous Appchains by combining EVM, SVM, and Move execution environments across different shards within the same Appchain.
-
-The VMs are supported with predicable data flows, for example:
-
-- Deterministically ordered transactions and L1 blocks from the sequencing layer
-- Transactions and blocks are processed in batches, allowing the developer to define custom block formation rules.
 
 Furthermore, Pelagos embraces migrations and hard forks as a natural part of Appchain evolution and supports this with mechanisms designed to handle safe data migration and execution updates.
 
@@ -43,13 +52,13 @@ unique solutions tailored to their needs.
 
 Appchains deployed over Pelagos enjoy direct, native-level access to other blockchains for data retrieval and transaction submission. The multichain layer in Pelagos works like a universal L1SLOAD for any chain.
 
-Combined with integrated TSS signing protocols for supported chains (secured by restaking and DKG), Appchains can send external transactions to other protocols or Appchains as a natural extension of their execution environment.
+Combined with integrated TSS signing protocols for supported chains (secured by PoS, DKG, slashing, and restaking), Appchains can send external transactions to other protocols or Appchains as a natural extension of their execution environment.
 
 By enabling easy interoperability, Pelagos lets Appchains reuse and enhance existing protocols rather than competing for liquidity and users.
 
 ### Scale an Appchain with Pelagos
 
-Pelagos brings Web2 scalability practices directly to Appchains; employing the Erigon DB-inspired model For Appchain data storage. This model is optimized for blockchains with large or rapidly growing states, offering:
+Pelagos brings Web2 scalability practices directly to Appchains; employing the Erigon DB-inspired model for Appchain data storage. This model is optimized for blockchains with large or rapidly growing states, offering:
 
 - Hot databases: Designed to handle real-time data writes with periodic conversion into immutable snapshots.
 - Immutable databases: Read-only incremental state snapshots that represent historical blockchain states.
@@ -60,17 +69,18 @@ These immutable databases serve as a historical record of the blockchain {"of th
 - Operators can verify and validate the integrity of immutable databases before downloading, ensuring tamper-proof data distribution.
 - By adopting this model, Pelagos transitions from traditional sync protocols, which distribute blocks, transactions, and state pieces with proofs, to efficient, one-time event, large-database file downloads. This significantly improves scalability and operational efficiency by reducing the messaging load.
 
-#### Horizontal scaling 
+#### Sharding
 
-{this section doesn't match its diagram --> need to verify that the horizontal scale is from the multiple DAG processing and that vertical is the copies/shards of the chain itself, if so fix the words here, if not -- fix the diagram!!}
-
-In Pelagos, each Appchain can decide when to scale horizontally by sharding. A single sequencing process will serve these shards, allowing the Appchain to grow and scale seamlessly.
+In Pelagos, each Appchain can decide when to scale by sharding. A single sequencing process will serve these shards, allowing the Appchain to grow and scale seamlessly.
 
 Developers can request additional shards by prompting Pelagos to create new execution microservices and redirect transactions from sequencing into a custom sharding function. For example, `get_shard(tx)` -> `shard_id`.
 
 This mechanism transparently scales the transaction load (TPS) by distributing it across multiple shards, see Figure 2.
 
-##### Figure 2. Horizontal and vertical Appchain scaling
+##### Figure 2. Individual Appchain scaling
+
+<!-- according to that diagram an App receives transactions from multiple DAGs. That is not correct.
+ -->
 
 ```mermaid
 graph TD
@@ -79,15 +89,13 @@ graph TD
     classDef vert fill:#fff0e6,stroke:#ff6600,stroke-width:2px;
 
     %% Multiple DAGs feeding horizontal scaling
-    subgraph Horizontal_Scaling["Horizontally-scaled DAGs"]
+    subgraph Horizontal_Scaling["**"]
         class Horizontal_Scaling horiz
         DAG1[DAG 1] --> OT1[Ordered Transactions]
-        DAG2[DAG 2] --> OT2[Ordered Transactions]
-        DAG3[DAG 3] --> OT3[Ordered Transactions]
     end
 
     %% Vertically scaling box: sharding function & shards
-    subgraph Vertical_Scaling["Vertically-scaled shards"]
+    subgraph horizontal_Scaling["Horizontal-scaled shards"]
         class Vertical_Scaling vert
         shardFn["choose_shard(tx) → shardID"]
         Shard1[Appchain 1 - Shard 1]
@@ -98,8 +106,6 @@ graph TD
 
     %% Connect ordered txs to vertical scaling (sharding)
     OT1 --> shardFn
-    OT2 --> shardFn
-    OT3 --> shardFn
 
     %% Epoch checkpoint is out of vertical scaling subgraph
     Shard1 --> CP[Epoch checkpoint]
@@ -107,8 +113,6 @@ graph TD
 
     %% Validators connect directly to each DAG
     Validators[Validators] --> DAG1
-    Validators --> DAG2
-    Validators --> DAG3
 
     %% Apply styles
     class Horizontal_Scaling horiz
@@ -118,9 +122,9 @@ graph TD
 
 Furthermore, this approach extends service offerings for restaking operators who can offer additional rewards from shards. It is the thesis of the Pelagos designers that this model will foster organic ecosystem growth by aligning incentives among Appchains, validators, and service providers. 
 
-#### Vertical scaling
+#### Consensus scaling
 
-Vertical scaling is supported supported at the database layer, thanks to Erigon's efficent DAG database. The immutable, incremental database design ensures optimal data locality and minimizes read amplification by including fast-access and presence/absence indexes from the outset. As a result, this database is inherently optimized for syncing and scaling.
+Consensus scaling is supported at the database layer, thanks to the efficent DAG database. The immutable, incremental database design ensures optimal data locality and minimizes read amplification by including fast-access and presence/absence indexes from the outset. As a result, this database is inherently optimized for syncing and scaling.
 
 To further enhance efficiency, these databases are distributed via BitTorrent-like protocols, enabling computation-free synchronization. This effective combination of database design and synchronization strategies mirrors the success of Erigon,the primary archive node solution applied by Ethereum and Polygon due to its exceptional optimization and sync capabilities.
 
@@ -132,7 +136,10 @@ Developers can determine the size of the blocks produced by their Appchains acco
 
 ### Leverage trigger event logic
 
-Using the reactive smart contract, developers can leverage the unified data environment offered by Pelagos as a multichain data availability layer for in-app logic by setting up trigger events. 
+<!-- Consider section on leveraging the metadata from multichain environments in addition to this section that uses single chain events 
+ -->
+
+ Using the reactive smart contract, developers can leverage the unified data environment offered by Pelagos as a multichain data availability layer for in-app logic by setting up trigger events. 
 
 Consider the following code sample that listens for events on data collected on a supported external chain and triggers cross-chain transactions: 
 

@@ -23,13 +23,13 @@ layout:
 
 # Challenge
 
-### Introduction
+## Introduction
 
 There is a pressing need for platform-agnostic abstraction layers and developer tooling that enables smart contracts and dApps to scale across ecosystems without rewriting core logic for each new chain or runtime.
 
-Multiplatform decentralized application (dApp) development is complex due to the tight coupling between smart contract logic and the underlying virtual machine or protocol. This fragmentation limits application portability. Crafting a multiplatform app that functions across chains requires investing in complex and costly development.
+Multiplatform decentralized application (dApp) development is complex due to the tight coupling between smart contract logic and the underlying virtual machine or protocol. This fragmentation limits application portability. Currently, crafting a multiplatform app that functions across chains requires investing in complex and costly development.
 
-Currently, the most scalable solutions are general-purpose L1 blockchains such as Solana, Aptos, Sui (vertically scaling), and TON (horizontal scaling). However, none of these can be directly leveraged to scale a single dedicated Appchain.
+While general-purpose L1s such as Solana, Aptos, Sui (vertically scaling), and TON (horizontal scaling) have demonstrated how to scale blockchain throughput across diverse workloads, none of these can be directly leveraged to scale a single dedicated Appchain. 
 
 The two main challenges to a multiplatform app layer are the architectural differences between different protocols and liquidity fragmentation across ecosystems. The following sections present these challenges in further detail.
 

@@ -12,7 +12,8 @@
 ## 🛠️ Pelagos Technology
 
 * [Technological overview](technology/overview.md)
-* [Security at scale](technology/security-at-scale.md)
+* [Design considerations](technology/design-considerations.md)
+* [Consensus at scale](technology/consensus-at-scale.md)
 * [Asset portability](technology/asset-portability.md)
 * [Extensible tokenomics](technology/extensible-tokenomics.md)
 * [Developing an Appchain](technology/developing-appchain.md)
@@ -20,7 +21,9 @@
 
 ## 🧩 Use Cases
 
-* [Use case 1](use-cases/use-case-1.md)
+* [Multichain Appchain launch](use-cases/multichain-launch.md)
+* [Appchain scaling](use-cases/scaling.md)
+* [Unlocking cross-chain liquidity](use-cases/liquidity.md)
 
 ## 🏁 Closing
 
