@@ -18,8 +18,7 @@ In short, none of the existing solutions truely offer a scalable, low cost, Appc
 
 Pelagos offers a novel solution that ensures developers can launch with:
 
-- L1-grade security with restaking without reliance on Appchain native tokens or sidechain
-security models
+- L1-grade security with restaking without reliance on Appchain native tokens or sidechain security models
 - Custom VMs and tokenomics without requiring a full blockchain development team
 - Native multichain support providing seamless, low-latency access to any L1 for both data retrieval (e.g.,
 building indexes) and outbound transactions

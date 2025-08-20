@@ -49,9 +49,9 @@ Moreover, this layer provides significant deployment flexibility, allowing teams
 <!-- WARNING -- concept of choice of VM goes across this paper, need to fine tune this messagig to be truthful: Looks like multi-VM, which is not fully correct
  -->
 
-Appchain developers can define business rules, automations, or application-specific logic using any environment &mdash; including custom Docker containers, EVM, WebAssembly, MoveVM, and then deploy these as independent Appchains.
+Appchain developers can define business rules, automations, or application-specific logic using any environment and then deploy these as independent Appchains. The Appchain execution model allows developers to implement their state transition logic in any language (e.g., Rust, Go) by providing a custom Docker container (e.g., EVM, WebAssembly, MoveVM). This grants full control over transaction processing, virtual machine choice, and block production rules, enabling highly specialized application logic and seamless horizontal scaling.
 
-Each Appchain runs as an independent DAG-based chain instance, leveraging the Pelagos validator sets that offer security via restaking.
+Each Appchain runs as an independent DAG-based chain instance, leveraging the Pelagos validator sets that offer PoS security as default, with additional, optional restaking security guarantees.
 
 > See more on the [developing on Pelagos](#developing-an-appchain-with-pelagos)
 
