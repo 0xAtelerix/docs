@@ -16,11 +16,9 @@ Any invariant checks, state verification, or heavy computation occur in the exec
 
 The universal data layer is key to abstracting and unifing state management across heterogeneous blockchains. By exposing a rich, composable data interface and enabling dynamic, on-chain analytics and tokenomics, the data layer dramatically reduces development friction. However, this adds complexity in state management and validation, requiring sophisticated tooling and abstractions.
 
-### Trade-off: Data from blockchain nodes vs oracles
+An alternative solution to the universal data layer is to leverage oracles. However, while oracles can simplify data acquisition they often introduce latency, potential inaccuracies, and limitations on data richness.
 
-Using full blockchain nodes to source data provides the freshest, lowest latency, and richest data frames suitable for reactive contracts but comes with costs and operational overhead.
-
-Oracles can simplify data acquisition but often introduce latency, potential inaccuracies, and limitations on data richness. Pelagos's design prioritizes decentralization and resilience while minimizing validator costs while also delivering rich, real-time data.
+Pelagos's design prioritizes decentralization and resilience while minimizing validator costs while also delivering rich, real-time data. By using full blockchain nodes to source data Pelagos provides the freshest, lowest latency, and richest data frames suitable for reactive contracts; accepting the associated operational overhead.
 
 ## Historical indexing as a native capability
 
@@ -44,21 +42,19 @@ Historical indexes leverage the superposition of immutable and real-time data fo
 
 ## No bottlenecks
 
-In leader‑based consensus models (e.g., Tendermint, Solana, Aptos), the leader can become the performance bottleneck, and targeted attacks on a leader can threaten liveness. Pelagos adopts a leaderless, Lachesis‑inspired DAG approach to:
+While leaderless consensus reduces network overhead, improves decentralization, and avoids delays caused by leader failures, it may incur slightly higher latency (~80-100 ms) than leader-based alternatives.
+
+The alternative, leader-based consensus can offer marginally lower latency but centralizes data updates and risks delay during leader failure or rotation. 
+
+The decision to leverage a leaderless consensus again hinged on Pelagos's prioritization for decentralization and resilience. In leader‑based consensus models (e.g., Tendermint, Solana, Aptos), the leader can become the performance bottleneck, and targeted attacks on a leader can threaten liveness. Pelagos adopts a leaderless, Lachesis‑inspired DAG approach to:
 
 - Avoid single points of failure
 - Increase stability under validator churn or targeted disruption
 - Let any validator initiate and process transactions, enhancing censorship resistance
 
-### Trade-off: Leaderless consensus vs leader-based consensus
-
-Leaderless consensus reduces network overhead, improves decentralization, and avoids delays caused by leader failures. However, it may incur slightly higher latency (~80-100 ms) than leader-based alternatives.
-
-Leader-based consensus can offer marginally lower latency but centralizes data updates and risks delay during leader failure or rotation. Again, Pelagos's design prioritizes decentralization and resilience without significantly sacrificing latency by choosing leaderless DAG sequencing.
-
 ## Instant finality and low latency
 
-The DAG achieves sequencing latency in the range of 250-450 ms, with deterministic, instant finality &mdash; crucial for reactive and cross‑chain contract logic.  
+Pelagos' choice leaderless DAG sequencing offers both decentralization and resilience without significantly sacrificing latency. The DAG achieves sequencing latency in the range of 250-450 ms, with deterministic, instant finality &mdash; crucial for reactive and cross‑chain contract logic.  
 
 Contributing factors include:
 
