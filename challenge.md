@@ -49,22 +49,22 @@ These silos between L1 blockchains, and their L2 ecosystems add inefficiencies t
 
 Furthermore, this fragmentation forces protocols to engage with external power structures such as market makers to maintain liquidity, further undermining true market efficiency. This reintroduces centralizing forces, including:
 
-* Preferential access and pricing for insiders
-* Liquidity extraction via arbitrage
+* Preferential access and pricing for insiders.
+* Liquidity extraction via arbitrage.
 
 This has all resulted in an opaque, off-chain coordination structure tainting the promise offered by a decentralized system. This fragmentation issue intensifies as independent chains and Layer 2 networks proliferate.
 
 As a result:
 
-* Markets become thinner, with limited depth per pool or pair
-* Traders face increased slippage, especially on large trades
-* Capital efficiency deteriorates, as liquidity is duplicated or idled across ecosystems
+* Markets become thinner, with limited depth per pool or pair.
+* Traders face increased slippage, especially on large trades.
+* Capital efficiency deteriorates, as liquidity is duplicated or idled across ecosystems.
 
 To overcome this fragmentation, protocols turn to bridges or wrapped tokens (e.g., wBTC, bridged USDC). However, these instruments:
 
-* Introduce cross-chain trust assumptions, often relying on multisigs, validators, or relayers
-* Increase attack surface and systemic risk (as demonstrated by numerous bridge exploits)
-* Obscure the origin and provenance of assets, complicating composability
+* Introduce cross-chain trust assumptions, often relying on multisigs, validators, or relayers.
+* Increase attack surface and systemic risk (as demonstrated by numerous bridge exploits).
+* Obscure the origin and provenance of assets, complicating composability.
 
 ## A challenge demanding a solution
 

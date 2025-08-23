@@ -11,9 +11,9 @@ Pelagos presents a multichain primitive that redefines execution, liquidity, and
 
 Scaling a single dedicated Appchain for predictable, ultra-low-latency performance introduces tough architectural demands that current L1 solutions, rollups, or bridges cannot satisfy. Pelagos addresses three fundamental requirements for scalable, interoperable, and composable Web3 infrastructure:
 
-- Cross-chain reactivity
-- Consensus at Scale
-- Generalized data layer
+- Cross-chain reactivity.
+- Consensus at scale.
+- Generalized data layer.
 
 ## 1. Cross-chain reactivity
 

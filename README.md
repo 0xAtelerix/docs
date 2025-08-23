@@ -221,3 +221,6 @@ Bringing real-world assets onchain requires hybrid settlement models that respec
 * Support real-time liquidation for asset-backed loans at scale
 * {end}
     
+
+<!-- Sharding provides performance scaling: efficiently enhancing throughput within individual Appchains, improving processing speed. Horizontal scaling enables multiple Appchains to operate mutiple DAGs concurrently
+  --> 
