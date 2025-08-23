@@ -21,8 +21,8 @@
 
 ## 🧩 Use Cases
 
-* [Multichain Appchain launch](use-cases/multichain-launch.md)
 * [Appchain scaling](use-cases/scaling.md)
+* [Multichain Appchain launch](use-cases/multichain-launch.md)
 * [Unlocking cross-chain liquidity](use-cases/liquidity.md)
 
 ## 🏁 Closing
