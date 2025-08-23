@@ -8,15 +8,15 @@ title: Index page given metadata title
 
 There is an urgent need for infrastructure that enables dApps to operate, at scale and across environments as seamlessly as they do within them. We believe that the future of decentralized systems depends on shared execution layers, unified liquidity environments, and native cross-domain composability.
 
-Welcome to Pelagos: the first universal execution layer that turns every onchain pool into one seamless liquidity fabric. In this paper, Pelogas presents a solution that reclaims the original vision of DeFi: permissionless innovation, efficient markets, and universal accessibility.
+Welcome to Pelagos: the first universal execution layer that turns every onchain pool into one seamless liquidity fabric. In this paper, Pelogas presents a solution that reclaims the original vision of decentralized finance (DeFi): permissionless innovation, efficient markets, and universal accessibility.
 
 ## Pelagos: Secure, scaled access to global liquidity
 
 ### Scalable multichain Appchain architecture
 
-Pelagos' modular architecture supports parallel sequencing and internal Appchain sharding. This allows the protocol to effectively scale Appchains, without sacrificing performance or security across all chains, in one 0.4 s DAG block &mdash; allowing consensus processing capacity to seamelesly match user demand. 
+Pelagos’ modular architecture supports parallel sequencing, allowing the core platform and individual Appchains to be sharded for massive scalability. This lets the platform scale seamlessly to meet user demand across thousands of Appchains and up to 100,000+ TPS.
 
-This architecture ensures that growth doesn’t compromise network performance or decentralization, empowering projects to scale fluidly as their ecosystems evolve.
+Pelagos ensures that growth doesn’t compromise network performance, security, or decentralization, empowering projects to scale fluidly as their ecosystems evolve &mdash; all within a single 0.4 s DAG block.
 
 ### Liquidity unification and atomic cross-chain settlement
 

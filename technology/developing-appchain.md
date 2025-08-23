@@ -1,35 +1,29 @@
 ---
-todo: fix the gRPC bit
+todo: check that I fixed the gRPC bit
 ---
 
 ## Developing an Appchain with Pelagos
 
 Launching an Appchain with Pelagos is as simple as deploying a smart contract. The developer can execute a single transaction providing the:
 
-- Hash of a Docker container
-- (Optional) genesis data
-- (Optional) Info-hash (for immutable database distribution)
+- Hash of a Docker container.
+- (Optional) genesis data.
+- (Optional) Info-hash (for immutable database distribution).
 
-and run each Appchain exactly as one runs one, or multiple, microservices.
+and then run each Appchain just like one or more microservices.
 
-<!-- Fix: "With Pelagos, these gRPC setup steps are hidden behind simple callback hooks and event subscriptions, allowing developers to focus on business logic." 
-
-gRPC is unrelated to the hooks function 
-As dev must specify how to handle user transactions,
-Abstracted away: Security layer, sequencing of transactions, accessing external chain data, discovering rates, accessing external liquidity pools
-All they have to do is interact with contracts, optionally reactive contracts and determine how to handle user transactions could leverage your own API (or might use an existing gRPC or use alt logic) 
-Drip the whole challenge bit
-Normally, using gRPC in a distributed system requires developers to define services in Protocol Buffers (Protobuf), handle client and server pairing and stub generation, HTTP/2 multiplexing, and deal with stream or unary message handling, serialization, and error management.
+<!-- {had another go at this, if needed can drop the first of the following ps as discussed}
  -->
+Normally, building a distributed system means dealing with low-level details: defining services in Protocol Buffers (Protobuf), handling client/server pairing and stub generation, setting up HTTP/2 multiplexing, managing streams vs. unary messages, serialization, and error handling. On top of that, developers would still need to design how to secure transactions, order them, integrate external chain data, and discover rates or liquidity pools.
 
-Normally, using gRPC in a distributed system requires developers to define services in Protocol Buffers (Protobuf), handle client and server pairing and stub generation, HTTP/2 multiplexing, and deal with stream or unary message handling, serialization, and error management. With Pelagos, these gRPC setup steps are hidden behind simple callback hooks and event subscriptions, allowing developers to focus on business logic.
+Pelagos abstracts all of this away. Security, sequencing, external data access, and liquidity discovery are all handled by the platform. Developers can work with smart contracts &mdash; optionally enhanced with reactive contracts &mdash; while simply focusing on how to process user transactions. They can use their own APIs, existing Google Remote Procedure Call (gRPC) services, or alternate logic, but they no longer need to manage consensus or distributed communication directly. 
 
-Pelagos abstracts away the complexities of gRPC communication between execution, state, and sequencing layers. From the perspective of a developer, it feels like working with a standard database rather than dealing with blocks or consensus directly, while providing access to:
+From the perspective of a developer, it feels like working with a standard database rather than dealing with blocks or consensus directly, while getting access to:
 
-- Blockchain data for use within Appchain smart contracts
-- Assurance that the blockchain data is valid and immutable
-- Creation, signing, and submission of transactions to target blockchains
-- Support for TSS (Threshold Signature Schemes) using the GG20 and FROST (ROAST) protocols
+- Blockchain data for use within Appchain smart contracts.
+- Assurance that the blockchain data is valid and immutable.
+- Creation, signing, and submission of transactions to target blockchains.
+- Support for TSS (Threshold Signature Schemes) using the GG20 and FROST (ROAST) protocols.
 
 This ensures a seamless, scalable, and secure multichain interaction model.
 
@@ -45,8 +39,7 @@ Furthermore, Pelagos embraces migrations and hard forks as a natural part of App
 
 The RPC (Remote Procedure Call) layer provides an external interface for Appchain nodes. Pelagos supports flexibility in RPC options for Appchains. This allows developers to choose one of the standard RPCs (e.g., Ethereum, Cosmos, Solana, etc.), or to create a custom RPC, potentially extending existing implementations to suit specific requirements.
 
-This ensures that Appchains can integrate seamlessly with existing ecosystems or implement
-unique solutions tailored to their needs.
+This ensures that Appchains can integrate seamlessly with existing ecosystems or implement unique solutions tailored to their needs.
 
 ### Leverage Appchain interoperability
 
@@ -69,7 +62,7 @@ These immutable databases serve as a historical record of the blockchain {"of th
 - Operators can verify and validate the integrity of immutable databases before downloading, ensuring tamper-proof data distribution.
 - By adopting this model, Pelagos transitions from traditional sync protocols, which distribute blocks, transactions, and state pieces with proofs, to efficient, one-time event, large-database file downloads. This significantly improves scalability and operational efficiency by reducing the messaging load.
 
-#### Sharding
+#### Shard
 
 In Pelagos, each Appchain can decide when to scale by sharding. A single sequencing process will serve these shards, allowing the Appchain to grow and scale seamlessly.
 
@@ -78,9 +71,6 @@ Developers can request additional shards by prompting Pelagos to create new exec
 This mechanism transparently scales the transaction load (TPS) by distributing it across multiple shards, see Figure 2.
 
 ##### Figure 2. Individual Appchain scaling
-
-<!-- according to that diagram an App receives transactions from multiple DAGs. That is not correct.
- -->
 
 ```mermaid
 graph TD
@@ -122,7 +112,7 @@ graph TD
 
 Furthermore, this approach extends service offerings for restaking operators who can offer additional rewards from shards. It is the thesis of the Pelagos designers that this model will foster organic ecosystem growth by aligning incentives among Appchains, validators, and service providers. 
 
-#### Consensus scaling
+#### Scale consensus
 
 Consensus scaling is supported at the database layer, thanks to the efficent DAG database. The immutable, incremental database design ensures optimal data locality and minimizes read amplification by including fast-access and presence/absence indexes from the outset. As a result, this database is inherently optimized for syncing and scaling.
 
@@ -221,3 +211,5 @@ library TelerixCommon {
     );
 }
 ```
+
+By combining seamless abstractions with deep extensibility, Pelagos simplifies Appchain development &mdash; empowering developers to focus on innovation while inheriting security, scalability, and multichain interoperability by default.

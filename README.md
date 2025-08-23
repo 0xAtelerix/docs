@@ -25,9 +25,13 @@ CTA/contacts
 
 ## Style
 
-- American English
-- Oxford comma
+- American English.
+- Oxford comma.
+- Bullet lists have stops.
+- Colon-led bullets have lower case 
+  > - Trust-minimized interoperability: cross-chain execution and liquidity are settled via cryptographic guarantees, not off-chain relayers or custodial bridges.
 
+  
 Google developer style guide: [developers.google.com/style](https://developers.google.com/style)
 
 Highlights from guide

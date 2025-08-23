@@ -27,11 +27,11 @@ layout:
 
 There is a pressing need for platform-agnostic abstraction layers and developer tooling that enables smart contracts and dApps to scale across ecosystems without rewriting core logic for each new chain or runtime.
 
-Multiplatform decentralized application (dApp) development is complex due to the tight coupling between smart contract logic and the underlying virtual machine or protocol. This fragmentation limits application portability. Currently, crafting a multiplatform app that functions across chains requires investing in complex and costly development.
+Multiplatform decentralized application (dApp) development is complex due to the tight coupling between smart contract logic and the underlying virtual machine or protocol. This fragmentation limits application portability. Currently, crafting a multiplatform app that functions across chains, an Appchain, requires investing in complex and costly development.
 
 While general-purpose L1s such as Solana, Aptos, Sui (vertically scaling), and TON (horizontal scaling) have demonstrated how to scale blockchain throughput across diverse workloads, none of these can be directly leveraged to scale a single dedicated Appchain. 
 
-The two main challenges to a multiplatform app layer are the architectural differences between different protocols and liquidity fragmentation across ecosystems. The following sections present these challenges in further detail.
+The two main challenges to a multiplatform app layer are the architectural differences between different protocols and liquidity fragmentation across ecosystems. The following sections present these in further detail.
 
 #### Architecture challenges
 
@@ -43,7 +43,7 @@ Each blockchain model defines not only how finality is achieved, but also how ap
 
 #### Liquidity fragmentation
 
-The current landscape of decentralized finance (DeFi) is fragmented, inefficient, and dysfunctional at scale. Liquidity fragmentation remains the most persistent and systemic inefficiency. It divides trading activity and capital across multiple, siloed blockchain environments and application-specific liquidity pools.
+The current landscape of DeFi is fragmented, inefficient, and dysfunctional at scale. Liquidity fragmentation remains the most persistent and systemic inefficiency. It divides trading activity and capital across multiple, siloed blockchain environments and application-specific liquidity pools.
 
 These silos between L1 blockchains, and their L2 ecosystems add inefficiencies to markets: increasing slippage, and necessitating the use of bridges or wrapped tokens to move assets. Bridging and wrapping introduces latency, trust dependencies, and operational risk.
 
@@ -78,11 +78,11 @@ The end state is clear: a dApp landscape that is functionally disjointed, operat
 
 At its core, this fragmentation imposes critical limitations:
 
-* Price discovery is undermined, as liquidity is dispersed across ecosystems with no unified market-clearing layer
-* Composability is obstructed, erasing one of DeFi’s most powerful design primitives: modular, interoperable applications
-* TradFi inefficiencies re-emerge — privileged access to liquidity, off-chain negotiations, and market segmentation reappear under a decentralized façade
+* Price discovery is undermined, as liquidity is dispersed across ecosystems with no unified market-clearing layer.
+* Composability is obstructed, erasing one of DeFi’s most powerful design primitives: modular, interoperable applications.
+* TradFi inefficiencies re-emerge — privileged access to liquidity, off-chain negotiations, and market segmentation reappear under a decentralized façade.
 
-These barriers are not just technical inconveniences — they are fundamental blockers to scale, security, and the full realization of open finance. These constraints hinder meaningful adoption of institutional capital and limit the design space for compliant, high-value dApps.
+These barriers are not just technical inconveniences &mdash; they are fundamental blockers to scale, security, and the full realization of open finance. These constraints hinder meaningful adoption of institutional capital and limit the design space for compliant, high-value dApps.
 
 Without decoupling dApp business logic from infrastructure and establishing seamless liquidity coordination, DeFi will mirror the centralized paradigms it set out to replace.
 
