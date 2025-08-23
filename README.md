@@ -25,9 +25,13 @@ CTA/contacts
 
 ## Style
 
-- American English
-- Oxford comma
+- American English.
+- Oxford comma.
+- Bullet lists have stops.
+- Colon-led bullets have lower case 
+  > - Trust-minimized interoperability: cross-chain execution and liquidity are settled via cryptographic guarantees, not off-chain relayers or custodial bridges.
 
+  
 Google developer style guide: [developers.google.com/style](https://developers.google.com/style)
 
 Highlights from guide
@@ -221,3 +225,6 @@ Bringing real-world assets onchain requires hybrid settlement models that respec
 * Support real-time liquidation for asset-backed loans at scale
 * {end}
     
+
+<!-- Sharding provides performance scaling: efficiently enhancing throughput within individual Appchains, improving processing speed. Horizontal scaling enables multiple Appchains to operate mutiple DAGs concurrently
+  --> 

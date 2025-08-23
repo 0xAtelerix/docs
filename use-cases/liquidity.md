@@ -26,8 +26,8 @@ Impact and specific examples:
 
 Pain: 
 
-- Locked into EVM-only environments, limiting access to liquidity and users on non-EVM chains
-- Lengthy efforts and costs required to deploy on new chains
+- Locked into EVM-only environments, limiting access to liquidity and users on non-EVM chains.
+- Lengthy efforts and costs required to deploy on new chains.
 
 How Pelagos solves this:
 
@@ -44,8 +44,8 @@ Pain:
 
 How Pelagos solves this:
 
-- Restores access to Ethereum liquidity and beyond, for example to chains Solana and TON
-- Provides real-time cross-chain data and instant execution, enhancing trading efficiency and liquidity depth
+- Restores access to Ethereum liquidity and beyond, for example to chains Solana and TON.
+- Provides real-time cross-chain data and instant execution, enhancing trading efficiency and liquidity depth.
 
 Protocols like Aave can instantly broaden their lending and borrowing capabilities to chains that were previously difficult to access, unlocking new liquidity without costly redeployments. While, trading platforms such as dYdX can overcome fragmented liquidity and realize near-instant cross-chain synchronization, improving execution and user experience.
 

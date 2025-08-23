@@ -15,7 +15,7 @@
 * [Design considerations](technology/design-considerations.md)
 * [Consensus at scale](technology/consensus-at-scale.md)
 * [Asset portability](technology/asset-portability.md)
-* [Extensible tokenomics](technology/extensible-tokenomics.md)
+* [Reactive logic layer](technology/reactive-logic.md)
 * [Developing an Appchain](technology/developing-appchain.md)
 * [Validating Appchains](technology/validating-appchain.md)
 

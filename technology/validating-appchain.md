@@ -1,6 +1,6 @@
 ## Validating Appchains with Pelagos
 
-Pelagos relies validators, to secure Appchains by performing consensus, signing external transactions, running execution nodes, and more. Their responsibilities set is paired with strict mechanisms to enforce good behavior and penalize misconduct.
+Pelagos relies on validators to secure Appchains by performing consensus, signing external transactions, running execution nodes, and more. Their responsibilities set is paired with strict mechanisms to enforce good behavior and penalize misconduct.
 
 ### Validator incentivization
 
@@ -12,14 +12,14 @@ Validators earn by correctly signing checkpoints, participating in TSS signing, 
 
 Pelagos validators are responsible for:
 
-- [Maintaining full nodes](validator-node-operation) to reach consensus on finalized L1/L2 blocks
-- Event signing
-- External transaction signing with Threshold Signatures (TSS)
+- [Maintaining full nodes](validator-node-operation) to reach consensus on finalized L1/L2 blocks.
+- Event signing.
+- External transaction signing with Threshold Signatures (TSS).
 > Validators apply secure multi-party TSS protocols (e.g., GG20, FROST/ROAST) for signing external chain transactions triggered by Appchain execution.
-- Validate and order Appchain transactions using DAG consensus
-- Key rotation: validators participate in regular Distributed Key Generation (DKG) and mandatory key rotations to maintain key security
-- Executing Appchain logic promptly after each epoch
-- [Maintaining validator sets](#validator-set-management)
+- Validate and order Appchain transactions using DAG consensus.
+- Key rotation: validators participate in regular Distributed Key Generation (DKG) and mandatory key rotations to maintain key security.
+- Executing Appchain logic promptly after each epoch.
+- [Maintaining validator sets](#validator-set-management).
 
 The following sections go deeper into a subset of these responsibilities.
 
@@ -29,7 +29,7 @@ To operate as a validator requires participants to run Appchain execution nodes 
 
 To fulfill their role of reaching consensus on supported L1 and L2 states, validators must maintain full L1 and L2 client nodes. This ensures correct state retrieval and external chain integration.
 
-{Is this just because they can't stake and become validators without full nodes in the first place, cause I can't imagine you need full chain history to achieve consensus}
+<!-- {Is this just because they can't stake and become validators on various networks without full nodes in the first place, cause I can't imagine you need full chain history to achieve consensus} -->
 
 #### Validator set management
 
@@ -43,17 +43,17 @@ By maintaining consistent checkpoints, the validators are also essential in the 
 
 #### Resource management and stability enforcement
 
-Each validator is responsible for operating Appchain containers with resource isolation. Furthermore, the validator role includes a DevOps role and validators are expected to monitor and react to excessive resource consumption with container restarts or by disabling unstable Appchains to protect network health. This ensures the overall health of the network by stabilizing resource consumption and maintaining stability of Appchain execution environments to avoid forced shutdowns.
+Each validator is responsible for operating Appchain containers with resource isolation. Furthermore, the validator role includes a DevOps role as validators are expected to monitor and react to excessive resource consumption with container restarts or by disabling unstable Appchains to protect network health. This ensures the overall health of the network by stabilizing resource consumption and maintaining stability of Appchain execution environments to avoid forced shutdowns.
 
 ### Validator enforcement mechanisms
 
 Pelagos protocol enforces strict penalties on validators to maintain network safety, liveness, and data integrity. For example, fraud-proofs are created and submitted to the AVS contract if the protocol identifies:
 
-- Conflicting/double-signing DAG events: validators must never sign two conflicting DAG events with the same epoch and sequence number
-- Signing unauthorized transactions: validators must only sign transactions that originate from the sequenced DAG external transaction list; signing unauthorized transactions leads to fraud proofs
-- Failure to execute Appchain logic
-- Failure to synchronize new validator sets
-- Voting on non-final blocks
+- Conflicting/double-signing DAG events: validators must never sign two conflicting DAG events with the same epoch and sequence number.
+- Signing unauthorized transactions: validators must only sign transactions that originate from the sequenced DAG external transaction list; signing unauthorized transactions leads to fraud proofs.
+- Failure to execute Appchain logic.
+- Failure to synchronize new validator sets.
+- Voting on non-final blocks.
 
 #### Liveliness monitoring and penalties
 
@@ -68,3 +68,5 @@ Frequent requests for DKG re-runs require justification; spamming leads to withh
 #### Checkpoint Consistency
 
 Validators producing inconsistent checkpoints relative to the consensus lose rewards and risk slashing.
+
+By combining economic incentives, cryptographic guarantees, and strict enforcement, Pelagos ensures validators uphold the trust and security that make scalable Appchains possible.

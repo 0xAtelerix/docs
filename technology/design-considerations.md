@@ -8,23 +8,21 @@ Pelagos assigns its consensus layer a single responsibility: sequencing &mdash; 
 
 Any invariant checks, state verification, or heavy computation occur in the execution layer at the Appchain level. This separation:
 
-- Eliminates execution‑linked bottlenecks in consensus
-- Keeps sequencing lightweight enough for near‑real‑time operation
-- Allows Appchain developers to apply custom validation logic without impacting network‑wide throughput
+- Eliminates execution‑linked bottlenecks in consensus.
+- Keeps sequencing lightweight enough for near‑real‑time operation.
+- Allows Appchain developers to apply custom validation logic without impacting network‑wide throughput.
 
 ## Data availability and consistency guarantees
 
-The universal data layer is key to abstracting and unifing state management across heterogeneous blockchains. By exposing a rich, composable data interface and enabling dynamic, on-chain analytics and tokenomics, the data layer dramatically reduces development friction. However, this adds complexity in state management and validation, requiring sophisticated tooling and abstractions.
+The universal data layer is key to abstracting and unifing state management across heterogeneous blockchains. By exposing a rich, composable data interface and enabling dynamic, on-chain analytics, and tokenomics, the data layer dramatically reduces development friction. However, this adds complexity in state management and validation, requiring sophisticated tooling and abstractions.
 
-### Trade-off: Data from blockchain nodes vs oracles
+An alternative solution to the universal data layer is to leverage oracles. This solution was rejected because, while oracles can simplify data acquisition, they often introduce latency, potential inaccuracies, and limitations on data richness.
 
-Using full blockchain nodes to source data provides the freshest, lowest latency, and richest data frames suitable for reactive contracts but comes with costs and operational overhead.
-
-Oracles can simplify data acquisition but often introduce latency, potential inaccuracies, and limitations on data richness. Pelagos's design prioritizes decentralization and resilience while minimizing validator costs while also delivering rich, real-time data.
+Pelagos's design prioritizes decentralization and resilience while minimizing validator costs and also delivering rich, real-time data. By using full blockchain nodes to source data, Pelagos provides the freshest, lowest latency, and richest data frames suitable for reactive contracts; accepting the associated operational overhead.
 
 ## Historical indexing as a native capability
 
-A core capability of the Pelagos architecture is the efficient user historical index — a multi-source, developer-defined data layer available to every Appchain.
+A core capability of the Pelagos architecture is the efficient user historical index &mdash; a multi-source, developer-defined data layer available to every Appchain.
 
 Historical indexes unify data from Appchains, external blockchains, or both, transforming static blockchain records into actionable intelligence. They underpin advanced smart contract functionality and data-driven tokenomics by making historical and real-time contract data queryable by default.
 
@@ -32,67 +30,81 @@ Traditionally, blockchains abstract away contract-level data, making it hard for
 
 Historical indexes leverage the superposition of immutable and real-time data for seamless state integration, facilitating:
 
-- Data aggregation across sources allowing Appchains to ingest data from other Appchains or external blockchains
-
-- Immutable “snapshots” for historical accuracy and “hot” storage for low-latency acces
-
-- User-defined indexes: developers can define application-specific indexes, e.g., tracking user behavior, market flows, or cross-chain liquidity
-
-- Fast and scalable queries: optimized for low-latency queries across highly fragmented chains
-
-- Minimization of computational overhead optimizing for reactive contracts and dynamic tokenomics.
+- Data aggregation across sources: allowing Appchains to ingest data from other Appchains or external blockchains.
+- Immutable “snapshots”: providing historical accuracy and “hot” storage for low-latency access.
+- User-defined indexes: supporting application-specific indexes, e.g., tracking user behavior, market flows, or cross-chain liquidity.
+- Fast and scalable queries: optimized for low-latency queries across highly fragmented chains.
+- Minimization of computational overhead: optimizing for reactive contracts and dynamic tokenomics.
 
 ## No bottlenecks
 
-In leader‑based consensus models (e.g., Tendermint, Solana, Aptos), the leader can become the performance bottleneck, and targeted attacks on a leader can threaten liveness. Pelagos adopts a leaderless, Lachesis‑inspired DAG approach to:
+While leaderless consensus reduces network overhead, improves decentralization, and avoids delays caused by leader failures, it may incur slightly higher latency (~80-100 ms) than leader-based alternatives.
 
-- Avoid single points of failure
-- Increase stability under validator churn or targeted disruption
-- Let any validator initiate and process transactions, enhancing censorship resistance
+The alternative, leader-based consensus can offer marginally lower latency but centralizes data updates and risks delay during leader failure or rotation. 
 
-### Trade-off: Leaderless consensus vs leader-based consensus
+The decision to leverage a leaderless consensus again hinged on Pelagos's prioritization for decentralization and resilience. In leader‑based consensus models (e.g., Tendermint, Solana, Aptos), the leader can become the performance bottleneck. Furthermore, targeted attacks on a leader can threaten liveness. Pelagos adopts a leaderless, Lachesis‑inspired DAG approach to:
 
-Leaderless consensus reduces network overhead, improves decentralization, and avoids delays caused by leader failures. However, it may incur slightly higher latency (~80-100 ms) than leader-based alternatives.
-
-Leader-based consensus can offer marginally lower latency but centralizes data updates and risks delay during leader failure or rotation. Again, Pelagos's design prioritizes decentralization and resilience without significantly sacrificing latency by choosing leaderless DAG sequencing.
+- Avoid single points of failure.
+- Increase stability under validator churn or targeted disruption.
+- Let any validator initiate and process transactions, enhancing censorship resistance.
 
 ## Instant finality and low latency
 
-The DAG achieves sequencing latency in the range of 250-450 ms, with deterministic, instant finality &mdash; crucial for reactive and cross‑chain contract logic.  
+Pelagos' choice of leaderless DAG sequencing offers both decentralization and resilience without significantly sacrificing latency. The DAG achieves sequencing latency in the range of 250-450 ms, with deterministic, instant finality &mdash; crucial for reactive and cross‑chain contract logic.  
 
 Contributing factors include:
 
-- No block propagation; transactions are gossiped once during event creation
-- Minimal signature verification per event
-- Aggressive message pruning to lower network and storage overhead
+- No block propagation; transactions are gossiped once during event creation.
+- Minimal signature verification per event.
+- Aggressive message pruning to lower network and storage overhead.
 
 ### Network throughput vs. CPU trade‑off
 
 After optimising CPU and memory usage through an Erigon-like database model, the main scaling limit shifts to **network bandwidth**. Pelagos’ consensus is engineered to:
 
-- Reduce duplicate transaction broadcasts
-- Optimise packet flow and message size
-- Enable horizontal scaling when network input/output becomes a bottleneck
+- Reduce duplicate transaction broadcasts.
+- Optimise packet flow and message size.
+- Enable horizontal scaling when network input/output becomes a bottleneck.
 
 ## Horizontal scaling of sequencing
 
 Because sequencing maintains no application state, it can be scaled out by adding more sequencing shards with minimal coordination overhead:
 
-- Each shard is an independent service that can be started, merged, or reallocated without disrupting Appchains
-- Storage per shard is minimal: a few gigabytes to support up to ~10,000 Appchains
-- Shards can be provisioned to match Appchain growth, with validator revenues scaling via subscription fees rather than per‑transaction costs
+- Each shard is an independent service that can be started, merged, or reallocated without disrupting Appchains.
+- Storage-per-shard is minimal: a few gigabytes to support up to ~10,000 Appchains.
+- Shards can be provisioned to match Appchain growth, with validator revenues scaling via subscription fees rather than per‑transaction costs.
 
 ## Security model and decentralisation targets
 
 Security of critical protocols like Distributed Key Generation (DKG) and Threshold Signature Schemes (TSS) requires a large, diverse validator set:
 
-- Pelagos targets ~100+ restaking operators initially, scaling toward 500+ for long‑term resilience
-- Censorship resistance is reinforced by accepting transaction ingress from multiple connected blockchains, not only direct submissions
-- Participation in TSS/DKG is spread across the full validator set to avoid collusion risks
+- Pelagos targets ~100+ restaking operators initially, scaling toward 500+ for long‑term resilience.
+- Censorship resistance is reinforced by accepting transaction ingress from multiple connected blockchains, not only direct submissions.
+- Participation in TSS/DKG is spread across the full validator set to avoid collusion risks.
 
 In addition to the base-layer security of the Proof of Stake (PoS) protocol, Pelagos requires an extendible security model to overcome bootstrapping challenges and to offer more robust security for critical workloads. To meet this requirement, Pelagos supports appchains to select [restaking validators](consensys-at-scale#extendable-security-bootstrapping-with-restaking) and leverage additional security guaruntees.
 
-## Comparison with other consensus designs
+## Comparison with other designs
+
+While several technologically sound solutions have been developed that are designed to enable the deployment of Appchains, they introduce uneasy compromises.
+
+Individual blockchain solutions create isolated ecosystems, imposing chain-specific requirements and opposing crosschain economic dynamics. These constraints include issues such as inflation control, limited consensus, and auction-based mechanisms tied to native tokens. 
+
+Rollup technologies effectively address demands for high security and throughput &mdash; achieving transaction speeds up to around 1,000 TPS &mdash; however, their interoperability is often limited.
+
+While optimistic rollups offer greater flexibility in virtual machine (VM) selection, allowing for some level of customization, the extreme length of the dispute period when exiting to back to Layer 1 (L1), significantly hinders seamless multichain experiences.
+
+Validity-proof-based rollups (ZK rollups) provide enhanced security but are typically tied to specific VMs, limiting flexibility. 
+
+Both types of rollups involve trade-offs among TPS, latency, and costs, often prioritizing higher TPS and lower costs at the expense of increased latency and decreased flexibility.
+
+In short, none of the existing solutions truely offer a scalable, low cost, Appchain development layer that offers Ethereum-grade security.
+
+### Consensus comparison
+
+Pelagos’ consensus design choice reflects the need for a leaderless, sequencing‑only DAG that prioritises **network efficiency, stability under fault, and easy horizontal scaling** over minimising CPU load, as shown in Table 1.
+
+Table 1: Consensus protocol comparison
 
 | Protocol / Design | Leader‑based? | Latency / Finality | CPU Usage | Network Dependency | Validator Set Size | Fault Tolerance at Scale |
 |-------------------|--------------|-------------------|-----------|--------------------|--------------------|--------------------------|
@@ -101,8 +113,6 @@ In addition to the base-layer security of the Proof of Stake (PoS) protocol, Pel
 | Solana             | Yes (rotating) | 5–12 s / deterministic | Medium | High | 1000+ | Leader/relay bottleneck |
 | Mysticeti          | Multi‑slot leader | ~1–3 s / deterministic | Low | High | Smaller sets | Faster degradation |
 | Bullshark/Tusk     | Yes | 2–3 s / deterministic | Medium | Medium | Small (~30) | Limited scalability |
-
-Pelagos’ choice reflects the need for a leaderless, sequencing‑only DAG that prioritises **network efficiency, stability under fault, and easy horizontal scaling** over minimising CPU load.
 
 Pelagos’ decision to implement leaderless DAG sequencing enables a range of advanced use cases &mdash; from optimizing token inflation and rewards based on historical usage trends, to tracking cross‑chain liquidity flows and arbitrage opportunities, to enriching smart contracts with both historical and real‑time data for governance, staking, or automated market making. Its instant finality, near‑real‑time sequencing (~150–250 ms), and multi‑source transaction ingress keep historical indexes complete, up‑to‑date, and censorship‑resistant.
 

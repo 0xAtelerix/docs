@@ -28,12 +28,12 @@ For example, a GameFi project experiencing rapid user growth can use Pelagos’ 
 
 Pelagos' native architecture sets it apart from other available scaling solutions, removing the need for specialist engineers:
 
-- Native horizontal scaling: add or adjust shards anytime, scaling across microservices with ease
+- Native horizontal scaling: add or adjust shards anytime, scaling across microservices with ease.
 
-- Custom execution environments: deploy new VMs, migrate workloads, mix and match architectures
+- Custom execution environments: deploy new VMs, migrate workloads, mix and match architectures.
 
 - Predictable costs: transparent subscriptions and scaling parameters prevent fee blowouts
 
-- Smooth migration and upgrade paths: projects evolve with zero downtime and straightforward resource allocation
+- Smooth migration and upgrade paths: projects evolve with zero downtime and straightforward resource allocation.
 
 Pelagos makes seamless, scalable Appchain growth possible &mdash; no matter how ambitious your project or dynamic your user base.
