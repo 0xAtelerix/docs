@@ -5,11 +5,13 @@ Providing acronyms and definitions.
 ## A  
 
 ### Appchain
+
 Application-specific chain. A dedicated blockchain or DAG chain instance focused on a single application or
 project. Appchains allow developers to tailor consensus parameters, tokenomics, and execution logic to
 the specific needs of their application, rather than relying on a general-purpose L1 or L2.
 
 ### Appchain transaction
+
 A transaction signed by a user and submitted to a specific Appchain’s RPC endpoint to modify or interact with that Appchain’s state.
 
 ### AVS
@@ -20,7 +22,7 @@ Autonomous Verifiable Services. A “Validator Service” or “Validation-as-a-
 
 Individuals or organizations that operate and maintain Validator Services. They handle tasks like node setup, infrastructure management, software updates, and governance participation, typically in return for fees or additional rewards.
 
-## B -->
+<!-- ## B  -->
 
 ## C  
 
@@ -75,13 +77,11 @@ The process by which validators reach consensus on and commit the state checkpoi
 
 Failover is the capability to automatically switch to a redundant or standby system in the event of a failure, ensuring high availability and business continuity.
 
-
 ## G
 
 ### Gas sponsorships
 
 Gas sponsorships will be enabled with [EIP-7702](https://eip7702.io), allowing services to be accessed and claims to be made without the connected wallet paying the gas fee for writing data onchain.
-
 
 <!-- ## H -->
 
