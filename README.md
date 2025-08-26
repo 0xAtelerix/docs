@@ -41,6 +41,13 @@ Highlights from guide
 - Concatenate
 	- onchain not on-chain
 
+
+<!-- Removed these 3 from toc ## 🧩 Use Cases
+
+* [Appchain scaling](use-cases/scaling.md)
+* [Multichain Appchain launch](use-cases/multichain-launch.md)
+* [Unlocking cross-chain liquidity](use-cases/liquidity.md) -->
+
 ### Acronyms
 
 AMM: Automated Market Maker
