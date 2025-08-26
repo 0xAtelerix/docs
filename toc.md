@@ -19,7 +19,7 @@
 * [Developing an Appchain](technology/developing-appchain.md)
 * [Validating Appchains](technology/validating-appchain.md)
 
-🧩 Use Cases
+## 🧩 Use Cases
 
 * [Appchain scaling](use-cases/scaling.md)
 * [Multichain Appchain launch](use-cases/multichain-launch.md)
