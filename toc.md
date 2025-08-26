@@ -19,12 +19,6 @@
 * [Developing an Appchain](technology/developing-appchain.md)
 * [Validating Appchains](technology/validating-appchain.md)
 
-## 🧩 Use Cases
-
-* [Appchain scaling](use-cases/scaling.md)
-* [Multichain Appchain launch](use-cases/multichain-launch.md)
-* [Unlocking cross-chain liquidity](use-cases/liquidity.md)
-
 ## 🏁 Closing
 
 * [Conclusion](conclusion.md)
