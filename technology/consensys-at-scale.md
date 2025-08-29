@@ -1,6 +1,3 @@
----
-todo: add spurious edit to trigger rebuild
----
 
 ## Pelagos: Consensus at scale
 
