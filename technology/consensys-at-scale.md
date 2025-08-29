@@ -1,3 +1,7 @@
+---
+todo: add spurious edit to trigger rebuild
+---
+
 ## Pelagos: Consensus at scale
 
 The Pelagos protocol and its validator network are able to offer a scalable application logic layer that supports reactive smart contracts while ensuring state integrity, ordering, and universal data consistency at scale, thanks to two principle architectural elements, a DAG consensus layer whose security is enforced through PoS and an extendible security bootstrapping option through restaking.
