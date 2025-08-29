@@ -13,7 +13,7 @@
 
 * [Technological overview](technology/overview.md)
 * [Design considerations](technology/design-considerations.md)
-* [Consensus at scale](technology/consensus-at-scale.md)
+* [Consensus at scale](pelagos-technology/consensus-at-scale.md)
 * [Asset portability](technology/asset-portability.md)
 * [Reactive logic layer](technology/reactive-logic.md)
 * [Developing an Appchain](technology/developing-appchain.md)
@@ -23,7 +23,7 @@
 
 * [Appchain scaling](use-cases/scaling.md)
 * [Multichain Appchain launch](use-cases/multichain-launch.md)
-* [Unlocking cross-chain liquidity](use-cases/liquidity.md) 
+* [Unlocking cross-chain liquidity](use-cases/liquidity.md)
 
 ## 🏁 Closing
 
