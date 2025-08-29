@@ -66,4 +66,4 @@ Pelagos' Autonomous Verifiable Services (AVS) delegates tasks to restakers, such
 * Operating Appchain containers to ensure scalable and efficient execution
 * Creating proofs and verification
 
-> See more on the validator role
+> [See more on the validator role](../technology/validating-appchain.md)
