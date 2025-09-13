@@ -53,8 +53,6 @@ Consensus must remain fast, reliable, and secure &mdash; even as it scales to th
 
 Pelagos introduces a highly parallelized, leaderless Directed Acyclic Graph (DAG) consensus layer combined with an Erigon-inspired, immutable database as the substrate. This parallelizes transaction ordering to maximize throughput and minimize latency. This consensus runs atop the efficient immutable database to guarantee tamper-proof, incremental state snapshots enabling rapid synchronization.
 
-In addition to the native Proof of Stake (PoS), validators operate across multiple L1 networks using restaking, combining their stakes from Ethereum, Solana, Bitcoin, TON, and others to create a layered, economic security fabric. This restaking aligns incentives and mitigates the need for Appchains to bootstrap native validators or security tokens.
-
 Data and state synchronization among validators employ BitTorrent-like peer-to-peer protocols, enabling computation-free, high-speed syncing without central coordination points.
 
 #### Key features:
@@ -62,8 +60,6 @@ Data and state synchronization among validators employ BitTorrent-like peer-to-p
 - Distributed, massively parallel consensus processing: supporting many Appchains to scale horizontally without being gated by a slow consensus engine.
 
 - A trust-minimized protocol: ensuring a robust consensus mechanism enforced by economic incentives and penalties.
-
-- Configurable security guarantees: restaking mechanisms that aggregate economic security from multiple L1s (Ethereum, Solana, Bitcoin, TON, etc.), allowing Appchains to fine-tune their own validation models and avoid security bootstrapping.
 
 - BitTorrent-like, computation-free sync and modular validator participation: drawing direct inspiration from battle-tested approaches like Erigon's archival and sync model.
 
