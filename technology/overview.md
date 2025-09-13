@@ -36,7 +36,7 @@ By restricting execution to only those events that have been validated and agree
 
 ### Application logic layer
 
-At the core of Pelagos’ value proposition is the programmable application logic layer, which harnesses reliable, high-availability blockchain data from across multiple chains. This layer enables developers to implement a full spectrum of sophisticated business logic that can automatically trigger actions based on real-time on-chain events and predefined conditions.
+At the core of Pelagos’ value proposition is the programmable application logic layer, which harnesses reliable, high-availability blockchain data from across multiple chains. This layer enables developers to implement a full spectrum of sophisticated business logic that can automatically trigger actions based on real-time onchain events and predefined conditions.
 
 By delivering authentic, timely, and verifiable data, the application logic layer powers rich, complex workflows that seamlessly interact across diverse blockchain ecosystems. This capability is essential for enabling advanced use cases like scalable Appchain execution, multichain liquidity management, and rapid Appchain launches &mdash; each reliant on accurate crosschain information and responsive contract behavior.
 

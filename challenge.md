@@ -52,7 +52,7 @@ Furthermore, this fragmentation forces protocols to engage with external power s
 * Preferential access and pricing for insiders.
 * Liquidity extraction via arbitrage.
 
-This has all resulted in an opaque, off-chain coordination structure tainting the promise offered by a decentralized system. This fragmentation issue intensifies as independent chains and Layer 2 networks proliferate.
+This has all resulted in an opaque, offchain coordination structure tainting the promise offered by a decentralized system. This fragmentation issue intensifies as independent chains and Layer 2 networks proliferate.
 
 As a result:
 
@@ -80,7 +80,7 @@ At its core, this fragmentation imposes critical limitations:
 
 * Price discovery is undermined, as liquidity is dispersed across ecosystems with no unified market-clearing layer.
 * Composability is obstructed, erasing one of DeFi’s most powerful design primitives: modular, interoperable applications.
-* TradFi inefficiencies re-emerge — privileged access to liquidity, off-chain negotiations, and market segmentation reappear under a decentralized façade.
+* TradFi inefficiencies re-emerge — privileged access to liquidity, offchain negotiations, and market segmentation reappear under a decentralized façade.
 
 These barriers are not just technical inconveniences &mdash; they are fundamental blockers to scale, security, and the full realization of open finance. These constraints hinder meaningful adoption of institutional capital and limit the design space for compliant, high-value dApps.
 

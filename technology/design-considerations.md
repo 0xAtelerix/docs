@@ -14,7 +14,7 @@ Any invariant checks, state verification, or heavy computation occur in the exec
 
 ## Data availability and consistency guarantees
 
-The universal data layer is key to abstracting and unifing state management across heterogeneous blockchains. By exposing a rich, composable data interface and enabling dynamic, on-chain analytics, and tokenomics, the data layer dramatically reduces development friction. However, this adds complexity in state management and validation, requiring sophisticated tooling and abstractions.
+The universal data layer is key to abstracting and unifing state management across heterogeneous blockchains. By exposing a rich, composable data interface and enabling dynamic, onchain analytics, and tokenomics, the data layer dramatically reduces development friction. However, this adds complexity in state management and validation, requiring sophisticated tooling and abstractions.
 
 An alternative solution to the universal data layer is to leverage oracles. This solution was rejected because, while oracles can simplify data acquisition, they often introduce latency, potential inaccuracies, and limitations on data richness.
 

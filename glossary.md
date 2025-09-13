@@ -14,14 +14,15 @@ the specific needs of their application, rather than relying on a general-purpos
 
 A transaction signed by a user and submitted to a specific Appchain’s RPC endpoint to modify or interact with that Appchain’s state.
 
-### AVS
+<!-- ### AVS
 
 Autonomous Verifiable Services. A “Validator Service” or “Validation-as-a-Service” model where specialized entities run validator nodes or manage complex blockchain infrastructure. They ensure network security, uptime, and reliability, often on behalf of token holders or protocols.
 
 ### AVS operators
 
 Individuals or organizations that operate and maintain Validator Services. They handle tasks like node setup, infrastructure management, software updates, and governance participation, typically in return for fees or additional rewards.
-
+ -->
+ 
 <!-- ## B  -->
 
 ## C  

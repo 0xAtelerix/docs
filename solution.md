@@ -31,7 +31,7 @@ Furthermore, Pelagos’ native interoperability abstracts underlying chain diffe
 
 ### Key features
 
-- Trust-minimized interoperability: cross-chain execution and liquidity are settled via cryptographic guarantees, not off-chain relayers or custodial bridges.
+- Trust-minimized interoperability: cross-chain execution and liquidity are settled via cryptographic guarantees, not offchain relayers or custodial bridges.
 
 - Platform-agnostic execution environment: applications can monitor, and act upon, the evolving state across EVM, UTXO, Solana, and other chains.
 
@@ -41,7 +41,7 @@ Furthermore, Pelagos’ native interoperability abstracts underlying chain diffe
 
 ### Outcome
 
-Appchains benefit from seamless, low-latency bidirectional communication with any blockchain. Your Appchain or dApp can react immediately to on-chain events including arbitrage, price movements, and governance triggers, regardless of which chain the state change originated on, unlocking true composability and capital efficiency.
+Appchains benefit from seamless, low-latency bidirectional communication with any blockchain. Your Appchain or dApp can react immediately to onchain events including arbitrage, price movements, and governance triggers, regardless of which chain the state change originated on, unlocking true composability and capital efficiency.
 
 ## 2. Consensus at Scale
 

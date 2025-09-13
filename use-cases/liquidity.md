@@ -12,11 +12,9 @@ Adding new chains to a multiplatform Appcahin often involves complex development
 
 Pelagos addresses these challenges through native multichain connectivity. It provides direct, secure access to data and smart contracts on multiple blockchains without relying on bridges or third-party oracles. This means protocols can interact with diverse chains in real time.
 
-Using integrated threshold signature schemes (TSS) combined with restaking of tokens from various L1 ecosystems, Pelagos enables trust-minimized, secure transaction signing. This approach decentralizes control and offers strong resilience against censorship.
+Using integrated threshold signature schemes (TSS), Pelagos enables trust-minimized, secure transaction signing. This approach decentralizes control and offers strong resilience against censorship.
 
-Pelagos also supports reactive contracts and dynamic indexing that allow Appchains to autonomously respond to on-chain events across different blockchains. This enables sophisticated use cases like advanced treasury management, liquidity optimization, and innovative tokenomics.
-
-Security and scalability are enterprise-grade, and customizable, leveraging diversified restaking from multiple L1s to provide a security model stronger than many standalone chains. Meanwhile, horizontal scaling can be customized to suit each Appchain’s unique needs.
+Pelagos also supports reactive contracts and dynamic indexing that allow Appchains to autonomously respond to onchain events across different blockchains. This enables sophisticated use cases like advanced treasury management, liquidity optimization, and innovative tokenomics. Moreover, horizontal scaling can be customized to suit each Appchain’s unique needs.
 
 ### Impact and opportunities
 

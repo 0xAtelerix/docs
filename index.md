@@ -6,7 +6,7 @@ title: Index page given metadata title
 
 <!-- > This page (index) renders whether part of toc file management or not -->
 
-There is an urgent need for infrastructure that enables dApps to operate, at scale and across environments as seamlessly as they do within them. We believe that the future of decentralized systems depends on shared execution layers, unified liquidity environments, and native cross-domain composability.
+There is an urgent need for infrastructure that enables dApps to operate, at scale and across environments as seamlessly as they do within them. We believe that the future of decentralized systems depends on a shared execution layer, unified liquidity environments, and native cross-domain composability.
 
 Welcome to Pelagos: the first universal execution layer that turns every onchain pool into one seamless liquidity fabric. In this paper, Pelogas presents a solution that reclaims the original vision of decentralized finance (DeFi): permissionless innovation, efficient markets, and universal accessibility.
 
