@@ -115,9 +115,9 @@ A modular, self-contained service that runs a specific part of Pelagos (e.g., ex
 
 ### Proof of Stake
 
-Under [Poof-of-Stake blockchains](https://en.wikipedia.org/wiki/Proof_of_stake) (POS), staking is the locking of a token to support the blockchain operations. In return for staking your crypto, you may earn more cryptocurrency.
+Under [Poof-of-Stake blockchains](https://en.wikipedia.org/wiki/Proof_of_stake) (PoS), staking is the locking of a token to support the blockchain operations. In return for staking your crypto, you may earn more cryptocurrency.
 
-To validate POS blockchains, validator Nodes must first “stake” set amounts of the native token for the chain to be in a position to validate new transactions and add new blocks.
+To validate PoS blockchains, validator Nodes must first “stake” set amounts of the native token for the chain to be in a position to validate new transactions and add new blocks.
 
 The stake will be slashed (forefit) if the validator fails to build legitimate blocks. This ensures that only valid data and transactions are added to a blockchain. Validators are rewarded with the native token when they successfully add new blocks.
 

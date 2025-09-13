@@ -78,7 +78,7 @@ Because sequencing maintains no application state, it can be scaled out by addin
 
 Security of critical protocols like Distributed Key Generation (DKG) and Threshold Signature Schemes (TSS) requires a large, diverse validator set:
 
-- Pelagos targets ~100+ POS operators initially, scaling toward 500+ for long‑term resilience.
+- Pelagos targets ~100+ PoS operators initially, scaling toward 500+ for long‑term resilience.
 - Censorship resistance is reinforced by accepting transaction ingress from multiple connected blockchains, not only direct submissions.
 - Participation in TSS/DKG is spread across the full validator set to avoid collusion risks.
 

@@ -1,5 +1,5 @@
 ---
-todo: check that I fixed the gRPC bit
+todo: 
 ---
 
 ## Developing an Appchain with Pelagos
@@ -12,7 +12,7 @@ Launching an Appchain with Pelagos is as simple as deploying a smart contract. T
 
 and then run each Appchain just like one or more microservices.
 
-<!-- {had another go at this, if needed can drop the first of the following ps as discussed}
+<!-- had another go at this: if needed can drop the first of the following ps as discussed
  -->
 Normally, building a distributed system means dealing with low-level details: defining services in Protocol Buffers (Protobuf), handling client/server pairing and stub generation, setting up HTTP/2 multiplexing, managing streams vs. unary messages, serialization, and error handling. On top of that, developers would still need to design how to secure transactions, order them, integrate external chain data, and discover rates or liquidity pools.
 
@@ -45,7 +45,7 @@ This ensures that Appchains can integrate seamlessly with existing ecosystems or
 
 Appchains deployed over Pelagos enjoy direct, native-level access to other blockchains for data retrieval and transaction submission. The multichain layer in Pelagos works like a universal L1SLOAD for any chain.
 
-Combined with integrated TSS signing protocols for supported chains (secured by PoS, DKG, slashing, and restaking), Appchains can send external transactions to other protocols or Appchains as a natural extension of their execution environment.
+Combined with integrated TSS signing protocols for supported chains (secured by PoS, DKG, and slashing), Appchains can send external transactions to other protocols or Appchains as a natural extension of their execution environment.
 
 By enabling easy interoperability, Pelagos lets Appchains reuse and enhance existing protocols rather than competing for liquidity and users.
 
@@ -110,7 +110,7 @@ graph TD
 
 ```
 
-Furthermore, this approach extends service offerings for restaking operators who can offer additional rewards from shards. It is the thesis of the Pelagos designers that this model will foster organic ecosystem growth by aligning incentives among Appchains, validators, and service providers. 
+It is the thesis of the Pelagos designers that this model will foster organic ecosystem growth by aligning incentives among Appchains, validators, and service providers. 
 
 #### Scale consensus
 
@@ -126,7 +126,7 @@ Developers can determine the size of the blocks produced by their Appchains acco
 
 ### Leverage trigger event logic
 
-<!-- Consider section on leveraging the metadata from multichain environments in addition to this section that uses single chain events 
+<!-- Consider section on leveraging the metadata from multichain environments in addition to this section that uses single chain events.
  -->
 
  Using the reactive smart contract, developers can leverage the unified data environment offered by Pelagos as a multichain data availability layer for in-app logic by setting up trigger events. 
