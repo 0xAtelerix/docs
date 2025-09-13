@@ -65,6 +65,8 @@ Data and state synchronization among validators employ BitTorrent-like peer-to-p
 
 #### Outcome
 
+<--! can we still make "robus shared security" claim for the nascent appchain? -->
+
 Consensus is no longer the bottleneck. Resources scale elastically, performance stays predictable, and Appchains can rely on robust shared security from day one. This enables complex, latency-sensitive operations such as routing trades across multiple DEXs and chains to be executed atomically within a single ~0.4 s DAG block, delivering near-instant settlement and greatly improving trading efficiency.
 
 ## 3. Generalized data layer
@@ -80,6 +82,8 @@ Pelagos provides an abstract, generalized data layer that unifies cross-chain st
 Advanced indexing and incremental state snapshots optimize query latency and reduce storage overhead by loading only relevant data segments. Native data availability and verified finality guarantees ensure that smart contracts operate only on finalized, tamper-evident states.
 
 Moreover, this design supports flexible app architectures with minimal compromise on performance or security.
+
+<!-- ditto, removing restaking but ok to retain claims on security? -->
 
 #### Key features:
 
