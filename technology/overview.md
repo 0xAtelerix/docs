@@ -52,7 +52,7 @@ Each Appchain runs as an independent DAG-based chain instance, leveraging the Pe
 
 To support native “event-driven” automation, Pelagos supports “reactive contracts”. Reactive contracts are smart contracts that automatically react to events or state changes on any connected blockchain.
 
-<!--  {verify off chain too in p below, this comes back to oracles, no?} -->
+<!--  verify off chain too in p below, this comes back to oracles, no? -->
 
 Instead of manually polling for updates, an Appchain can trigger automatically, executing specified logic when certain conditions are met on or offchain. This capability allows Appchains to implement near real-time responses to market changes, network events, or other external data sources, enabling a more seamless and efficient multichain user experience.
 
