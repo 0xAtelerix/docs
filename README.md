@@ -6,23 +6,6 @@ The .gitbook.yaml is overriding the use of the root readme now.
 
 [This repo](https://github.com/0xAtelerix/docs) is synced with GitBook in the Pelogas domain with the title Whitepaper BUT the space is what must be updated to add content.
 
-There is no current public URL.
-
-
-## Structure for the whitepaper tbd
-
-Overview
-Challenge
-Solution
-Features
-Use Cases
-Tokenomics
-Technology
-Competitive positioning
-Roadmap
-CTA/contacts
-
-
 ## Style
 
 - American English.
@@ -39,12 +22,12 @@ Highlights from guide
 - Sentence case (including headings)
 - Be woke-ish: Allowlist 
 - Concatenate
-	- onchain not on-chain
+	- onchain not on-chain, offchain not off-chain
+  (cross-chain uses)
 
 ### Acronyms
 
-AMM: Automated Market Maker
-AVS: 
+Covered in Glossary
 
 ## Terminology
 
@@ -52,25 +35,10 @@ Refer to it as the Pelagos DAG consensus network, or simply Pelagos consensus la
 
 ## Concepts
 
-AMM: 
-  - Anyone can provide liquidity and earn a share of the trading fees, becoming a "liquidity provider."
-  - Trades happen directly between users and the smart contract pool, not between buyers and sellers paired off by orderbooks.
-
-  - Benefits:
-    - Continuous, 24/7 liquidity for a wide range of tokens—even those rarely traded.
-    - Fully decentralized and accessible without centralized intermediaries.
-    - Lower barriers to participation and usually lower fees.
-
-  - Weaknesses:
-    - Price slippage increases with large trades relative to pool size.
-    - "Impermanent loss": liquidity providers can lose value when prices change significantly.
-    - AMMs may be less efficient for very large trades compared to centralized exchanges or on-chain orderbooks
-
 should this image explain https://drive.google.com/file/d/1DFVub4BoIt1q_bFAPRfZcq9YnTqjwF5s/view
 Evgenii Danilenko
 
 https://drive.google.com/file/d/1siEto9mlIDgLtGrQPCxlnFkvVjZbJqhK/view?usp=drive_link
-
 
 Like cosmos -- can use golang or rust to handle user transactions
 
@@ -105,8 +73,6 @@ Txs and swaps are on Appchain itself and then the external tx is done on the cha
 Appchain -- lets do this tx
 DAG Ops -- validate that the funds exist on // 
 Application logic must be the entitiy if you want to lock of those funds until such time as finalization BUT Pelagos is not doing this logic layer
-
-
 
 
 ## Styling in GitBook

@@ -36,13 +36,15 @@ By restricting execution to only those events that have been validated and agree
 
 ### Application logic layer
 
-At the core of Pelagos’ value proposition is the programmable application logic layer, which harnesses reliable, high-availability blockchain data from across multiple chains. This layer enables developers to implement a full spectrum of sophisticated business logic that can automatically trigger actions based on real-time on-chain events and predefined conditions.
+At the core of Pelagos’ value proposition is the programmable application logic layer, which harnesses reliable, high-availability blockchain data from across multiple chains. This layer enables developers to implement a full spectrum of sophisticated business logic that can automatically trigger actions based on real-time onchain events and predefined conditions.
 
 By delivering authentic, timely, and verifiable data, the application logic layer powers rich, complex workflows that seamlessly interact across diverse blockchain ecosystems. This capability is essential for enabling advanced use cases like scalable Appchain execution, multichain liquidity management, and rapid Appchain launches &mdash; each reliant on accurate crosschain information and responsive contract behavior.
 
+<!-- can this stand as is without the restaking? -->
+
 Moreover, this layer provides significant deployment flexibility, allowing teams to customize their logic and integrate new chains efficiently without compromising security or performance. It transforms raw blockchain data into actionable intelligence, driving innovation and interoperability across the decentralized landscape. Appchain developers can define business rules, automations, or application-specific logic using any environment and then deploy these as independent Appchains. The Appchain execution model allows developers to implement their state transition logic in any language (e.g., Rust, Go) by providing a custom Docker container (e.g., EVM, WebAssembly, MoveVM). This grants full control over transaction processing, virtual machine choice, and block production rules, enabling highly specialized application logic and seamless horizontal scaling.
 
-Each Appchain runs as an independent DAG-based chain instance, leveraging the Pelagos validator sets that offer Proof of Stake (PoS) security as default, with additional, optional restaking security guarantees.
+Each Appchain runs as an independent DAG-based chain instance, leveraging the Pelagos validator sets that offer Proof of Stake (PoS) security .
 
 > See more on the [developing on Pelagos](#developing-an-appchain-with-pelagos)
 
@@ -50,7 +52,7 @@ Each Appchain runs as an independent DAG-based chain instance, leveraging the Pe
 
 To support native “event-driven” automation, Pelagos supports “reactive contracts”. Reactive contracts are smart contracts that automatically react to events or state changes on any connected blockchain.
 
-<!--  {verify off chain too in p below, this comes back to oracles, no?} -->
+<!--  verify off chain too in p below, this comes back to oracles, no? -->
 
 Instead of manually polling for updates, an Appchain can trigger automatically, executing specified logic when certain conditions are met on or offchain. This capability allows Appchains to implement near real-time responses to market changes, network events, or other external data sources, enabling a more seamless and efficient multichain user experience.
 

@@ -14,14 +14,15 @@ the specific needs of their application, rather than relying on a general-purpos
 
 A transaction signed by a user and submitted to a specific Appchain’s RPC endpoint to modify or interact with that Appchain’s state.
 
-### AVS
+<!-- ### AVS
 
 Autonomous Verifiable Services. A “Validator Service” or “Validation-as-a-Service” model where specialized entities run validator nodes or manage complex blockchain infrastructure. They ensure network security, uptime, and reliability, often on behalf of token holders or protocols.
 
 ### AVS operators
 
 Individuals or organizations that operate and maintain Validator Services. They handle tasks like node setup, infrastructure management, software updates, and governance participation, typically in return for fees or additional rewards.
-
+ -->
+ 
 <!-- ## B  -->
 
 ## C  
@@ -115,9 +116,9 @@ A modular, self-contained service that runs a specific part of Pelagos (e.g., ex
 
 ### Proof of Stake
 
-Under [Poof-of-Stake blockchains](https://en.wikipedia.org/wiki/Proof_of_stake) (POS), staking is the locking of a token to support the blockchain operations. In return for staking your crypto, you may earn more cryptocurrency.
+Under [Poof-of-Stake blockchains](https://en.wikipedia.org/wiki/Proof_of_stake) (PoS), staking is the locking of a token to support the blockchain operations. In return for staking your crypto, you may earn more cryptocurrency.
 
-To validate POS blockchains, validator Nodes must first “stake” set amounts of the native token for the chain to be in a position to validate new transactions and add new blocks.
+To validate PoS blockchains, validator Nodes must first “stake” set amounts of the native token for the chain to be in a position to validate new transactions and add new blocks.
 
 The stake will be slashed (forefit) if the validator fails to build legitimate blocks. This ensures that only valid data and transactions are added to a blockchain. Validators are rewarded with the native token when they successfully add new blocks.
 

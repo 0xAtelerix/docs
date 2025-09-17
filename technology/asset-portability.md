@@ -1,6 +1,6 @@
 ## Atomic crosschain asset portability
 
-Pelagos’ DAG operator consensus network embodies the same trust model principles as a decentralized blockchain, replacing custodial bridges with decentralized observation, agreement, and native token issuance. This is a key innovation addressing many of the security and composability issues caused by traditional wrapped tokens and bridge constructions.
+Pelagos’ DAG operator consensus network embodies the same trust model principles as a decentralized blockchain, replacing custodial bridges with decentralized observation, agreement, and native token issuance. This key innovation addresses many of the security and composability issues caused by traditional wrapped tokens and bridge constructions.
 
 Unlike bridges that lock assets on one chain and mint wrapped tokens on another &mdash; often relying on multi-signature wallets or centralized validators &mdash; Pelagos replaces these models with its DAG-based consensus network. This network consists of a distributed, decentralized set of operators, “DAG operators” who collectively observe and validate events such as asset locks or state changes on origin chains, then attest to those events within Pelagos’ own consensus process.
 

@@ -29,11 +29,11 @@ To operate as a validator requires participants to run Appchain execution nodes 
 
 To fulfill their role of reaching consensus on supported L1 and L2 states, validators must maintain full L1 and L2 client nodes. This ensures correct state retrieval and external chain integration.
 
-<!-- {Is this just because they can't stake and become validators on various networks without full nodes in the first place, cause I can't imagine you need full chain history to achieve consensus} -->
+<!-- Is this just because they can't stake and become validators on various networks without full nodes in the first place, cause I can't imagine you need full chain history to achieve consensus -->
 
 #### Validator set management
 
-Existing validators are responsible for managing the validator set. This requires them to submit restaking applications with stake, public key, chain info, and service ID on L1 contracts. The existing set will receive and track validator set updates via the Pelagos reactive contract to ensure synchronized state and readiness.
+Existing validators are responsible for managing the validator set. The existing set will receive and track validator set updates via the Pelagos reactive contract to ensure synchronized state and readiness.
 
 #### Validator Appchain lifecycle management
 

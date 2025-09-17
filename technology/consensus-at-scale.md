@@ -1,7 +1,7 @@
 
 ## Pelagos: Consensus at scale
 
-The Pelagos protocol and its validator network are able to offer a scalable application logic layer that supports reactive smart contracts while ensuring state integrity, ordering, and universal data consistency at scale, thanks to two principle architectural elements, a DAG consensus layer whose security is enforced through PoS and an extendible security bootstrapping option through restaking.
+The Pelagos protocol and its validator network are able to offer a scalable application logic layer that supports reactive smart contracts while ensuring state integrity, ordering, and universal data consistency at scale, thanks to the DAG consensus layer whose security is enforced through PoS.
 
 ### Leaderless Directed Acyclic Graphs consensus
 
@@ -37,29 +37,6 @@ optimistic execution of EVM-like chains.
 On top of this resilient consensus foundation, Pelagos provides VMs with predictable data flows that optimize execution flexibility for Appchains. Transactions and external L1 blocks are ingested as a deterministic, ordered stream directly from the sequencing layer. Applications have the power to define custom rules for slicing this stream into blocks — enabling custom batching logic and block construction strategies best suited to their needs.
 
 Processing transactions and blocks in batches drives high throughput at the DAG level, allowing Appchains to both maximize performance and fine-tune state transitions in accordance with their unique application requirements.
-
-### Extendable security bootstrapping with restaking
-
-Launching a new Appchain presents a well-known bootstrapping challenge: without an established validator set or strong stake base, the chain is vulnerable to centralization, security attacks, and validator coordination issues. This in turn makes it harder to attract new validators.
-
-Beyond the baseline Proof of Stake (PoS) security provided by the Pelagos Protocol, Appchains can choose to assign critical validation and execution duties to restaking validators. This allows them to leverage validators whose alignment is reinforced by additional restaking commitments.
-
-This means that validators can “restake” locked assets to further secure Pelagos Appchains, eliminating the need for each Appchain to bootstrap its own validator set or native token. 
-
-Restaking works by leveraging the capital already staked in large, established, and secure PoS (Proof of Stake) ecosystems (such as Ethereum, Bitcoin (via Babylon), Solana, TON, etc.). By combining restaking, Pelagos leverages an aggregate security stake far exceeding the individual L1s.
-
-Restaking allows appchains to determine which critical validation and execution duties are undertaken by entities whose alignment is ensured. By putting their existing stake at risk of slashing for poor performance or malicious behavior, validators are economically aligned with the success and security of the Appchains they serve. This allows new Appchains to gain immediate access to a large, robust, and decentralized validator network: avoiding the overhead of launching their own staking tokens, designing complex validator incentive models, or managing permissioned validator sets.
-
-Pelagos’ approach increases system resilience by pooling validators across multiple chains and staking models. While restaking introduces shared risks &mdash; like slashing exposure cascading across chains &mdash; it also significantly raises the cost of attacking any single Appchain, since attackers must overcome the economic weight of the entire restaked network.
-
-Pelagos' Autonomous Verifiable Services (AVS) delegates tasks to restakers, such as:
-
-- Sequencing consensus execution
-- Performing TSS (Threshold Signature Scheme) for secure external transactions
-- Multisig
-- TEE (Trusted Execution Environment) validation
-- Operating Appchain containers to ensure scalable and efficient execution
-- Creating proofs and verification
 
 > See more on the [validator role](./validating-appchain.md#validating-appchains-with-pelagos)
 

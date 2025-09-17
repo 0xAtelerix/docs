@@ -14,7 +14,7 @@ Any invariant checks, state verification, or heavy computation occur in the exec
 
 ## Data availability and consistency guarantees
 
-The universal data layer is key to abstracting and unifing state management across heterogeneous blockchains. By exposing a rich, composable data interface and enabling dynamic, on-chain analytics, and tokenomics, the data layer dramatically reduces development friction. However, this adds complexity in state management and validation, requiring sophisticated tooling and abstractions.
+The universal data layer is key to abstracting and unifing state management across heterogeneous blockchains. By exposing a rich, composable data interface and enabling dynamic, onchain analytics, and tokenomics, the data layer dramatically reduces development friction. However, this adds complexity in state management and validation, requiring sophisticated tooling and abstractions.
 
 An alternative solution to the universal data layer is to leverage oracles. This solution was rejected because, while oracles can simplify data acquisition, they often introduce latency, potential inaccuracies, and limitations on data richness.
 
@@ -78,11 +78,9 @@ Because sequencing maintains no application state, it can be scaled out by addin
 
 Security of critical protocols like Distributed Key Generation (DKG) and Threshold Signature Schemes (TSS) requires a large, diverse validator set:
 
-- Pelagos targets ~100+ restaking operators initially, scaling toward 500+ for long‑term resilience.
+- Pelagos targets ~100+ PoS operators initially, scaling toward 500+ for long‑term resilience.
 - Censorship resistance is reinforced by accepting transaction ingress from multiple connected blockchains, not only direct submissions.
 - Participation in TSS/DKG is spread across the full validator set to avoid collusion risks.
-
-In addition to the base-layer security of the Proof of Stake (PoS) protocol, Pelagos requires an extendible security model to overcome bootstrapping challenges and to offer more robust security for critical workloads. To meet this requirement, Pelagos supports appchains to select [restaking validators](consensys-at-scale#extendable-security-bootstrapping-with-restaking) and leverage additional security guaruntees.
 
 ## Comparison with other designs
 

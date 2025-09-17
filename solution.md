@@ -31,7 +31,7 @@ Furthermore, Pelagos’ native interoperability abstracts underlying chain diffe
 
 ### Key features
 
-- Trust-minimized interoperability: cross-chain execution and liquidity are settled via cryptographic guarantees, not off-chain relayers or custodial bridges.
+- Trust-minimized interoperability: cross-chain execution and liquidity are settled via cryptographic guarantees, not offchain relayers or custodial bridges.
 
 - Platform-agnostic execution environment: applications can monitor, and act upon, the evolving state across EVM, UTXO, Solana, and other chains.
 
@@ -41,7 +41,7 @@ Furthermore, Pelagos’ native interoperability abstracts underlying chain diffe
 
 ### Outcome
 
-Appchains benefit from seamless, low-latency bidirectional communication with any blockchain. Your Appchain or dApp can react immediately to on-chain events including arbitrage, price movements, and governance triggers, regardless of which chain the state change originated on, unlocking true composability and capital efficiency.
+Appchains benefit from seamless, low-latency bidirectional communication with any blockchain. Your Appchain or dApp can react immediately to onchain events including arbitrage, price movements, and governance triggers, regardless of which chain the state change originated on, unlocking true composability and capital efficiency.
 
 ## 2. Consensus at Scale
 
@@ -53,8 +53,6 @@ Consensus must remain fast, reliable, and secure &mdash; even as it scales to th
 
 Pelagos introduces a highly parallelized, leaderless Directed Acyclic Graph (DAG) consensus layer combined with an Erigon-inspired, immutable database as the substrate. This parallelizes transaction ordering to maximize throughput and minimize latency. This consensus runs atop the efficient immutable database to guarantee tamper-proof, incremental state snapshots enabling rapid synchronization.
 
-In addition to the native Proof of Stake (PoS), validators operate across multiple L1 networks using restaking, combining their stakes from Ethereum, Solana, Bitcoin, TON, and others to create a layered, economic security fabric. This restaking aligns incentives and mitigates the need for Appchains to bootstrap native validators or security tokens.
-
 Data and state synchronization among validators employ BitTorrent-like peer-to-peer protocols, enabling computation-free, high-speed syncing without central coordination points.
 
 #### Key features:
@@ -63,11 +61,11 @@ Data and state synchronization among validators employ BitTorrent-like peer-to-p
 
 - A trust-minimized protocol: ensuring a robust consensus mechanism enforced by economic incentives and penalties.
 
-- Configurable security guarantees: restaking mechanisms that aggregate economic security from multiple L1s (Ethereum, Solana, Bitcoin, TON, etc.), allowing Appchains to fine-tune their own validation models and avoid security bootstrapping.
-
 - BitTorrent-like, computation-free sync and modular validator participation: drawing direct inspiration from battle-tested approaches like Erigon's archival and sync model.
 
 #### Outcome
+
+<--! can we still make "robus shared security" claim for the nascent appchain? -->
 
 Consensus is no longer the bottleneck. Resources scale elastically, performance stays predictable, and Appchains can rely on robust shared security from day one. This enables complex, latency-sensitive operations such as routing trades across multiple DEXs and chains to be executed atomically within a single ~0.4 s DAG block, delivering near-instant settlement and greatly improving trading efficiency.
 
@@ -84,6 +82,8 @@ Pelagos provides an abstract, generalized data layer that unifies cross-chain st
 Advanced indexing and incremental state snapshots optimize query latency and reduce storage overhead by loading only relevant data segments. Native data availability and verified finality guarantees ensure that smart contracts operate only on finalized, tamper-evident states.
 
 Moreover, this design supports flexible app architectures with minimal compromise on performance or security.
+
+<!-- ditto, removing restaking but ok to retain claims on security? -->
 
 #### Key features:
 

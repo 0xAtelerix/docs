@@ -12,7 +12,7 @@ While event triggers are fully supported via standardized smart contract hooks, 
 
 - Composable economic mechanisms fueled by continuous monitoring, comparison, and adjustment based on the combined state of many networks.
 
-The security of such reactive events is enforced with threshold multi-sig logic. This ensures that outbound actions are only executed when a quorum of validators collectively sign the transaction using a Threshold Signature Scheme (TSS) based on Distributed Key Generation (DKG) protocols, ensuring robust, distributed security without single points of failure.
+The security of such reactive events is enforced with threshold multi-sig logic. This ensures that outbound actions are only executed when a quorum of validators collectively sign the transaction using a Threshold Signature Scheme (TSS) based on Distributed Key Generation (DKG) protocols. This ensures robust, distributed security without single points of failure.
 
 ## Extensible tokenomics support
 
@@ -33,8 +33,7 @@ The API supports six event hooks: pre-epoch, post-epoch, pre-block, post-block, 
 The above functions are clearly demarcated based on where in the lifecycle they occur, for example these events could trigger the following business logic:
 
 - Before Epoch
-    - Collect user fees
-    - Pay fees for restaking L1 tokens to subscribe for the next Epoch
+    - Collect user fees.
 
 - Before Block:
     - Validate oracle-provided rates.

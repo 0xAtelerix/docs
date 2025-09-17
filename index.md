@@ -6,7 +6,7 @@ title: Index page given metadata title
 
 <!-- > This page (index) renders whether part of toc file management or not -->
 
-There is an urgent need for infrastructure that enables dApps to operate, at scale and across environments as seamlessly as they do within them. We believe that the future of decentralized systems depends on shared execution layers, unified liquidity environments, and native cross-domain composability.
+There is an urgent need for infrastructure that enables dApps to operate, at scale and across environments as seamlessly as they do within them. We believe that the future of decentralized systems depends on a shared execution layer, unified liquidity environments, and native cross-domain composability.
 
 Welcome to Pelagos: the first universal execution layer that turns every onchain pool into one seamless liquidity fabric. In this paper, Pelogas presents a solution that reclaims the original vision of decentralized finance (DeFi): permissionless innovation, efficient markets, and universal accessibility.
 
@@ -26,17 +26,9 @@ Rather than relying on traditional bridges, the protocol facilitates real-time, 
 
 Supporting atomic settlement, Pelagos' logic ensures transactions involving multiple chains either complete fully or not at all, eliminating partial failures and reducing counterparty risks, all while enhancing composability across the decentralized ecosystem.
 
-### Customizable security
-
-Pelagos offers a unique ability for teams to flexibly set their security postures by adjusting the proportion of their validators who restake tokens across multiple leading networks in addition to staking in the Pelagos protocol. 
-
-This restaking mechanism intertwines the security economics of each Appchain with established, economically aligned validators from diverse ecosystems: enhancing security guarantees. Developers can determine the mix and scale of validator restaking, thereby customizing the economic incentives and security assumptions of their Appchain. 
-
-This design offers significant assurances to Appchains in their bootstrapping phase.
-
 ## Pelagos: redefining mutichain development 
 
-Pelagos' tecnical design give teams unparalleled control over their Appchain’s scalability, security, and liquidity &mdash; allowing them to innovate boldly while relying on Pelagos’ robust, interoperable infrastructure as the foundation of their growth.
+Pelagos' tecnical design give teams unparalleled control over their Appchain’s scalability and liquidity &mdash; allowing them to innovate boldly while relying on Pelagos’ robust, interoperable infrastructure as the foundation of their growth.
 
 Transforming mainnet launches into the simple acts of defining business logic, tokenomics, and project value, Pelagos handles validating, sequencing, scaling, security, and multichain APIs, supporting:
 
