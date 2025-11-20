@@ -19,6 +19,10 @@
 * [Developing an Appchain](technology/developing-appchain.md)
 * [Validating Appchains](technology/validating-appchain.md)
 
+## 🧑‍💻 Explore Our SDK
+
+* [SDK for Builders](explore-our-sdk/sdk-for-builders.md)
+
 ## 🧩 Use Cases
 
 * [Appchain scaling](use-cases/scaling.md)
