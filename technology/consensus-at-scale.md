@@ -23,7 +23,7 @@ The immutable database model provides a multichain, universal state, ensuring ef
 
 The DAG database achieves this through its key attributes: 
 -  Immutable state snapshots providing tamper-evident, incremental snapshots of blockchain states. 
-> These snapshots enable seamless synchronization and verifiable data integrity across Appchains, reinforced by restaking confirmations through Pelagos checkpoints.
+> These snapshots enable seamless synchronization and verifiable data integrity across Appchains, reinforced by confirmations through Pelagos checkpoints.
 - Incremental database design enabling rapid synchronization by processing
 only relevant components, making it highly adaptable for diverse Appchain architectures.
 - Advanced historical indexing enabling users to define comprehensive historical indexes across Appchains and external blockchains. 
