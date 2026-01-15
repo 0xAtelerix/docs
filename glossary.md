@@ -16,7 +16,7 @@ A transaction signed by a user and submitted to a specific Appchain’s RPC endp
 
 ### Checkpoint
 
-A finalized snapshot of Appchain states. At the end of each Pelagos epoch, validators agree on the current state root of every Appchain, bundle these into a single checkpoint, and commit it (along with its proofs) to one or more L1 restaking contracts.
+A finalized snapshot of Appchain states. At the end of each Pelagos epoch, validators agree on the current state root of every Appchain, bundle these into a single checkpoint, and commit it (along with its proofs) to one or more L1 contracts.
 
 ### Checkpoint Merkle root
 
@@ -96,8 +96,6 @@ The stake will be slashed (forefit) if the validator fails to build legitimate b
 
 A transaction triggered by a control (or governance) contract in response to new data received from external L1/L2 networks.
 
-
-
 ## S
 
 ### Shard
@@ -126,4 +124,4 @@ A Pelagos open-source node that includes L1/L2 oracles, sequencing consensus, Ap
 
 ### Validator set
 
-The pool of validators authorized to participate in Pelagos' DAG consensus and TSS signing. It's dynamically updated based on restaking commitments from various L1 networks. A majority (⅔+1 by stake) must sign blocks, checkpoints, and external transactions.
+The pool of validators authorized to participate in Pelagos' DAG consensus and TSS signing.  A majority (⅔+1 by stake) must sign blocks, checkpoints, and external transactions.
