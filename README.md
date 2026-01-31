@@ -25,6 +25,10 @@ Highlights from guide
 	- onchain not on-chain, offchain not off-chain
   (cross-chain uses)
 
+### Variants
+
+dApp
+
 ### Acronyms
 
 Covered in Glossary
