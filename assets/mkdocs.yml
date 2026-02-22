@@ -4,7 +4,7 @@ theme:
   features:
 #    - navigation.tabs
     - navigation.sections
-    - navigation.expand
+#    - navigation.expand
     - navigation.top
     - search.suggest
     - search.highlight
@@ -29,7 +29,8 @@ theme:
     code: Roboto Mono
   icon:
     logo: material/book-open-page-variant
-
+extra_css:
+  - stylesheets/extra.css
 nav:
   - 📘 Start here:
     - Introduction: index.md
@@ -64,8 +65,14 @@ nav:
 plugins:
   - search
   - tags
+  - mermaid2
 
 markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
