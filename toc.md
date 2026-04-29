@@ -16,8 +16,8 @@
 * [Consensus at scale](technology/consensus-at-scale.md)
 * [Asset portability](technology/asset-portability.md)
 * [Reactive logic layer](technology/reactive-logic.md)
-* [Developing an Appchain](technology/developing-appchain.md)
-* [Validating Appchains](technology/validating-appchain.md)
+* [Developing an application](technology/developing-appchain.md)
+* [Validating applications](technology/validating-appchain.md)
 
 ## 🧑‍💻 Explore Our SDK
 
@@ -25,8 +25,8 @@
 
 ## 🧩 Use Cases
 
-* [Appchain scaling](use-cases/scaling.md)
-* [Multichain Appchain launch](use-cases/multichain-launch.md)
+* [Application scaling](use-cases/scaling.md)
+* [Multichain application launch](use-cases/multichain-launch.md)
 * [Unlocking cross-chain liquidity](use-cases/liquidity.md)
 
 ## 🏁 Closing
