@@ -134,7 +134,7 @@ This modular sequencing design ensures that high transaction volumes or temporar
 
 > For example, if Apapplicationchain epochs are set to end every day at 00:00, all applications finalize their state at precisely that moment, coordinated via consensus across validators. At each epoch's close, a checkpoint is created,a cryptographic snapshot of state, the validators collectively sign this checkpoint using threshold signature schemes (TSS), ensuring shared trust and immutability of state transitions.
 
-As network demand shifts and certain applications start to require more sequencing resources, Pelagos offers seamless vertical scaling. If an Appchain begins to consume disproportionate amounts of bandwidth or computation, it can be migrated, without data loss or break in continuity, to its own dedicated sequencing DAG. This migration is elegantly handled at the epoch boundary: after the Appchain’s checkpoint is committed. The Appchain is then shifted out of the shared sequencer onto a standalone path, with its state and event history preserved.
+As network demand shifts and certain applications start to require more sequencing resources, Pelagos offers seamless vertical scaling. If an application begins to consume disproportionate amounts of bandwidth or computation, it can be migrated, without data loss or break in continuity, to its own dedicated sequencing DAG. This migration is elegantly handled at the epoch boundary: after the application’s checkpoint is committed. The application is then shifted out of the shared sequencer onto a standalone path, with its state and event history preserved.
 
 **Figure 1. Scaling within Pelagos**
 
@@ -147,40 +147,40 @@ flowchart TD
   classDef source fill:#fff2cc,stroke:#000,stroke-width:1px,color:#000;
 
   %% External sources and validators
-  L1L2["L1/L2 Blockchain data and Appchain requests"]:::source
+  L1L2["L1/L2 Blockchain data and application requests"]:::source
   VAL["Pelagos Validators: Data availability, sequencing, multi-chain messaging"]:::process
 
   %% Horizontal Scaling
   subgraph H["Consensus Scaling"]
     direction TB
 
-    %% Appchain 1 & 2 (separate DAGs)
+    %% application 1 & 2 (separate DAGs)
     DAG1[DAG 1 Sequencer]:::process
     OT1[Ordered Transactions]:::process
-    AC1[Appchain 1]:::horiz
-    AC2[Appchain 2]:::horiz
+    AC1[application 1]:::horiz
+    AC2[application 2]:::horiz
 
     DAG1 --> OT1
     OT1 --> AC1
     OT1 --> AC2
 
-    %% Appchain 3 (Vertical Scaling from single DAG)
-    subgraph VS3["Performanace Scaling: Appchain 3"]
+    %% application 3 (Vertical Scaling from single DAG)
+    subgraph VS3["Performanace Scaling: application 3"]
       direction TB
       DAG3[DAG 2 Sequencer]:::process
       OT3a[Ordered Transactions: Shard A]:::process
       OT3b[Ordered Transactions: Shard B]:::process
-      AC3a[Appchain 3: Shard A]:::vert
-      AC3b[Appchain 3: Shard B]:::vert
+      AC3a[application 3: Shard A]:::vert
+      AC3b[application 3: Shard B]:::vert
 
       DAG3 --> OT3a --> AC3a
       DAG3 --> OT3b --> AC3b
     end
 
-    %% Appchain N
+    %% application N
     DAGN[DAG N - Sequencer]:::process
     OTN[Ordered Transactions]:::process
-    ACN[Appchain N]:::horiz
+    ACN[application N]:::horiz
 
     DAGN --> OTN --> ACN
   end
