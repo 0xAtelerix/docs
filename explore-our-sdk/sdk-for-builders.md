@@ -1,8 +1,7 @@
 ---
 description: >-
   Pelagos Go SDK is the toolkit Pelagos validators expect you to use when you
-  author an appchain. An appchain is your application-specific runtime packaged
-  as a Docker container that runs alongside the
+  author an application.
 ---
 
 # SDK for Builders

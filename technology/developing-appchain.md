@@ -43,7 +43,7 @@ This ensures that applications can integrate seamlessly with existing ecosystems
 
 Applications deployed over Pelagos enjoy direct, native-level access to other blockchains for data retrieval and transaction submission. The multichain layer in Pelagos works like a universal L1SLOAD for any chain.
 
-Combined with integrated TSS signing protocols for supported chains (secured by PoS, DKG, and slashing), applications can send external transactions to other protocols or Appchains as a natural extension of their execution environment.
+Combined with integrated TSS signing protocols for supported chains (secured by PoS, DKG, and slashing), applications can send external transactions to other protocols or applications as a natural extension of their execution environment.
 
 By enabling easy interoperability, Pelagos lets applications reuse and enhance existing protocols rather than competing for liquidity and users.
 
