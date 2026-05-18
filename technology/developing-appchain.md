@@ -21,7 +21,7 @@ From the perspective of a developer, it feels like working with a standard datab
 * Blockchain data for use within application smart contracts.
 * Assurance that the blockchain data is valid and immutable.
 * Creation, signing, and submission of transactions to target blockchains.
-* Support for TSS (Threshold Signature Schemes) using the GG20 and FROST (ROAST) protocols.
+* Support for TSS (Threshold Signature Schemes).
 
 This ensures a seamless, scalable, and secure multichain interaction model.
 
