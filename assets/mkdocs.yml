@@ -2,9 +2,9 @@ site_name: Pelagos Documentation
 theme:
   name: material
   features:
-#    - navigation.tabs
+    # - navigation.tabs
     - navigation.sections
-#    - navigation.expand
+    # - navigation.expand
     - navigation.top
     - search.suggest
     - search.highlight
