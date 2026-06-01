@@ -4,23 +4,19 @@ Providing acronyms and definitions.
 
 ## A
 
-### Appchain
+### Application transaction
 
-Application-specific chain. A dedicated blockchain or DAG chain instance focused on a single application or project. Appchains allow developers to tailor consensus parameters, tokenomics, and execution logic to the specific needs of their application, rather than relying on a general-purpose L1 or L2.
-
-### Appchain transaction
-
-A transaction signed by a user and submitted to a specific Appchain’s RPC endpoint to modify or interact with that Appchain’s state.
+A transaction signed by a user and submitted to a specific application's RPC endpoint to modify or interact with that application's state.
 
 ## C
 
 ### Checkpoint
 
-A finalized snapshot of Appchain states. At the end of each Pelagos epoch, validators agree on the current state root of every Appchain, bundle these into a single checkpoint, and commit it (along with its proofs) to one or more L1 contracts.
+A finalized snapshot of application states. At the end of each Pelagos epoch, validators agree on the current state root of every application, bundle these into a single checkpoint, and commit it (along with its proofs) to one or more L1 contracts.
 
 ### Checkpoint Merkle root
 
-A single Merkle root combines every Appchain’s state root at the end of an epoch. This root is used to prove that a given Appchain’s state is included in the overall Pelagos checkpoint without having to store or verify all states individually.
+A single Merkle root combines every application's state root at the end of an epoch. This root is used to prove that a given application's state is included in the overall Pelagos checkpoint without having to store or verify all states individually.
 
 ### Consensus layer
 
@@ -52,7 +48,7 @@ Any final outcome/transaction produced via TSS is then sent out to external L1/L
 
 ### Epoch
 
-A fixed period of time (or a number of blocks) in which Appchains execute transactions, produce blocks and generate a checkpoint. Once an epoch concludes, validators finalize the resulting checkpoint before moving on to the next epoch.
+A fixed period of time (or a number of blocks) in which applications execute transactions, produce blocks and generate a checkpoint. Once an epoch concludes, validators finalize the resulting checkpoint before moving on to the next epoch.
 
 ### Epoch finalization
 
@@ -76,9 +72,9 @@ Gas sponsorships will be enabled with [EIP-7702](https://eip7702.io), allowing s
 
 A cryptographic hash (similar to a BitTorrent “magnet” link) that identifies a chunk of immutable, incremental database (DB) data. It ensures data integrity—any node can fetch a specific DB file from peers, verify it against the hash, and trust that the file has not been tampered with.
 
-### Immutable Appchain DB
+### Immutable application DB
 
-A data storage model (inspired by Erigon) where new Appchain states and transaction histories are periodically “sealed” into immutable snapshots. Each snapshot is identified by an info-hash and can be shared over BitTorrent-like protocols. Only the most recent “hot” DB accepts writes; older snapshots remain read-only and unalterable.
+A data storage model (inspired by Erigon) where new application states and transaction histories are periodically “sealed” into immutable snapshots. Each snapshot is identified by an info-hash and can be shared over BitTorrent-like protocols. Only the most recent “hot” DB accepts writes; older snapshots remain read-only and unalterable.
 
 ## P
 
@@ -100,7 +96,7 @@ A transaction triggered by a control (or governance) contract in response to new
 
 ### Shard
 
-A subdivided portion of a single Appchain’s state or execution workload. Sharding enables horizontal scaling: each shard processes only the transactions or data relevant to that shard, increasing overall throughput and reducing state bloat on individual nodes.
+A subdivided portion of a single application's state or execution workload. Sharding enables horizontal scaling: each shard processes only the transactions or data relevant to that shard, increasing overall throughput and reducing state bloat on individual nodes.
 
 ### Sybil
 
@@ -110,7 +106,7 @@ A Sybil is essentially a copy. While each human individual is unique, Sybils are
 
 ### Tokenomics API
 
-An interface that exposes data and functions related to the economic and incentive mechanisms within Pelagos or its Appchains, facilitating programmatic interaction with token-related operations.
+An interface that exposes data and functions related to the economic and incentive mechanisms within Pelagos or its applications, facilitating programmatic interaction with token-related operations.
 
 ### TSS
 
@@ -120,7 +116,7 @@ A cryptographic signing process where multiple validators collectively generate 
 
 ### Validator
 
-A Pelagos open-source node that includes L1/L2 oracles, sequencing consensus, Appchain executions, and TSS signing. A single node consists of a list of L1/L2 clients for DAG events, a DAG node for sequencing, Appchain execution nodes and a TSS signing operator. It can be physically on a single server or distributed as microservices.
+A Pelagos open-source node that includes L1/L2 oracles, sequencing consensus, application executions, and TSS signing. A single node consists of a list of L1/L2 clients for DAG events, a DAG node for sequencing, application execution nodes and a TSS signing operator. It can be physically on a single server or distributed as microservices.
 
 ### Validator set
 

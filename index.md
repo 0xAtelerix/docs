@@ -10,9 +10,9 @@ Welcome to Pelagos: the first universal execution layer that turns every onchain
 
 ## Pelagos: Secure, scaled access to global liquidity
 
-### Scalable multichain Appchain architecture
+### Scalable multichain application architecture
 
-Pelagos’ modular architecture supports parallel sequencing, allowing the core platform and individual Appchains to be sharded for massive scalability. This lets the platform scale seamlessly to meet user demand across thousands of Appchains and up to 100,000+ TPS.
+Pelagos’ modular architecture supports parallel sequencing, allowing the core platform and individual applications to be sharded for massive scalability. This lets the platform scale seamlessly to meet user demand across thousands of applications and up to 100,000+ TPS.
 
 Pelagos ensures that growth doesn’t compromise network performance, security, or decentralization, empowering projects to scale fluidly as their ecosystems evolve — all within a single 0.4 s DAG block.
 
@@ -26,12 +26,12 @@ Supporting atomic settlement, Pelagos' logic ensures transactions involving mult
 
 ## Pelagos: redefining mutichain development
 
-Pelagos' tecnical design give teams unparalleled control over their Appchain’s scalability and liquidity — allowing them to innovate boldly while relying on Pelagos’ robust, interoperable infrastructure as the foundation of their growth.
+Pelagos' tecnical design give teams unparalleled control over their application’s scalability and liquidity — allowing them to innovate boldly while relying on Pelagos’ robust, interoperable infrastructure as the foundation of their growth.
 
 Transforming mainnet launches into the simple acts of defining business logic, tokenomics, and project value, Pelagos handles validating, sequencing, scaling, security, and multichain APIs, supporting:
 
 * Developer-first experiences: pluggable Dockerized VMs (EVM, Move, SVM, Rust) and choice of development language.
-* Developer-controlled Appchains: launch an Appchain in the same way as a smart contract.
+* Developer-controlled application: launch an application in the same way as a smart contract.
 
 Development teams can deploy once; transact everywhere, for instant access to deep reserves on Ethereum, Solana, BNB, Arbitrum, and beyond — without bridges, wrapped tokens, or delays.
 

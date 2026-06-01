@@ -9,7 +9,7 @@ todo: null
 
 Pelagos presents a multichain primitive that redefines execution, liquidity, and interoperability.
 
-Scaling a single dedicated Appchain for predictable, ultra-low-latency performance introduces tough architectural demands that current L1 solutions, rollups, or bridges cannot satisfy. Pelagos has identified and addressed the three fundamental requirements for scalable, interoperable, and composable Web3 infrastructure:
+Scaling a single dedicated application for predictable, ultra-low-latency performance introduces tough architectural demands that current L1 solutions, rollups, or bridges cannot satisfy. Pelagos has identified and addressed the three fundamental requirements for scalable, interoperable, and composable Web3 infrastructure:
 
 * Crosschain reactivity.
 * Consensus at scale.
@@ -23,7 +23,7 @@ Deliver instant, real-time response to state changes and transactions across mul
 
 ### How Pelagos provides cross-chain reactivity
 
-Pelagos achieves ultra-low-latency, bidirectional connectivity and reaction between Appchains and any external blockchains through a protocol-native sequencing layer. This data layer continuously ingests and orders transactions and state updates from a diverse set of blockchains. The data is provided as deterministic, ordered data streams that feed directly into Appchains, enabling them to respond immediately to onchain events without requiring slow bridge confirmations or offchain relays.
+Pelagos achieves ultra-low-latency, bidirectional connectivity and reaction between applications and any external blockchains through a protocol-native sequencing layer. This data layer continuously ingests and orders transactions and state updates from a diverse set of blockchains. The data is provided as deterministic, ordered data streams that feed directly into applications, enabling them to respond immediately to onchain events without requiring slow bridge confirmations or offchain relays.
 
 Real-time state snapshots and data frames aggregate chain state beyond mere events. This empowers developers to apply logic that dynamically analyzes, and acts on, complex cross-chain information (e.g., price predictions, liquidity optimization). Cryptographically enforced consensus ensures the integrity of this process, eliminating trust in intermediaries.
 
@@ -38,7 +38,7 @@ Furthermore, Pelagos’ native interoperability abstracts underlying chain diffe
 
 ### Outcome
 
-Appchains benefit from seamless, low-latency bidirectional communication with any blockchain. Your Appchain or dApp can react immediately to onchain events including arbitrage, price movements, and governance triggers, regardless of which chain the state change originated on, unlocking true composability and capital efficiency.
+applications benefit from seamless, low-latency bidirectional communication with any blockchain. Your application can react immediately to onchain events including arbitrage, price movements, and governance triggers, regardless of which chain the state change originated on, unlocking true composability and capital efficiency.
 
 ## 2. Consensus at Scale
 
@@ -54,13 +54,13 @@ Data and state synchronization among validators employ BitTorrent-like peer-to-p
 
 #### Key features:
 
-* Distributed, massively parallel consensus processing: supporting many Appchains to scale horizontally without being gated by a slow consensus engine.
+* Distributed, massively parallel consensus processing: supporting many application to scale horizontally without being gated by a slow consensus engine.
 * A trust-minimized protocol: ensuring a robust consensus mechanism enforced by economic incentives and penalties.
 * BitTorrent-like, computation-free sync and modular validator participation: drawing direct inspiration from battle-tested approaches like Erigon's archival and sync model.
 
 #### Outcome
 
-Consensus is no longer the bottleneck. Resources scale elastically, performance stays predictable, and Appchains can rely on robust shared security from day one. This enables complex, latency-sensitive operations such as routing trades across multiple DEXs and chains to be executed atomically within a single \~0.4 s DAG block, delivering near-instant settlement and greatly improving trading efficiency.
+Consensus is no longer the bottleneck. Resources scale elastically, performance stays predictable, and application can rely on robust shared security from day one. This enables complex, latency-sensitive operations such as routing trades across multiple DEXs and chains to be executed atomically within a single \~0.4 s DAG block, delivering near-instant settlement and greatly improving trading efficiency.
 
 ## 3. Generalized data layer
 
@@ -84,9 +84,9 @@ Moreover, this design supports flexible app architectures with minimal compromis
 
 #### Outcome
 
-Appchains and dApps can query and update complex, multi-chain state in real time, enabling demanding financial, gaming, and DeFi logics to scale naturally with user growth and network activity.
+Applications can query and update complex, multi-chain state in real time, enabling demanding financial, gaming, and DeFi logics to scale naturally with user growth and network activity.
 
-By decoupling application logic from any one blockchain’s architecture and standardizing state representation, Pelagos enables developers to choose, or even mix and match, the execution environments, smart contract languages, and economic models best suited to their needs. This offers complete flexibility for Appchains to customize their architecture, including VM choice, coding language, and tokenomics.
+By decoupling application logic from any one blockchain’s architecture and standardizing state representation, Pelagos enables developers to choose, or even mix and match, the execution environments, smart contract languages, and economic models best suited to their needs. This offers complete flexibility for application to customize their architecture, including VM choice, coding language, and tokenomics.
 
 ## Why this matters
 
@@ -128,7 +128,7 @@ It achieves this through:
 * Composable calls across runtimes: one contract can natively call functions in another deployed on a different chain or runtime, with state guarantees.
 * Shared interfaces and schemas: standardized interaction models allow applications to plug into one another regardless of underlying architecture.
 * Secure settlement coordination: transactions are resolved through a shared sequencing and verification layer that ensures deterministic outcomes across chains.
-* Low latency: efficient cross-appchain communications that don't rely on Inter-Blockchain Communication (IBC)-like protocols.
+* Low latency: efficient cross-application communications that don't rely on Inter-Blockchain Communication (IBC)-like protocols.
 
 **Outcome:** Pelagos delivers on the original promise of composability — not just within ecosystems but between them.
 
@@ -140,6 +140,6 @@ Pelagos doesn't compete with rollups or shared security ecosystems. In fact, Pel
 * Coordinates liquidity without compromising decentralization.
 * Enables composability that crosses protocol boundaries.
 
-This foundational layer unlocks a new design space for developers: permissionless, high-performance, scalable dApps that can operate across chains with the same simplicity they do within one. Furthermore, with the standard frictions that development teams face resolved, teams benefit from fast and cheap dApp and Appchain development.
+This foundational layer unlocks a new design space for developers: permissionless, high-performance, scalable dApps that can operate across chains with the same simplicity they do within one. Furthermore, with the standard frictions that development teams face resolved, teams benefit from fast and cheap dApp and application development.
 
 In the following section, we detail how Pelagos provides the first unified execution and liquidity primitive through its architecture, protocol mechanics, security model, and developer tools: offering developers a permissionless, high-performance, and composable platform for building the next generation of decentralized applications.
