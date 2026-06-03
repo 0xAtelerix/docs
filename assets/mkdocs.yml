@@ -1,14 +1,4 @@
 site_name: Pelagos Documentation
-
-# Markdown in repo root; config is under assets/. Output must not sit inside docs_dir.
-docs_dir: ..
-site_dir: /site
-
-extra_css:
-  - stylesheets/extra.css
-extra_javascript:
-  - assets/javascripts/extra.js
-
 theme:
   name: material
   features:
@@ -41,6 +31,10 @@ theme:
     code: Roboto Mono
   icon:
     logo: material/book-open-page-variant
+extra_css:
+  - ../stylesheets/extra.css
+extra_javascript:
+  - javascripts/extra.js
 nav:
   - 📘 Start here:
     - Introduction: index.md
