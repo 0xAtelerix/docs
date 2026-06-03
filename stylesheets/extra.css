@@ -11,7 +11,7 @@
  *    2.3 Section spacing
  *    2.4 Section headings
  *    2.5 Emoji styles (commented)
- * 3. Utility styles (commented)
+ * 3. Mobile navigation
  * ===========================================
  */
 
@@ -68,31 +68,35 @@ h1, h2, h3, h4, h5, h6 {
  * }
  */
 
+.md-nav__item .md-nav__list {
+    margin-left: 16px !important;
+}
+
 /* ------------------------------------------
-   3. UTILITY STYLES (Commented - kept for reference)
+   3. MOBILE NAV (assets/javascripts/extra.js)
    ------------------------------------------ */
 
-/*
- * Sticky header styles from Tailwind CSS
- * Originally used for sticky positioning with specific spacing
- *
- * Selector was empty in original - needs proper element to apply to
- * Example: .sticky-header {
- *     position: sticky;           /* Sticky positioning */
- *     top: -1rem;                 /* -top-4 = -1rem (typically -16px) */
- *     z-index: 1;                 /* z-1 */
- *     display: flex;              /* Flex layout */
- *     align-items: center;        /* Center items vertically */
- *     gap: 0.75rem;               /* gap-3 = 12px */
- *     padding-left: 0.75rem;      /* px-3 */
- *     padding-right: 0.75rem;     /* px-3 */
- *     font-weight: 600;           /* font-semibold */
- *     font-size: 0.75rem;         /* text-xs = 12px */
- *     text-transform: uppercase;  /* Uppercase text */
- *     letter-spacing: 0.025em;    /* tracking-wide */
- *     margin-top: 0.5rem;         /* mt-2 = 8px */
- *     padding-top: 1rem;          /* pt-4 = 16px */
- *     padding-bottom: 0.75rem;    /* pb-3 = 12px */
- *     margin-bottom: -0.375rem;   /* -mb-1.5 = -6px */
- * }
- */
+@media screen and (max-width: 76.234375em) {
+
+  html.nabu-nav-root-intro .md-sidebar--primary .md-nav--primary > .md-nav__list {
+    transform: none !important;
+  }
+
+  html.nabu-nav-root-intro .md-sidebar--primary .md-nav--primary .md-nav__item--section > .md-nav,
+  html.nabu-nav-root-intro .md-sidebar--primary .md-nav--primary .md-nav__item--active > .md-nav {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  html.nabu-nav-picking .md-sidebar--primary .md-nav--primary .md-nav__item--section > .md-nav {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  html.nabu-nav-picking .md-sidebar--primary .md-nav--primary .md-nav__item--section.nabu-nav-pick > .md-nav {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+
