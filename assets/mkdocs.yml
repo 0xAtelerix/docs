@@ -1,6 +1,8 @@
 site_name: Pelagos Documentation
 
+# Markdown in repo root; config is under assets/. Output must not sit inside docs_dir.
 docs_dir: ..
+site_dir: /site
 
 extra_css:
   - stylesheets/extra.css
