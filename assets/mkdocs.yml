@@ -14,8 +14,8 @@ theme:
   palette:
     - scheme: default
       # primary: teal
-#      primary: deep orange
-      primary: indigo
+      primary: deep orange
+#      primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
@@ -34,7 +34,7 @@ theme:
 extra_css:
   - ../stylesheets/extra.css
 extra_javascript:
-  - javascripts/extra.js
+  - assets/javascripts/extra.js
 nav:
   - 📘 Start here:
     - Introduction: index.md
