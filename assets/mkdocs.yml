@@ -1,10 +1,18 @@
 site_name: Pelagos Documentation
+
+docs_dir: ..
+
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - assets/javascripts/extra.js
+
 theme:
   name: material
   features:
     # - navigation.tabs
     - navigation.sections
-    # - navigation.expand
+    - navigation.expand
     - navigation.top
     - search.suggest
     - search.highlight
@@ -14,8 +22,8 @@ theme:
   palette:
     - scheme: default
       # primary: teal
-      primary: deep orange
-#      primary: indigo
+#      primary: deep orange
+      primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
@@ -31,10 +39,6 @@ theme:
     code: Roboto Mono
   icon:
     logo: material/book-open-page-variant
-extra_css:
-  - ../stylesheets/extra.css
-extra_javascript:
-  - javascripts/extra.js
 nav:
   - 📘 Start here:
     - Introduction: index.md

@@ -13,8 +13,7 @@ theme:
     - content.code.copy
   palette:
     - scheme: default
-#      primary: indigo
-      primary: teal
+      primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
@@ -94,6 +93,8 @@ extra:
   generator: false
 
 copyright: Copyright &copy; 2024 Pelagos
+
+docs_dir: .
 
 extra_css:
   - stylesheets/extra.css
