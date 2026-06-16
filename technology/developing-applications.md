@@ -86,8 +86,8 @@ graph TD
     subgraph horizontal_Scaling["Horizontal-scaled shards"]
         class Vertical_Scaling vert
         shardFn["choose_shard(tx) → shardID"]
-        Shard1[Appchain 1 - Shard 1]
-        Shard2[Appchain 1 - Shard 2]
+        Shard1[applications 1 - Shard 1]
+        Shard2[applications 1 - Shard 2]
         shardFn -->|Txs| Shard1
         shardFn -->|Txs| Shard2
     end
