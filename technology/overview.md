@@ -34,7 +34,7 @@ The Pelagos consensus layer enables dApp builders to leverage the strong finalit
 
 By restricting execution to only those events that have been validated and agreed upon through the trust‑minimized consensus layer, Pelagos ensures that all token issuance and state changes are cryptographically verified and consensus‑approved. This strict validation prevents invalid or conflicting operations such as double‑spends or fraudulent minting. The consensus layer’s role in establishing a canonical, finalized order of events is essential for maintaining consistency and correctness. This finalized ordering can then be leveraged by higher‑level protocols to coordinate all‑or‑nothing execution across chains and state changes, enabling true atomic multichain transactions.
 
-> See more on the [validator role and responsibilities](validating-application.md#validating-applications-with-pelagos).
+> See more on the [validator role and responsibilities](validating-applications.md#validating-applications-with-pelagos).
 
 ## Application logic layer
 
