@@ -17,7 +17,7 @@
 * [Asset portability](technology/asset-portability.md)
 * [Reactive logic layer](technology/reactive-logic.md)
 * [Developing an application](technology/developing-application.md)
-* [Validating applications](technology/validating-application.md)
+* [Validating applications](technology/validating-applications.md)
 
 ## 🧑‍💻 Explore Our SDK
 

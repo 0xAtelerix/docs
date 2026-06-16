@@ -204,4 +204,4 @@ flowchart TD
 
 These features ensure Pelagos supports consensus scaling by parallelizing sequencing across many DAGs, and by promoting individual application into powerful standalone flows whenever necessary. This many-to-many sequencing model underpins both day-one performance and long-term flexibility for every user and developer on the Pelagos platform.
 
-> See more on [scaling with Pelagos](developing-appchain.md#scale-an-appchain-with-pelagos).
+> See more on [scaling with Pelagos](developing-application.md#scale-an-application-with-pelagos).

@@ -6,7 +6,7 @@ Pelagos relies on validators to secure applications by performing consensus, sig
 
 Validators must stake in the PoS system and earn proportional rewards based on the number of confirmed DAG events they produce. These rewards are distributed onchain, tracked, and managed by the Pelagos reactive contract.
 
-Validators earn by correctly signing checkpoints, participating in TSS signing, seeding immutable application databases, and participating in scaling operations (shards). While, [penalties](validating-appchain.md#validator-enforcement-mechanisms) reduce rewards and, in the event of serious misconduct, the reactive contract can slash their staked tokens.
+Validators earn by correctly signing checkpoints, participating in TSS signing, seeding immutable application databases, and participating in scaling operations (shards). While, [penalties](validating-applications.md#validator-enforcement-mechanisms) reduce rewards and, in the event of serious misconduct, the reactive contract can slash their staked tokens.
 
 ## Key responsibilities of a Pelagos validator
 
@@ -18,7 +18,7 @@ Pelagos validators are responsible for:
 * Validate and order application transactions using DAG consensus.
 * Key rotation: validators participate in regular Distributed Key Generation (DKG) and mandatory key rotations to maintain key security.
 * Executing application logic promptly after each epoch.
-* [Maintaining validator sets](validating-appchain.md#validator-set-management).
+* [Maintaining validator sets](validating-applications.md#validator-set-management).
 
 The following sections go deeper into a subset of these responsibilities.
 

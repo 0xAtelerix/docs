@@ -50,4 +50,4 @@ The above functions are clearly demarcated based on where in the lifecycle they 
   * Initiate auction to sell collected tokens (injective).
   * Mint tokens based on the calculated APY.
 
-> See how [developers leverage event-based logic](developing-appchain.md#leverage-trigger-event-logic).
+> See how [developers leverage event-based logic](developing-application.md#leverage-trigger-event-logic).

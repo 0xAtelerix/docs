@@ -41,4 +41,4 @@ On top of this resilient consensus foundation, Pelagos provides VMs with predict
 
 Processing transactions and blocks in batches drives high throughput at the DAG level, allowing applications to both maximize performance and fine-tune state transitions in accordance with their unique application requirements.
 
-> See more on the [validator role](validating-appchain.md#validating-appchains-with-pelagos)
+> See more on the [validator role](validating-applications.md#validating-applications-with-pelagos)
