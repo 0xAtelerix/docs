@@ -16,8 +16,8 @@
 * [Consensus at scale](technology/consensus-at-scale.md)
 * [Asset portability](technology/asset-portability.md)
 * [Reactive logic layer](technology/reactive-logic.md)
-* [Developing an application](technology/developing-appchain.md)
-* [Validating applications](technology/validating-appchain.md)
+* [Developing an application](technology/developing-application.md)
+* [Validating applications](technology/validating-application.md)
 
 ## 🧑‍💻 Explore Our SDK
 
