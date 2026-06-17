@@ -30,7 +30,7 @@ Pelagos' native architecture sets it apart from other available scaling solution
 
 * Native horizontal scaling: add or adjust shards anytime, scaling across microservices with ease.
 * Custom execution environments: deploy new VMs, migrate workloads, mix and match architectures.
-* Predictable costs: transparent subscriptions and scaling parameters prevent fee blowouts
+* Predictable costs: transparent subscriptions and scaling parameters prevent fee blowouts.
 * Smooth migration and upgrade paths: projects evolve with zero downtime and straightforward resource allocation.
 
 Pelagos makes seamless, scalable application growth possible — no matter how ambitious your project or dynamic your user base.
