@@ -19,6 +19,13 @@
    1. GLOBAL HEADING STYLES
    ------------------------------------------ */
 
+/* Header logo sizing */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 2rem;
+  width: auto;
+}
+
 /* Increase the boldness of all headings */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 900 !important;  /* Can use 700, 800, or 900 for different boldness levels */

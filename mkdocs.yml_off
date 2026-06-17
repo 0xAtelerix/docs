@@ -27,8 +27,8 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  icon:
-    logo: material/book-open-page-variant
+  logo: assets/images/pelagos-logo.png
+  favicon: assets/images/pelagos-logo.png
 
 nav:
   - 📘 Start here:
