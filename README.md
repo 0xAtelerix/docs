@@ -4,7 +4,7 @@ description: Root readme for support
 
 The .gitbook.yaml is overriding the use of the root readme now.
 
-[This repo](https://github.com/0xAtelerix/docs) is synced with GitBook in the Pelogas domain with the title Whitepaper BUT the space is what must be updated to add content.
+[This repo](https://github.com/0xAtelerix/docs) is synced with GitBook in the Pelagos domain with the title Whitepaper BUT the space is what must be updated to add content.
 
 ## Style
 
@@ -161,7 +161,7 @@ At its core, this fragmented environment:
 * Obstructs composability — the foundational principle of DeFi, where applications should be able to interoperate seamlessly like Lego bricks
 * Reintroduces traditional finance inefficiencies, with privileged access to liquidity, offchain coordination, and market segmentation
 
-This whitepaper presents Pelogas, a solution that addresses the root causes that create these concrete limitations:
+This whitepaper presents Pelagos, a solution that addresses the root causes that create these concrete limitations:
 
 #### 1. Complex infrastructure for developers
 

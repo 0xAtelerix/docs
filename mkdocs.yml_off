@@ -85,14 +85,9 @@ markdown_extensions:
   - md_in_html
 
 extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/your-repo
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/your-handle
   generator: false
 
-copyright: Copyright &copy; 2024 Pelagos
+copyright: Copyright &copy; 2026 Pelagos
 
 docs_dir: .
 
