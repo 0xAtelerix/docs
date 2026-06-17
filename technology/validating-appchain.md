@@ -12,7 +12,7 @@ Validators earn by correctly signing checkpoints, participating in TSS signing, 
 
 Pelagos validators are responsible for:
 
-* [Maintaining full nodes](validator-node-operation/) to reach consensus on finalized L1/L2 blocks.
+* Maintaining full nodes to reach consensus on finalized L1/L2 blocks.
 * Event signing.
 * External transaction signing with Threshold Signatures (TSS).
 * Validate and order application transactions using DAG consensus.
