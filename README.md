@@ -35,7 +35,7 @@ Covered in Glossary
 
 ## Terminology
 
-Refer to it as the Pelagos DAG consensus network, or simply Pelagos consensus layer. Reserve “Appchain” for the individual chains or runtimes that run user applications and smart contracts, which operate on top of or alongside the DAG consensus network.
+Refer to it as the Pelagos DAG consensus network, or simply Pelagos consensus layer. Reserve “Application” for the individual chains or runtimes that run user applications and smart contracts, which operate on top of or alongside the DAG consensus network.
 
 ## Concepts
 
@@ -64,7 +64,7 @@ for reactive tx they can specify conditions for automated execution once conditi
 
 Consider new block on Ethereum then DAG operators are taking the data off the L1 (acting as an instant DA layer to assist with execution confirmation etc)
 
-DAG operators confirm the block and then Appchains can undertake executions based on those declared states.
+DAG operators confirm the block and then Applications can undertake executions based on those declared states.
 
 All the blocks from different L1s and L2s are treated as tx inputs (whose data reflects finality states on the various chains)
 
@@ -72,9 +72,9 @@ The tx event can be executed to change state of this upchain set, or to bundle t
 Threshold sig must be met to achieve state change
 
 
-Txs and swaps are on Appchain itself and then the external tx is done on the chain
+Txs and swaps are on Application itself and then the external tx is done on the chain
 
-Appchain -- lets do this tx
+Application -- lets do this tx
 DAG Ops -- validate that the funds exist on // 
 Application logic must be the entitiy if you want to lock of those funds until such time as finalization BUT Pelagos is not doing this logic layer
 
@@ -196,5 +196,5 @@ Bringing real-world assets onchain requires hybrid settlement models that respec
 * {end}
     
 
-<!-- Sharding provides performance scaling: efficiently enhancing throughput within individual Appchains, improving processing speed. Horizontal scaling enables multiple Appchains to operate mutiple DAGs concurrently
+<!-- Sharding provides performance scaling: efficiently enhancing throughput within individual Applications, improving processing speed. Horizontal scaling enables multiple Applications to operate mutiple DAGs concurrently
   --> 

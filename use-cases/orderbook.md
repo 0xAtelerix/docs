@@ -18,11 +18,11 @@ The Pelagos orderbook sequences and matches orders coming from multiple chains (
 
 Centralized Coordination, Decentralized Settlement
 
-Orders are centralized in the Pelagos sequencer and Appchain for matching, but asset transfers (USDC, WBTC) settle natively on the originating or destination chains. This model can reduce slippage, improve price discovery, and unify fragmented books without requiring all liquidity to move to one chain.
+Orders are centralized in the Pelagos sequencer and Application for matching, but asset transfers (USDC, WBTC) settle natively on the originating or destination chains. This model can reduce slippage, improve price discovery, and unify fragmented books without requiring all liquidity to move to one chain.
 
 Composable and Reactive
 
-The Appchain reactively calls “match order” on every order event, continually seeking cross-chain matches. Such real-time reactive design helps prevent stale books and enables rapid arbitrage and efficient order execution.
+The Application reactively calls “match order” on every order event, continually seeking cross-chain matches. Such real-time reactive design helps prevent stale books and enables rapid arbitrage and efficient order execution.
 
 Native Asset Support on Multiple Chains
 

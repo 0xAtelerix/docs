@@ -30,24 +30,24 @@ The API supports six event hooks: pre-epoch, post-epoch, pre-block, post-block, 
 
 The above functions are clearly demarcated based on where in the lifecycle they occur, for example these events could trigger the following business logic:
 
-* Before Epoch
-  * Collect user fees.
-* Before Block:
-  * Validate oracle-provided rates.
-  * Regulate stablecoin value.
-* Before Transaction:
-  * Pay for transaction using an NFT.
-  * Delegate payment to a paymaster.
-* After Transaction:
-  * Mint locked tokens as rewards for governance voting.
-  * Adjust APY or inflation rates based on liquidity, activity, and oracle data.
-  * Perform MEV backrunning as part of the application.
-  * Calculate rate changes and introduce value-gathering transactions without third-party block builders.
-* After Block:
-  * Update future airdrop index based on user activity.
-* After Epoch:
-  * Distribute rewards on the application or L1 according to pre-defined metrics.
-  * Initiate auction to sell collected tokens (injective).
-  * Mint tokens based on the calculated APY.
+- Before Epoch
+   - Collect user fees.
+- Before Block:
+   - Validate oracle-provided rates.
+   - Regulate stablecoin value.
+- Before Transaction:
+   - Pay for transaction using an NFT.
+   - Delegate payment to a paymaster.
+- After Transaction:
+   - Mint locked tokens as rewards for governance voting.
+   - Adjust APY or inflation rates based on liquidity, activity, and oracle data.
+   - Perform MEV backrunning as part of the application.
+   - Calculate rate changes and introduce value-gathering transactions without third-party block builders.
+- After Block:
+   - Update future airdrop index based on user activity.
+- After Epoch:
+   - Distribute rewards on the application or L1 according to pre-defined metrics.
+   - Initiate auction to sell collected tokens (injective).
+   - Mint tokens based on the calculated APY.
 
 > See how [developers leverage event-based logic](developing-application.md#leverage-trigger-event-logic).
