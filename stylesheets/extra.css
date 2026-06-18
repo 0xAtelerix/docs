@@ -31,10 +31,15 @@
   color: inherit;
 }
 
+.md-header__inner {
+  display: flex;
+  align-items: center;
+}
+
 .md-header__button.md-logo {
-  flex: 0 0 8.5rem;
-  width: 8.5rem;
-  max-width: 40vw;
+  flex: 0 1 8.5rem;
+  width: auto;
+  max-width: min(8.5rem, 40vw);
   padding: 0;
   margin: 0 0.4rem 0 0;
 }
@@ -48,16 +53,28 @@
   filter: none !important;
 }
 
+/* Keep layout space, hide "Pelagos Documentation" text */
 .md-header__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.md-header__title .md-header__ellipsis,
+.md-header__title .md-header__topic {
   display: none;
 }
 
 .md-header__inner > label.md-header__button[for="__drawer"] {
   margin-left: 0;
+  flex-shrink: 0;
 }
 
-.md-header__inner > .md-header__option[data-md-component="search"] {
-  margin-left: auto;
+.md-header__inner > .md-header__option,
+.md-header__inner > label.md-header__button[for="__search"] {
+  flex-shrink: 0;
 }
 
 /* Increase the boldness of all headings */
