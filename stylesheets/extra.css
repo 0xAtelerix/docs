@@ -19,11 +19,45 @@
    1. GLOBAL HEADING STYLES
    ------------------------------------------ */
 
-/* Header logo sizing */
+/* Header: full logotype, hide MkDocs site title */
+[data-md-color-primary="indigo"] .md-header {
+  background-color: #303f9f;
+  color: #fff;
+}
+
+.md-header__button,
+.md-header__topic,
+.md-header__option .md-icon {
+  color: inherit;
+}
+
+.md-header__button.md-logo {
+  flex: 0 0 8.5rem;
+  width: 8.5rem;
+  max-width: 40vw;
+  padding: 0;
+  margin: 0 0.4rem 0 0;
+}
+
 .md-header__button.md-logo img,
 .md-header__button.md-logo svg {
   height: 2rem;
-  width: auto;
+  width: 100%;
+  object-fit: contain;
+  object-position: left center;
+  filter: none !important;
+}
+
+.md-header__title {
+  display: none;
+}
+
+.md-header__inner > label.md-header__button[for="__drawer"] {
+  margin-left: 0;
+}
+
+.md-header__inner > .md-header__option[data-md-component="search"] {
+  margin-left: auto;
 }
 
 /* Increase the boldness of all headings */
@@ -84,6 +118,28 @@ h1, h2, h3, h4, h5, h6 {
    ------------------------------------------ */
 
 @media screen and (max-width: 76.234375em) {
+
+  /* Drawer header: full logotype only, hide site_name text */
+  .md-nav--primary > .md-nav__title[for="__drawer"] {
+    font-size: 0;
+    line-height: 0;
+    height: auto;
+    min-height: 3.6rem;
+    padding: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .md-nav--primary > .md-nav__title[for="__drawer"] img {
+    height: 2rem;
+    width: auto;
+    max-width: min(8.5rem, 40vw);
+    object-fit: contain;
+    object-position: left center;
+    display: inline-block;
+    vertical-align: middle;
+    filter: none !important;
+  }
 
   html.nabu-nav-root-intro .md-sidebar--primary .md-nav--primary > .md-nav__list {
     transform: none !important;
