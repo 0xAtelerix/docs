@@ -46,8 +46,6 @@ Moreover, this layer provides significant deployment flexibility, allowing teams
 
 Each application runs as an independent DAG-based chain instance, leveraging the Pelagos validator sets that offer Proof of Stake (PoS) security .
 
-> See more on the [developing on Pelagos](overview.md#developing-an-applications-with-pelagos)
-
 ## Reactive smart contracts
 
 To support native “event-driven” automation, Pelagos supports “reactive contracts”. Reactive contracts are smart contracts that automatically react to events or state changes on any connected blockchain.
