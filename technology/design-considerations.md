@@ -38,7 +38,7 @@ Historical indexes leverage the superposition of immutable and real-time data fo
 
 ## No bottlenecks
 
-While leaderless consensus reduces network overhead, improves decentralization, and avoids delays caused by leader failures, it may incur slightly higher latency (\~80-100 ms) than leader-based alternatives.
+While leaderless consensus reduces network overhead, improves decentralization, and avoids delays caused by leader failures, it may incur slightly higher latency (~80-100 ms) than leader-based alternatives.
 
 The alternative, leader-based consensus can offer marginally lower latency but centralizes data updates and risks delay during leader failure or rotation.
 
@@ -71,14 +71,14 @@ After optimising CPU and memory usage through an Erigon-like database model, the
 Because sequencing maintains no application state, it can be scaled out by adding more sequencing shards with minimal coordination overhead:
 
 * Each shard is an independent service that can be started, merged, or reallocated without disrupting applications.
-* Storage-per-shard is minimal: a few gigabytes to support up to \~10,000 applications.
+* Storage-per-shard is minimal: a few gigabytes to support up to ~10,000 applications.
 * Shards can be provisioned to match application growth, with validator revenues scaling via subscription fees rather than per‑transaction costs.
 
 ## Security model and decentralisation targets
 
 Security of critical protocols like Distributed Key Generation (DKG) and Threshold Signature Schemes (TSS) requires a large, diverse validator set:
 
-* Pelagos targets \~100+ PoS operators initially, scaling toward 500+ for long‑term resilience.
+* Pelagos targets ~100+ PoS operators initially, scaling toward 500+ for long‑term resilience.
 * Censorship resistance is reinforced by accepting transaction ingress from multiple connected blockchains, not only direct submissions.
 * Participation in TSS/DKG is spread across the full validator set to avoid collusion risks.
 
@@ -106,13 +106,13 @@ Table 1: Consensus protocol comparison
 
 | Protocol / Design            | Leader‑based?     | Latency / Finality      | CPU Usage | Network Dependency | Validator Set Size | Fault Tolerance at Scale |
 | ---------------------------- | ----------------- | ----------------------- | --------- | ------------------ | ------------------ | ------------------------ |
-| **Pelagos (Lachesis‑style)** | No                | \~150–250 ms / instant  | Higher    | Lower              | 100–500+           | Minimal degradation      |
+| **Pelagos (Lachesis‑style)** | No                | ~150–250 ms / instant  | Higher    | Lower              | 100–500+           | Minimal degradation      |
 | Tendermint                   | Yes               | 1–2 s+ / deterministic  | Medium    | Medium             | 100s               | Leader bottleneck        |
 | Solana                       | Yes (rotating)    | 5–12 s / deterministic  | Medium    | High               | 1000+              | Leader/relay bottleneck  |
-| Mysticeti                    | Multi‑slot leader | \~1–3 s / deterministic | Low       | High               | Smaller sets       | Faster degradation       |
-| Bullshark/Tusk               | Yes               | 2–3 s / deterministic   | Medium    | Medium             | Small (\~30)       | Limited scalability      |
+| Mysticeti                    | Multi‑slot leader | ~1–3 s / deterministic | Low       | High               | Smaller sets       | Faster degradation       |
+| Bullshark/Tusk               | Yes               | 2–3 s / deterministic   | Medium    | Medium             | Small (~30)       | Limited scalability      |
 
-Pelagos’ decision to implement leaderless DAG sequencing enables a range of advanced use cases — from optimizing token inflation and rewards based on historical usage trends, to tracking cross‑chain liquidity flows and arbitrage opportunities, to enriching smart contracts with both historical and real‑time data for governance, staking, or automated market making. Its instant finality, near‑real‑time sequencing (\~150–250 ms), and multi‑source transaction ingress keep historical indexes complete, up‑to‑date, and censorship‑resistant.
+Pelagos’ decision to implement leaderless DAG sequencing enables a range of advanced use cases — from optimizing token inflation and rewards based on historical usage trends, to tracking cross‑chain liquidity flows and arbitrage opportunities, to enriching smart contracts with both historical and real‑time data for governance, staking, or automated market making. Its instant finality, near‑real‑time sequencing (~150–250 ms), and multi‑source transaction ingress keep historical indexes complete, up‑to‑date, and censorship‑resistant.
 
 ### Built for scale
 
