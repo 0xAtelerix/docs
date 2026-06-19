@@ -1,8 +1,9 @@
-site_name: Pelagos Documentation
+site_name: Pelagos
 site_url: https://tdocs.pelagos.network/
 site_description: Technical documentation for Pelagos, the universal execution layer for scalable, composable multichain applications.
 theme:
   name: material
+  custom_dir: assets/overrides
   features:
     # - navigation.tabs
     - navigation.sections
