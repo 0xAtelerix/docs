@@ -1,3 +1,8 @@
+---
+title: Multichain application launch
+description: How Pelagos enables fast, secure, and cost-effective multichain application launches without heavy infrastructure overhead.
+---
+
 # Multichain application launch
 
 Pelagos supports multichain applications to launch at speed, while controling costs and determining the security of critical workloads.

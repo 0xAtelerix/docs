@@ -1,3 +1,8 @@
+---
+title: Consensus at scale
+description: How Pelagos uses leaderless DAG consensus and PoS security to deliver scalable ordering, finality, and state integrity.
+---
+
 # Consensus at scale
 
 The Pelagos protocol and its validator network are able to offer a scalable application logic layer that supports reactive smart contracts while ensuring state integrity, ordering, and universal data consistency at scale, thanks to the DAG consensus layer whose security is enforced through PoS.

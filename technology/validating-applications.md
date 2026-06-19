@@ -1,3 +1,8 @@
+---
+title: Validating applications
+description: Validator responsibilities, incentives, enforcement mechanisms, and operational requirements on the Pelagos network.
+---
+
 # Validating applications
 
 Pelagos relies on validators to secure applications by performing consensus, signing external transactions, running execution nodes, and more. Their responsibilities set is paired with strict mechanisms to enforce good behavior and penalize misconduct.

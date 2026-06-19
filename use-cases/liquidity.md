@@ -1,3 +1,8 @@
+---
+title: Unlocking cross-chain liquidity
+description: How Pelagos provides native multichain connectivity, trust-minimized settlement, and unified liquidity access across chains.
+---
+
 # Unlocking cross-chain liquidity
 
 Pelagos delivers a seamless multichain layer designed for high performance and low-latency interaction across a wide range of blockchains. This capability is critical for application developers and DeFi protocols that need a truly interoperable environment to thrive.

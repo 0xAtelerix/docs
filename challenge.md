@@ -1,10 +1,6 @@
 ---
-proofedDate: none
-title: doesn't get used by GitBook
-content: key problems this tech will solve
-notes: >-
-  Normally each challenge, pain point is addressed in the solution stage IF not
-  solution, then remove or redefine the challenge
+title: Challenge
+description: Why multiplatform dApp development is held back by architectural fragmentation, liquidity silos, and scaling limits across ecosystems.
 ---
 
 # Challenge

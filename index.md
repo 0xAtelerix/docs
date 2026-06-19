@@ -1,5 +1,6 @@
 ---
-title: Index page given metadata title
+title: Introduction
+description: Pelagos is a universal execution layer that unifies onchain liquidity and enables scalable, composable multichain applications.
 ---
 
 # Introduction

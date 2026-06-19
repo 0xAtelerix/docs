@@ -1,4 +1,6 @@
 site_name: Pelagos Documentation
+site_url: https://tdocs.pelagos.network/
+site_description: Technical documentation for Pelagos, the universal execution layer for scalable, composable multichain applications.
 theme:
   name: material
   features:
@@ -41,7 +43,7 @@ nav:
   
   - 🚀 Pelagos value proposition:
     - Challenge: challenge.md
-    - Solution: solution.md
+    - "The Solution: Nabu": solution.md
   
   - 🛠️ Pelagos Technology:
     - Technological overview: technology/overview.md

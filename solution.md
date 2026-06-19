@@ -1,8 +1,6 @@
 ---
-proofedDate: none
-title: doesn't get used by GitBook
-content: key problems this tech will solve
-todo: null
+title: The Solution: Nabu
+description: How Pelagos redefines multichain execution, liquidity, and interoperability with atomic settlement and scalable application infrastructure.
 ---
 
 # Solution

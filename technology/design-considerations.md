@@ -1,3 +1,8 @@
+---
+title: Design considerations
+description: The rationale behind Pelagos design choices for sequencing, execution, latency, security, and developer autonomy.
+---
+
 # Design considerations
 
 The Pelagos DAG consensus was purpose‑built to meet a set of strict requirements for scalability, latency, security, and developer autonomy. This section explains the rationale behind its design choices and some of the trade‑offs involved.

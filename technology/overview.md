@@ -1,3 +1,8 @@
+---
+title: Technological overview
+description: How Pelagos combines DAG consensus, multichain data availability, reactive contracts, and application logic into one execution platform.
+---
+
 # Technological overview
 
 Pelagos provides a business rules execution engine built atop a robust, real-time, multichain data backbone: combining universal data availability with programmable, automatic execution. This empowers developers to build advanced crosschain logic and automation, without the operational complexity of infrastructure management or the security risks of custom bridging.

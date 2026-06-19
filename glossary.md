@@ -1,3 +1,8 @@
+---
+title: Glossary
+description: Definitions of key Pelagos, consensus, multichain, and validator terminology used throughout the documentation.
+---
+
 # Glossary
 
 Providing acronyms and definitions.

@@ -1,3 +1,8 @@
+---
+title: Reactive logic layer
+description: How Pelagos reactive contracts and event hooks enable advanced tokenomics, automation, and multichain business logic.
+---
+
 # Reactive logic layer
 
 Pelagos offers unparalleled flexibility for implementing advanced business logic by providing a reactive-style API, that goes far beyond simple event-based triggers.

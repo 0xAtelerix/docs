@@ -1,3 +1,8 @@
+---
+title: Asset portability
+description: How Pelagos replaces custodial bridges with decentralized consensus, native token issuance, and atomic crosschain asset mobility.
+---
+
 # Asset portability
 
 Pelagos’ DAG operator consensus network embodies the same trust model principles as a decentralized blockchain, replacing custodial bridges with decentralized observation, agreement, and native token issuance. This key innovation addresses many of the security and composability issues caused by traditional wrapped tokens and bridge constructions.

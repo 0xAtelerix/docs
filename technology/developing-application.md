@@ -1,5 +1,6 @@
 ---
-todo: null
+title: Developing an application
+description: How to launch, scale, and operate applications on Pelagos with custom execution environments, RPC, and reactive logic.
 ---
 
 # Developing an application

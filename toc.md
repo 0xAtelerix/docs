@@ -7,7 +7,7 @@
 ## 🚀 Pelagos value proposition
 
 * [Challenge](challenge.md)
-* [Solution](solution.md)
+* [The Solution: Nabu](solution.md)
 
 ## 🛠️ Pelagos Technology
 

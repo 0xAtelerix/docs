@@ -1,3 +1,8 @@
+---
+title: Application scaling
+description: How Pelagos helps applications scale from thousands to 100,000+ TPS with predictable costs and elastic infrastructure.
+---
+
 # Application scaling
 
 Pelagos empowers application teams to scale from 1,000 to 100,000+ TPS, maintaining predictable costs and dynamic control over infrastructure—even during periods of rapid growth. Developers can unlock new audiences and features without the worry of complex upgrades or cost overruns.
