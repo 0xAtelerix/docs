@@ -104,3 +104,9 @@ extra:
     - '<link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">'
 
 copyright: Copyright &copy; 2026 Pelagos
+
+# Kept in the repo but not published: internal notes, and the GitBook summary
+# that the MkDocs nav replaces.
+exclude_docs: |
+  README.md
+  toc.md

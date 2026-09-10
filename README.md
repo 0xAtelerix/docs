@@ -4,6 +4,49 @@ description: Root readme for support
 
 The .gitbook.yaml is overriding the use of the root readme now.
 
+## Deployment
+
+The live site at docs.pelagos.network is built by the Docker container
+`dosc-pelagos-creater` on the host `dsde1378nabu`, from `/opt/docs.pelagos.network`.
+It polls the `published` branch and, on a new commit, runs:
+
+```
+git pull origin published
+cp /docs/docs/assets/mkdocs.yml /docs/mkdocs.yml
+cd /docs && mkdocs build --clean -d /site
+```
+
+Two things about that are easy to get wrong.
+
+**`assets/mkdocs.yml` is the only config that matters.** `mkdocs.yml_off` in the
+repository root is dead — nothing reads it, and editing it changes nothing on the
+site. Nav labels, plugins, and theme settings all go in `assets/mkdocs.yml`.
+
+**The config is copied one level ABOVE the checkout.** The repository is at
+`/docs/docs`, the config ends up at `/docs`, and `theme.custom_dir` resolves
+relative to the config's own directory. So it has to read `docs/assets/overrides`,
+even though the folder really is at `<repo>/assets/overrides`. For the same
+reason there is no `docs_dir` key: the checkout directory is named `docs`, so
+mkdocs' default `docs_dir: docs` lands on the repository root by coincidence.
+
+A wrong path here is not a warning — mkdocs aborts, writes nothing, and nginx
+keeps serving the previous `/site`. The site simply freezes at the last good
+commit with no visible error. That went unnoticed from 19 June to 10 September
+2026.
+
+Before changing the build config, reproduce the container layout locally rather
+than reasoning about the paths:
+
+```
+mkdir -p /tmp/build/docs && git archive HEAD | tar -x -C /tmp/build/docs
+cp /tmp/build/docs/assets/mkdocs.yml /tmp/build/mkdocs.yml
+cd /tmp/build && mkdocs build --clean -d /tmp/site
+```
+
+GitBook is retired. `.gitbook.yaml` and the `GITBOOK-*` commits on `main` are
+leftovers from that setup and do not feed the site.
+
+
 [This repo](https://github.com/0xAtelerix/docs) is synced with GitBook in the Pelagos domain with the title Whitepaper BUT the space is what must be updated to add content.
 
 ## Style
