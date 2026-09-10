@@ -5,9 +5,9 @@ description: How Pelagos helps applications scale from thousands to 100,000+ TPS
 
 # Application scaling
 
-Pelagos empowers application teams to scale from 1,000 to 100,000+ TPS, maintaining predictable costs and dynamic control over infrastructure—even during periods of rapid growth. Developers can unlock new audiences and features without the worry of complex upgrades or cost overruns.
+Pelagos empowers application teams to scale from 1,000 to 100,000+ TPS, maintaining predictable costs and dynamic control over infrastructure — even during periods of rapid growth. Developers can unlock new audiences and features without the worry of complex upgrades or cost overruns.
 
-## The problem: Scaling costs and architectural bottlenecks
+## The problem: scaling costs and architectural bottlenecks
 
 As demand grows, most scaling solutions require teams to tackle expensive architectural upgrades, deepening the technical complexity, or risk hitting bottlenecks that slow user growth and degrade experience.
 
@@ -15,11 +15,11 @@ Mainstream options, whether vertically scaled L1s like Solana, Aptos, and Sui, o
 
 Unpredictable fees, coupled with the resource intensity of upgrades and migrations, make it nearly impossible for projects to plan for growth and scale their user base in line with their ambitions. Without native horizontal scaling, developers risk either operational overload or being locked out of optimal performance. These issues are a direct outcome of the following realities.
 
-## Limited native scaling and customization
+### Limited native scaling and customization
 
 General-purpose L1 blockchains excel at maximizing the overall transaction throughput across all network activity. However, they lack native capabilities to granularly tailor performance, execution environments, or economic models for individual applications. Projects discover they can’t scale horizontally, are locked into rigid consensus and architecture, and regularly face bottlenecks that spike fees or otherwise degrade the user experience. L2s and superchain frameworks, despite promising composability, often fall short when teams need custom sharding, flexible execution, or fine-grained scaling controls.
 
-Teams are then forced into developing their own sharding models or re-structuring infrastructure—tasks that require experienced blockchain engineers and months of development.
+Teams are then forced into developing their own sharding models or re-structuring infrastructure — tasks that require experienced blockchain engineers and months of development.
 
 ## The solution: horizontal scaling and seamless performance boosts
 
@@ -29,13 +29,13 @@ Each application built on Pelagos determines its own scaling parameters, choosin
 
 With Pelagos, unpredictability disappears — teams can model costs, network demands, and scaling thresholds in advance, all while keeping performance smooth and fees under control.
 
-For example, a GameFi project experiencing rapid user growth can use Pelagos’ horizontal scaling mechanics to expand throughput instantly, prevent fees from spiraling, and maintain a seamless gaming experience. Developers scale the application as needed, no waiting on labor-intensive upgrades or sacrificing user engagement.
+For example, a GameFi project experiencing rapid user growth can use Pelagos’ horizontal scaling mechanics to expand throughput instantly, prevent fees from spiraling, and maintain a seamless gaming experience. Developers scale the application as needed — no waiting on labor-intensive upgrades, no sacrificing user engagement.
 
-Pelagos' native architecture sets it apart from other available scaling solutions, removing the need for specialist engineers:
+Pelagos’ native architecture sets it apart from other available scaling solutions, removing the need for specialist engineers:
 
 * Native horizontal scaling: add or adjust shards anytime, scaling across microservices with ease.
 * Custom execution environments: deploy new VMs, migrate workloads, mix and match architectures.
-* Predictable costs: transparent subscriptions and scaling parameters prevent fee blowouts
+* Predictable costs: transparent subscriptions and scaling parameters prevent fee blowouts.
 * Smooth migration and upgrade paths: projects evolve with zero downtime and straightforward resource allocation.
 
 Pelagos makes seamless, scalable application growth possible — no matter how ambitious your project or dynamic your user base.

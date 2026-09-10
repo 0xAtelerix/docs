@@ -7,7 +7,7 @@
 ## 🚀 Pelagos value proposition
 
 * [Challenge](challenge.md)
-* [The Solution: Nabu](solution.md)
+* [Solution](solution.md)
 
 ## 🛠️ Pelagos Technology
 
@@ -21,7 +21,7 @@
 
 ## 🧑‍💻 Explore Our SDK
 
-* [SDK for Builders](explore-our-sdk/sdk-for-builders.md)
+* [SDK for builders](explore-our-sdk/sdk-for-builders.md)
 
 ## 🧩 Use Cases
 

@@ -1,11 +1,11 @@
 ---
-title: SDK for Builders
+title: SDK for builders
 description: Pelagos Go SDK resources for building applications, including the SDK repository and example project.
 ---
 
-# SDK for Builders
+# SDK for builders
 
-Pelagos Go SDK is the toolkit Pelagos validators expect you to use when you author an application.
+The Pelagos Go SDK is the toolkit Pelagos validators expect an application to be built with.
 
-1. <https://github.com/0xAtelerix/sdk>
-2. <https://github.com/0xAtelerix/example>
+* [Pelagos Go SDK](https://github.com/0xAtelerix/sdk): the SDK repository.
+* [Example application](https://github.com/0xAtelerix/example): a worked example project to start from.

@@ -5,23 +5,23 @@ description: How Pelagos enables fast, secure, and cost-effective multichain app
 
 # Multichain application launch
 
-Pelagos supports multichain applications to launch at speed, while controling costs and determining the security of critical workloads.
+Pelagos supports multichain applications to launch at speed, while controlling costs and determining the security of critical workloads.
 
 ## The problem: time, cost, and development challenges
 
-Launching an application is typically a drawn-out and expensive process. Traditional solutions demand deep expertise, complex coordination, and significant upfront investment. For example, L1 applications such as Cosmos or Avalanche are neither fast or affordable to launch on.
+Launching an application is typically a drawn-out and expensive process. Traditional solutions demand deep expertise, complex coordination, and significant upfront investment. For example, L1 platforms such as Cosmos or Avalanche are neither fast nor affordable to launch on.
 
 The current multichain application protocols struggle to support direct, efficient interactions across chains without incurring substantial technical burden or performance bottlenecks. These issues arise from the reality that traditional rollups and single-L1 platforms are typically built with fixed infrastructure and limited customization that present the following challenges to development teams.
 
 ### Restricted execution logic
 
-Choosing a platform often locks developers into specific virtual machines, consensus mechanisms, and transaction validation processes. When a project needs to implement custom tokenomics, innovative execution flows, or new forms of governance, they discover that these features are unsupported.
+Choosing a platform often locks developers into specific virtual machines, consensus mechanisms, and transaction validation processes. When projects need to implement custom tokenomics, innovative execution flows, or new forms of governance, they discover that these features are unsupported.
 
 Adjusting execution logic, choosing different virtual machines, or integrating with other L1s is either extremely time-consuming or essentially blocked, often requiring teams to spend years building out their own chains. In practice, many applications and rollup solutions make it difficult to innovate or scale.
 
-The marketplace has not yet responded with the level of customization developers need. Zero Knowledge applications (e.g., Matter Labs) don’t let you pick your own VM or migrate between options. Transfers suffer from long delays, and real developer autonomy is minimal. Optimistic Rollups (e.g., OP, Arbitrum) lock projects to one L1, and offer limited customizations. Cross-chain operations remain slow, and core logic (such as VM or gas token choices) can’t truly be changed.
+The marketplace has not yet responded with the level of customization developers need. Zero-knowledge rollups (e.g., zkSync from Matter Labs) don’t let developers pick their own VM or migrate between options. Transfers suffer from long delays, and real developer autonomy is minimal. Optimistic rollups (e.g., Optimism, Arbitrum) lock projects to one L1 and offer limited customizations. Cross-chain operations remain slow, and core logic (such as VM or gas token choices) can’t truly be changed.
 
-This is why so many projects have recently emerged to support advanced custom execution, new economic mechanisms, or complex multichain needs, such as Berachain, INITIA, Hyperliquid, Bebop, and Zeta.
+This is why so many projects have recently emerged to support advanced custom execution, new economic mechanisms, or complex multichain needs, such as Berachain, Initia, Hyperliquid, Bebop, and Zeta.
 
 ### Limited multichain interoperability
 
@@ -35,10 +35,10 @@ While rollups improve scaling over base chains, they rarely support true horizon
 
 Pelagos addresses these core challenges by enabling quick, cost-effective application launches with enterprise-grade security and infrastructure that scales with your project.
 
-Pelagos allows an application to be developed and deployed without overspending, sacrificing security, or getting bogged down in technical hurdles. Eliminating the need to wait on specialized teams, or commit to ongoing maintenance or upgrades.
+Pelagos allows an application to be developed and deployed without overspending, sacrificing security, or getting bogged down in technical hurdles, eliminating the need to wait on specialized teams or commit to ongoing maintenance and upgrades.
 
 Pelagos provides customizable execution, true horizontal scaling, and interoperability that enables rapid, low-overhead application launches and multichain interaction. Even the security level is customizable thanks to additional slashing and diversification of the security sources — empowering you to confidently innovate and adapt your business logic as needed.
 
 With Pelagos, you can integrate with major L1s, leverage customizable virtual machines, and rely on infrastructure that scales horizontally as your application grows.
 
-What’s possible with Pelagos goes far beyond rollups and single-L1 ecosystems. Projects with advanced custom execution, new economic mechanisms, or complex multichain needs — such as Berachain, INITIA, Hyperliquid, Bebop, and Zeta — often outgrow what other solutions can provide. Likewise, leading multichain protocol use cases (LayerZero, Axelar, Chainlink, Hyperlane) simply cannot be deployed on current rollup stacks.
+What’s possible with Pelagos goes far beyond rollups and single-L1 ecosystems. Projects with advanced custom execution, new economic mechanisms, or complex multichain needs — such as Berachain, Initia, Hyperliquid, Bebop, and Zeta — often outgrow what other solutions can provide. Likewise, leading multichain protocol use cases (LayerZero, Axelar, Chainlink, Hyperlane) simply cannot be deployed on current rollup stacks.

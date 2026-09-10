@@ -39,7 +39,7 @@ nav:
   
   - 🚀 Pelagos value proposition:
     - Challenge: challenge.md
-    - "The Solution: Nabu": solution.md
+    - Solution: solution.md
   
   - 🛠️ Pelagos Technology:
     - Technological overview: technology/overview.md
@@ -51,7 +51,7 @@ nav:
     - Validating applications: technology/validating-applications.md
   
   - 🧑‍💻 Explore Our SDK:
-    - SDK for Builders: explore-our-sdk/sdk-for-builders.md
+    - SDK for builders: explore-our-sdk/sdk-for-builders.md
   
   - 🧩 Use Cases:
     - Application scaling: use-cases/scaling.md
@@ -101,3 +101,7 @@ extra_css:
 
 extra_javascript:
   - assets/javascripts/extra.js
+
+exclude_docs: |
+  README.md
+  toc.md

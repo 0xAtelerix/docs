@@ -11,7 +11,7 @@ Providing acronyms and definitions.
 
 ### Application transaction
 
-A transaction signed by a user and submitted to a specific application's RPC endpoint to modify or interact with that application's state.
+A transaction signed by a user and submitted to a specific application’s RPC endpoint to modify or interact with that application’s state.
 
 ## C
 
@@ -21,7 +21,7 @@ A finalized snapshot of application states. At the end of each Pelagos epoch, va
 
 ### Checkpoint Merkle root
 
-A single Merkle root combines every application's state root at the end of an epoch. This root is used to prove that a given application's state is included in the overall Pelagos checkpoint without having to store or verify all states individually.
+A single Merkle root combines every application’s state root at the end of an epoch. This root is used to prove that a given application’s state is included in the overall Pelagos checkpoint without having to store or verify all states individually.
 
 ### Consensus layer
 
@@ -45,19 +45,19 @@ A Docker image is a **pre-packaged environment** containing everything needed to
 
 ### Encryption
 
-Encryption is the process of converting information or data into a code; it's essential to prevent unauthorized access. Encryption is fundamental to securing data in transit and at rest across networks and systems.
-
-### External transaction
-
-Any final outcome/transaction produced via TSS is then sent out to external L1/L2 networks.
+Encryption is the process of converting information or data into a code; it’s essential to prevent unauthorized access. Encryption is fundamental to securing data in transit and at rest across networks and systems.
 
 ### Epoch
 
-A fixed period of time (or a number of blocks) in which applications execute transactions, produce blocks and generate a checkpoint. Once an epoch concludes, validators finalize the resulting checkpoint before moving on to the next epoch.
+A fixed period of time (or a number of blocks) in which applications execute transactions, produce blocks, and generate a checkpoint. Once an epoch concludes, validators finalize the resulting checkpoint before moving on to the next epoch.
 
 ### Epoch finalization
 
 The process by which validators reach consensus on and commit the state checkpoint for a given epoch, making it immutable and agreed upon by the network.
+
+### External transaction
+
+Any final outcome or transaction produced via TSS and then sent out to external L1/L2 networks.
 
 ## F
 
@@ -73,23 +73,23 @@ Gas sponsorships will be enabled with [EIP-7702](https://eip7702.io), allowing s
 
 ## I
 
-### Info-hash
-
-A cryptographic hash (similar to a BitTorrent “magnet” link) that identifies a chunk of immutable, incremental database (DB) data. It ensures data integrity—any node can fetch a specific DB file from peers, verify it against the hash, and trust that the file has not been tampered with.
-
 ### Immutable application DB
 
 A data storage model (inspired by Erigon) where new application states and transaction histories are periodically “sealed” into immutable snapshots. Each snapshot is identified by an info-hash and can be shared over BitTorrent-like protocols. Only the most recent “hot” DB accepts writes; older snapshots remain read-only and unalterable.
 
+### Info-hash
+
+A cryptographic hash (similar to a BitTorrent “magnet” link) that identifies a chunk of immutable, incremental database (DB) data. It ensures data integrity — any node can fetch a specific DB file from peers, verify it against the hash, and trust that the file has not been tampered with.
+
 ## P
 
-### Proof of Stake
+### PoS (Proof of Stake)
 
-Under [Poof-of-Stake blockchains](https://en.wikipedia.org/wiki/Proof_of_stake) (PoS), staking is the locking of a token to support the blockchain operations. In return for staking your crypto, you may earn more cryptocurrency.
+Under [Proof-of-Stake blockchains](https://en.wikipedia.org/wiki/Proof_of_stake) (PoS), staking is the locking of a token to support the blockchain operations. In return for staking, participants may earn additional tokens.
 
-To validate PoS blockchains, validator Nodes must first “stake” set amounts of the native token for the chain to be in a position to validate new transactions and add new blocks.
+To validate PoS blockchains, validator nodes must first “stake” set amounts of the native token for the chain to be in a position to validate new transactions and add new blocks.
 
-The stake will be slashed (forefit) if the validator fails to build legitimate blocks. This ensures that only valid data and transactions are added to a blockchain. Validators are rewarded with the native token when they successfully add new blocks.
+The stake will be slashed (forfeited) if the validator fails to build legitimate blocks. This ensures that only valid data and transactions are added to a blockchain. Validators are rewarded with the native token when they successfully add new blocks.
 
 ## R
 
@@ -101,11 +101,11 @@ A transaction triggered by a control (or governance) contract in response to new
 
 ### Shard
 
-A subdivided portion of a single application's state or execution workload. Sharding enables horizontal scaling: each shard processes only the transactions or data relevant to that shard, increasing overall throughput and reducing state bloat on individual nodes.
+A subdivided portion of a single application’s state or execution workload. Sharding enables horizontal scaling: each shard processes only the transactions or data relevant to that shard, increasing overall throughput and reducing state bloat on individual nodes.
 
 ### Sybil
 
-A Sybil is essentially a copy. While each human individual is unique, Sybils are attempts to create multiple identities.
+A fake identity created to gain disproportionate influence over a network. In a Sybil attack, one actor creates many such identities; PoS staking counters this by making each identity expensive to maintain.
 
 ## T
 
@@ -113,7 +113,11 @@ A Sybil is essentially a copy. While each human individual is unique, Sybils are
 
 An interface that exposes data and functions related to the economic and incentive mechanisms within Pelagos or its applications, facilitating programmatic interaction with token-related operations.
 
-### TSS
+### TPS (transactions per second)
+
+The number of transactions a network or application finalizes each second, used throughout this documentation as the headline throughput measure.
+
+### TSS (Threshold Signature Scheme)
 
 A cryptographic signing process where multiple validators collectively generate a single signature without revealing their individual secret keys. Pelagos uses TSS to sign external transactions on various L1s, ensuring security through distributed key control and slashing for any malicious usage.
 
@@ -121,8 +125,8 @@ A cryptographic signing process where multiple validators collectively generate 
 
 ### Validator
 
-A Pelagos open-source node that includes L1/L2 oracles, sequencing consensus, application executions, and TSS signing. A single node consists of a list of L1/L2 clients for DAG events, a DAG node for sequencing, application execution nodes and a TSS signing operator. It can be physically on a single server or distributed as microservices.
+A Pelagos open-source node that includes L1/L2 oracles, sequencing consensus, application executions, and TSS signing. A single node consists of a list of L1/L2 clients for DAG events, a DAG node for sequencing, application execution nodes, and a TSS signing operator. It can be physically on a single server or distributed as microservices.
 
 ### Validator set
 
-The pool of validators authorized to participate in Pelagos' DAG consensus and TSS signing.  A majority (⅔+1 by stake) must sign blocks, checkpoints, and external transactions.
+The pool of validators authorized to participate in Pelagos’ DAG consensus and TSS signing. A majority (⅔+1 by stake) must sign blocks, checkpoints, and external transactions.

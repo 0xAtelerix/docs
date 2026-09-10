@@ -5,13 +5,13 @@ description: Validator responsibilities, incentives, enforcement mechanisms, and
 
 # Validating applications
 
-Pelagos relies on validators to secure applications by performing consensus, signing external transactions, running execution nodes, and more. Their responsibilities set is paired with strict mechanisms to enforce good behavior and penalize misconduct.
+Pelagos relies on validators to secure applications by performing consensus, signing external transactions, running execution nodes, and more. These responsibilities are paired with strict mechanisms that enforce good behavior and penalize misconduct.
 
 ## Validator incentivization
 
 Validators must stake in the PoS system and earn proportional rewards based on the number of confirmed DAG events they produce. These rewards are distributed onchain, tracked, and managed by the Pelagos reactive contract.
 
-Validators earn by correctly signing checkpoints, participating in TSS signing, seeding immutable application databases, and participating in scaling operations (shards). While, [penalties](validating-applications.md#validator-enforcement-mechanisms) reduce rewards and, in the event of serious misconduct, the reactive contract can slash their staked tokens.
+Validators earn by correctly signing checkpoints, participating in TSS signing, seeding immutable application databases, and participating in scaling operations (shards). Conversely, [penalties](validating-applications.md#validator-enforcement-mechanisms) reduce rewards and, in the event of serious misconduct, the reactive contract can slash their staked tokens.
 
 ## Key responsibilities of a Pelagos validator
 
@@ -19,8 +19,8 @@ Pelagos validators are responsible for:
 
 * Maintaining full nodes to reach consensus on finalized L1/L2 blocks.
 * Event signing.
-* External transaction signing with Threshold Signatures (TSS).
-* Validate and order application transactions using DAG consensus.
+* External transaction signing with a Threshold Signature Scheme (TSS).
+* Validating and ordering application transactions using DAG consensus.
 * Key rotation: validators participate in regular Distributed Key Generation (DKG) and mandatory key rotations to maintain key security.
 * Executing application logic promptly after each epoch.
 * [Maintaining validator sets](validating-applications.md#validator-set-management).
@@ -41,7 +41,7 @@ Existing validators are responsible for managing the validator set. The existing
 
 Validators vote to confirm application readiness for start, stop, or halt events based on user subscription status and consensus. They also participate in checkpoint formation and commit aggregate application epoch results and immutable DB info-hashes on the supported L1/L2.
 
-By maintaining consistent checkpoints, the validators are also essential in the support of migrations and hard-forks.
+By maintaining consistent checkpoints, the validators are also essential in the support of migrations and hard forks.
 
 ### Resource management and stability enforcement
 
@@ -49,7 +49,7 @@ Each validator is responsible for operating application containers with resource
 
 ## Validator enforcement mechanisms
 
-Pelagos protocol enforces strict penalties on validators to maintain network safety, liveness, and data integrity. For example, fraud-proofs are created and submitted to the AVS contract if the protocol identifies:
+The Pelagos protocol enforces strict penalties on validators to maintain network safety, liveness, and data integrity. For example, fraud proofs are created and submitted to the AVS contract if the protocol identifies:
 
 * Conflicting/double-signing DAG events: validators must never sign two conflicting DAG events with the same epoch and sequence number.
 * Signing unauthorized transactions: validators must only sign transactions that originate from the sequenced DAG external transaction list; signing unauthorized transactions leads to fraud proofs.
@@ -57,7 +57,7 @@ Pelagos protocol enforces strict penalties on validators to maintain network saf
 * Failure to synchronize new validator sets.
 * Voting on non-final blocks.
 
-### Liveliness monitoring and penalties
+### Liveness monitoring and penalties
 
 Validators are the backbone of the protocol and, as such, must remain active by participating in consensus events, checkpoint signing, and TSS signing each epoch. Non-participation results in losing rewards for that epoch.
 
@@ -67,7 +67,7 @@ Furthermore, prolonged inactivity leads to removal from the validator set and fu
 
 Frequent requests for DKG re-runs require justification; spamming leads to withholding of rewards or removal from the validator set.
 
-### Checkpoint Consistency
+### Checkpoint consistency
 
 Validators producing inconsistent checkpoints relative to the consensus lose rewards and risk slashing.
 

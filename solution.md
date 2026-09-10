@@ -1,15 +1,10 @@
----
-title: The Solution: Nabu
-description: How Pelagos redefines multichain execution, liquidity, and interoperability with atomic settlement and scalable application infrastructure.
----
-
 # Solution
 
 Pelagos presents a multichain primitive that redefines execution, liquidity, and interoperability.
 
 Scaling a single dedicated application for predictable, ultra-low-latency performance introduces tough architectural demands that current L1 solutions, rollups, or bridges cannot satisfy. Pelagos has identified and addressed the three fundamental requirements for scalable, interoperable, and composable Web3 infrastructure:
 
-* Crosschain reactivity.
+* Cross-chain reactivity.
 * Consensus at scale.
 * Generalized data layer.
 
@@ -36,9 +31,9 @@ Furthermore, Pelagos’ native interoperability abstracts underlying chain diffe
 
 ### Outcome
 
-applications benefit from seamless, low-latency bidirectional communication with any blockchain. Your application can react immediately to onchain events including arbitrage, price movements, and governance triggers, regardless of which chain the state change originated on, unlocking true composability and capital efficiency.
+Applications benefit from seamless, low-latency bidirectional communication with any blockchain. They can react immediately to onchain events including arbitrage, price movements, and governance triggers, regardless of which chain the state change originated on, unlocking true composability and capital efficiency.
 
-## 2. Consensus at Scale
+## 2. Consensus at scale
 
 ### Requirement
 
@@ -50,15 +45,15 @@ Pelagos introduces a highly parallelized, leaderless Directed Acyclic Graph (DAG
 
 Data and state synchronization among validators employ BitTorrent-like peer-to-peer protocols, enabling computation-free, high-speed syncing without central coordination points.
 
-#### Key features:
+### Key features
 
-* Distributed, massively parallel consensus processing: supporting many application to scale horizontally without being gated by a slow consensus engine.
+* Distributed, massively parallel consensus processing: supporting many applications to scale horizontally without being gated by a slow consensus engine.
 * A trust-minimized protocol: ensuring a robust consensus mechanism enforced by economic incentives and penalties.
-* BitTorrent-like, computation-free sync and modular validator participation: drawing direct inspiration from battle-tested approaches like Erigon's archival and sync model.
+* BitTorrent-like, computation-free sync and modular validator participation: drawing direct inspiration from battle-tested approaches like Erigon’s archival and sync model.
 
-#### Outcome
+### Outcome
 
-Consensus is no longer the bottleneck. Resources scale elastically, performance stays predictable, and application can rely on robust shared security from day one. This enables complex, latency-sensitive operations such as routing trades across multiple DEXs and chains to be executed atomically within a single ~0.4 s DAG block, delivering near-instant settlement and greatly improving trading efficiency.
+Consensus is no longer the bottleneck. Resources scale elastically, performance stays predictable, and applications can rely on robust shared security from day one. This enables complex, latency-sensitive operations such as routing trades across multiple DEXs and chains to be executed atomically within a single ~0.4 s DAG block, delivering near-instant settlement and greatly improving trading efficiency.
 
 ## 3. Generalized data layer
 
@@ -74,17 +69,17 @@ Advanced indexing and incremental state snapshots optimize query latency and red
 
 Moreover, this design supports flexible app architectures with minimal compromise on performance or security.
 
-#### Key features:
+### Key features
 
-* A unified, protocol-agnostic state interface: allowing contracts to interact with multi-chain data as if it were a single, high-performance database.
+* A unified, protocol-agnostic state interface: allowing contracts to interact with multichain data as if it were a single, high-performance database.
 * Immutable and incremental data structures with advanced indexing: ensuring low-latency querying and minimal storage overhead.
 * Native state snapshots, data availability guarantees, and instant composability for tokenomics logic, settlement, and analytics: removing the usual flexibility/performance trade-off.
 
-#### Outcome
+### Outcome
 
-Applications can query and update complex, multi-chain state in real time, enabling demanding financial, gaming, and DeFi logics to scale naturally with user growth and network activity.
+Applications can query and update complex, multichain state in real time, enabling demanding financial, gaming, and DeFi logic to scale naturally with user growth and network activity.
 
-By decoupling application logic from any one blockchain’s architecture and standardizing state representation, Pelagos enables developers to choose, or even mix and match, the execution environments, smart contract languages, and economic models best suited to their needs. This offers complete flexibility for application to customize their architecture, including VM choice, coding language, and tokenomics.
+By decoupling application logic from any one blockchain’s architecture and standardizing state representation, Pelagos enables developers to choose, or even mix and match, the execution environments, smart contract languages, and economic models best suited to their needs. This offers complete flexibility for applications to customize their architecture, including VM choice, coding language, and tokenomics.
 
 ## Why this matters
 
@@ -100,9 +95,9 @@ Pelagos decouples the application logic from any specific blockchain runtime thr
 
 It achieves this through:
 
-* An abstract state model: Contracts are written against a unified state interface that compiles down to protocol-specific primitives at execution time.
+* An abstract state model: contracts are written against a unified state interface that compiles down to protocol-specific primitives at execution time.
 * Deterministic finality translation: Pelagos maps finality semantics across chains, enabling consistent behavior whether deployed on probabilistic or instant-finality chains.
-* Developer simplicity: Instead of writing for a specific VM, developers can target a single framework and deploy logic that composes natively across protocols.
+* Developer simplicity: instead of writing for a specific VM, developers can target a single framework and deploy logic that composes natively across protocols.
 
 **Outcome:** Write once, transact anywhere — enabling true cross-chain logic portability and drastically reducing time to market.
 
@@ -110,10 +105,10 @@ It achieves this through:
 
 Pelagos embeds a cross-chain liquidity coordination layer that routes capital and execution through a common settlement plane, eliminating the need for bridges and wrapped tokens. This allows it to natively support:
 
-* Atomic multichain execution: transactions can atomically span chains and dApps, with guaranteed all‑or‑nothing finality, coordinated by a trust‑minimized consensus layer to ensure correctness.
+* Atomic multichain execution: transactions can atomically span chains and dApps, with guaranteed all-or-nothing finality, coordinated by a trust-minimized consensus layer to ensure correctness.
 * Continuous cross-chain rebalancing and no slippage spikes: liquidity is dynamically balanced across chains in real time, preventing bottlenecks and price impact during high demand.
 * True atomic cross-chain execution: enabling high-frequency arbitrage strategies and decentralized exchanges (DEXs) with execution speeds rivaling centralized exchanges (CEXs).
-* Real-time liquidations: automated collateral sales on the deepest liquidity pools, followed by debt repayment and ledger updates, all completed in sub-seconds.
+* Real-time liquidations: automated collateral sales on the deepest liquidity pools, followed by debt repayment and ledger updates, all completed in under a second.
 
 **Outcome:** Pelagos eliminates TVL fragmentation by enabling capital to flow natively and efficiently across chains, unlocking natural, incentive-free liquidity aggregation and maximizing capital efficiency. This creates a DeFi environment where liquidity is intelligently coordinated across chains, reducing slippage, arbitrage leakage, and trust dependencies.
 
@@ -126,13 +121,13 @@ It achieves this through:
 * Composable calls across runtimes: one contract can natively call functions in another deployed on a different chain or runtime, with state guarantees.
 * Shared interfaces and schemas: standardized interaction models allow applications to plug into one another regardless of underlying architecture.
 * Secure settlement coordination: transactions are resolved through a shared sequencing and verification layer that ensures deterministic outcomes across chains.
-* Low latency: efficient cross-application communications that don't rely on Inter-Blockchain Communication (IBC)-like protocols.
+* Low latency: efficient cross-application communications that don’t rely on Inter-Blockchain Communication (IBC)-like protocols.
 
 **Outcome:** Pelagos delivers on the original promise of composability — not just within ecosystems but between them.
 
 ## Solution positioning
 
-Pelagos doesn't compete with rollups or shared security ecosystems. In fact, Pelagos is more than a bridge, more than a rollup, and more than a multichain app framework. It's a shared execution and liquidity layer that solves the root cause of fragmentation in Web3 infrastructure that:
+Pelagos doesn’t compete with rollups or shared security ecosystems. In fact, Pelagos is more than a bridge, more than a rollup, and more than a multichain app framework. It’s a shared execution and liquidity layer that solves the root cause of fragmentation in Web3 infrastructure that:
 
 * Unifies development across heterogeneous blockchain architectures.
 * Coordinates liquidity without compromising decentralization.

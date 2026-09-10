@@ -5,13 +5,13 @@ description: How to launch, scale, and operate applications on Pelagos with cust
 
 # Developing an application
 
-Launching an application with Pelagos is as simple as deploying a smart contract. The developer can execute a single transaction providing the:
+Launching an application with Pelagos is as simple as deploying a smart contract. The developer executes a single transaction providing:
 
-* Hash of a Docker container.
-* (Optional) genesis data.
-* (Optional) Info-hash (for immutable database distribution).
+* The hash of a Docker container.
+* (Optional) Genesis data.
+* (Optional) An info-hash, for immutable database distribution.
 
-and then run each application just like one or more microservices.
+Each application then runs just like one or more microservices.
 
 Normally, building a distributed system means dealing with low-level details: defining services in Protocol Buffers (Protobuf), handling client/server pairing and stub generation, setting up HTTP/2 multiplexing, managing streams vs. unary messages, serialization, and error handling. On top of that, developers would still need to design how to secure transactions, order them, integrate external chain data, and discover rates or liquidity pools.
 
@@ -28,15 +28,15 @@ This ensures a seamless, scalable, and secure multichain interaction model.
 
 ## Select the desired execution environment
 
-Pelagos puts the choice of which virtual machines (VMs) and which programming language to use for transaction processing in the hands of the developer. They can select how to handle user transactions, for example with Golang or Rust, etc. Furthermore, developers can deploy any Docker container as the execution environment, enabling flexible and custom transaction handling.
+Pelagos puts the choice of which virtual machines (VMs) and which programming language to use for transaction processing in the hands of the developer. They can select how to handle user transactions, for example, Go or Rust. Furthermore, developers can deploy any Docker container as the execution environment, enabling flexible and custom transaction handling.
 
-It's even possible for developers to build heterogeneous applications by combining EVM, SVM, and Move execution environments across different shards within the same application.
+It’s even possible for developers to build heterogeneous applications by combining EVM, SVM, and Move execution environments across different shards within the same application.
 
 Furthermore, Pelagos embraces migrations and hard forks as a natural part of application evolution and supports this with mechanisms designed to handle safe data migration and execution updates.
 
 ## Choose or extend the RPC
 
-The RPC (Remote Procedure Call) layer provides an external interface for application nodes. Pelagos supports flexibility in RPC options for applications. This allows developers to choose one of the standard RPCs (e.g., Ethereum, Cosmos, Solana, etc.), or to create a custom RPC, potentially extending existing implementations to suit specific requirements.
+The RPC (Remote Procedure Call) layer provides an external interface for application nodes. Pelagos supports flexibility in RPC options for applications. This allows developers to choose one of the standard RPCs (e.g., Ethereum, Cosmos, or Solana), or to create a custom RPC, potentially extending existing implementations to suit specific requirements.
 
 This ensures that applications can integrate seamlessly with existing ecosystems or implement unique solutions tailored to their needs.
 
@@ -50,70 +50,63 @@ By enabling easy interoperability, Pelagos lets applications reuse and enhance e
 
 ## Scale an application with Pelagos
 
-Pelagos brings Web2 scalability practices directly to applications; employing the Erigon DB-inspired model for application data storage. This model is optimized for blockchains with large or rapidly growing states, offering:
+Pelagos brings Web2 scalability practices directly to applications, employing the Erigon DB-inspired model for application data storage. This model is optimized for blockchains with large or rapidly growing states, offering:
 
-* Hot databases: Designed to handle real-time data writes with periodic conversion into immutable snapshots.
-* Immutable databases: Read-only incremental state snapshots that represent historical blockchain states.
+* Hot databases: designed to handle real-time data writes, with periodic conversion into immutable snapshots.
+* Immutable databases: read-only incremental state snapshots that represent historical blockchain states.
 
-These immutable databases serve as a historical record of the blockchain {"of the blockchain" is the application data offer several advantages:
+These immutable databases serve as a historical record of the application data and offer several advantages:
 
 * Snapshots can be shared with other nodes via BitTorrent-like protocols, enabling efficient data synchronization.
 * Operators can verify and validate the integrity of immutable databases before downloading, ensuring tamper-proof data distribution.
 * By adopting this model, Pelagos transitions from traditional sync protocols, which distribute blocks, transactions, and state pieces with proofs, to efficient, one-time event, large-database file downloads. This significantly improves scalability and operational efficiency by reducing the messaging load.
 
-### Shard
+### Shard an application
 
 In Pelagos, each application can decide when to scale by sharding. A single sequencing process will serve these shards, allowing the application to grow and scale seamlessly.
 
 Developers can request additional shards by prompting Pelagos to create new execution microservices and redirect transactions from sequencing into a custom sharding function. For example, `get_shard(tx)` -> `shard_id`.
 
-This mechanism transparently scales the transaction load (TPS) by distributing it across multiple shards, see Figure 2.
+This mechanism transparently scales the transaction load (TPS) by distributing it across multiple shards, as shown in Figure 2.
 
-#### Figure 2. Individual application scaling
+**Figure 2. Individual application scaling**
 
 ```mermaid
 graph TD
     %% Define styles
-    classDef horiz fill:#e6f7ff,stroke:#3399ff,stroke-width:2px;
-    classDef vert fill:#fff0e6,stroke:#ff6600,stroke-width:2px;
+    classDef seq fill:#e6f7ff,stroke:#3399ff,stroke-width:2px;
+    classDef shard fill:#fff0e6,stroke:#ff6600,stroke-width:2px;
 
-    %% Multiple DAGs feeding horizontal scaling
-    subgraph Horizontal_Scaling["**"]
-        class Horizontal_Scaling horiz
-        DAG1[DAG 1] --> OT1[Ordered Transactions]
-    end
+    %% Shared sequencing
+    Validators[Validators] --> DAG1[DAG 1 sequencer]
+    DAG1 --> OT1[Ordered transactions]
 
-    %% Vertically scaling box: sharding function & shards
-    subgraph horizontal_Scaling["Horizontal-scaled shards"]
-        class Vertical_Scaling vert
-        shardFn["choose_shard(tx) → shardID"]
-        Shard1[applications 1 - Shard 1]
-        Shard2[applications 1 - Shard 2]
+    %% Sharded execution of a single application
+    subgraph Sharded["Application 1: sharded execution"]
+        shardFn["get_shard(tx) → shard_id"]
+        Shard1[Application 1 - shard 1]
+        Shard2[Application 1 - shard 2]
         shardFn -->|Txs| Shard1
         shardFn -->|Txs| Shard2
     end
 
-    %% Connect ordered txs to vertical scaling (sharding)
+    %% Ordered transactions feed the sharding function
     OT1 --> shardFn
 
-    %% Epoch checkpoint is out of vertical scaling subgraph
+    %% The epoch checkpoint sits outside the sharded application
     Shard1 --> CP[Epoch checkpoint]
     Shard2 --> CP
 
-    %% Validators connect directly to each DAG
-    Validators[Validators] --> DAG1
-
     %% Apply styles
-    class Horizontal_Scaling horiz
-    class Vertical_Scaling vert
-
+    class DAG1,OT1,CP seq;
+    class shardFn,Shard1,Shard2 shard;
 ```
 
 It is the thesis of the Pelagos designers that this model will foster organic ecosystem growth by aligning incentives among applications, validators, and service providers.
 
 ### Scale consensus
 
-Consensus scaling is supported at the database layer, thanks to the efficent DAG database. The immutable, incremental database design ensures optimal data locality and minimizes read amplification by including fast-access and presence/absence indexes from the outset. As a result, this database is inherently optimized for syncing and scaling.
+Consensus scaling is supported at the database layer, thanks to the efficient DAG database. The immutable, incremental database design ensures optimal data locality and minimizes read amplification by including fast-access and presence/absence indexes from the outset. As a result, this database is inherently optimized for syncing and scaling.
 
 To further enhance efficiency, these databases are distributed via BitTorrent-like protocols, enabling computation-free synchronization. This effective combination of database design and synchronization strategies mirrors the success of Erigon, the primary archive node solution applied by Ethereum and Polygon due to its exceptional optimization and sync capabilities.
 
@@ -121,7 +114,7 @@ Furthermore, any application can "subscribe" to dedicated sequencing should it o
 
 ## Define block times with Pelagos
 
-Developers can determine the size of the blocks produced by their application according to their own rules, independent of complex consensus steps at execution time. Like Rollups, Pelagos lets you “slice” transaction sequences into arbitrarily sized blocks, but without imposing heavy computational demand. Block times can be reduced by the developer to as low as 10–50 ms due to the deterministic and independent nature of transaction sequencing flow and block slicing functions.
+Developers can determine the size of the blocks produced by their application according to their own rules, independent of complex consensus steps at execution time. Like rollups, Pelagos lets developers “slice” transaction sequences into arbitrarily sized blocks, but without imposing heavy computational demand. Block times can be reduced by the developer to as low as 10–50 ms due to the deterministic and independent nature of transaction sequencing flow and block slicing functions.
 
 ## Leverage trigger event logic
 
@@ -130,24 +123,24 @@ Using the reactive smart contract, developers can leverage the unified data envi
 Consider the following code sample that listens for events on data collected on a supported external chain and triggers cross-chain transactions:
 
 ```solidity
-// SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.0;
-
-/// @title Example Pelagos Reactive Contract
-
+// Inside a reactive handler: build the call data for the target chain...
 bytes memory payload = abi.encodeWithSignature(
     "credit(address,uint256)",
     _event.to,
     _event.value
 );
+
+// ...then emit it as an outbound transaction (chain ID 1 = Ethereum mainnet).
 emit TelerixCommon.EthereumTransaction(1, targetAddress, payload);
 ```
 
 The following sample is commented to detail the mechanism:
 
-```
+```solidity
 // SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.0;
+// Qualified access to events declared in another contract or library
+// (`emit TelerixCommon.Subscribe(...)`) requires Solidity 0.8.21 or later.
+pragma solidity ^0.8.21;
 
 /// @title Example Pelagos Reactive Contract
 /// @notice Listens to events on an external chain and triggers cross-chain transactions
