@@ -3,7 +3,7 @@ site_url: https://tdocs.pelagos.network/
 site_description: Technical documentation for Pelagos, the universal execution layer for scalable, composable multichain applications.
 theme:
   name: material
-  custom_dir: assets/overrides
+  custom_dir: docs/assets/overrides
   features:
     # - navigation.tabs
     - navigation.sections
